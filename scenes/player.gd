@@ -1,12 +1,17 @@
-extends CharacterBody2D
+extends Character
 
-@export var stats : StatSheet
-@export var state_machine : StateMachine
+@export var debug_state_label : Label
 
-func _ready() -> void:
-	stats.reset()
-
-func _physics_process(delta: float) -> void:
+func _process(delta: float) -> void:
+	debug_state_label.text = state_machine.active_state.state_name
+	update_direction()
 	state_machine.process_state(delta)
-	move_and_slide()
-	pass
+
+func update_direction() -> void:
+	var HorizontalAxis = Input.get_action_strength("Right") - Input.get_action_strength("Left")
+	var VerticalAxis = Input.get_action_strength("Down") - Input.get_action_strength("Up")
+	
+	direction = Vector2(HorizontalAxis, VerticalAxis).normalized()
+
+func _unhandled_input(event : InputEvent) -> void:
+	state_machine.input_handle_state(event)

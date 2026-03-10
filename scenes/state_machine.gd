@@ -11,16 +11,22 @@ func _ready() -> void:
 			print(child.state_name)
 			state_dict[child.state_name] = child
 	
-	active_state = state_dict["normal"]
+	active_state = state_dict["idle"]
 
 func switch_state(newstate : String) -> void:
 	if !state_dict.has(newstate):
 		print("INVALID STATE %s" % newstate)
 	else:
 		active_state.on_exit()
-		print("CHANGED STATE %s" % newstate)
+		#print("CHANGED STATE %s" % newstate)
 		active_state = state_dict[newstate]
 		active_state.on_enter()
 
-func process_state(delta) -> void:
-	active_state.process_state(delta)
+func process_state(delta : float) -> void:
+	switch_state(active_state.process_state(delta))
+
+func physics_process_state(delta : float) -> void:
+	switch_state(active_state.physics_process_state(delta))
+
+func input_handle_state(event : InputEvent) -> void:
+	switch_state(active_state.input_handle_state(event))
