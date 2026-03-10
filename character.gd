@@ -8,7 +8,7 @@ func _ready() -> void:
 	stats.reset()
 
 func _process(delta: float) -> void:
-	state_machine.physics_process_state(delta)
+	state_machine.process_state(delta)
 
 func _physics_process(delta: float) -> void:
 	state_machine.physics_process_state(delta)
