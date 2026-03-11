@@ -5,7 +5,7 @@ Layers are not defined because player, enemy, objects, etc
 can be on different layers
 """
 
-@export var damage: float = 1
+@export var stats : StatSheet
 
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)

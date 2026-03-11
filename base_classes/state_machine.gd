@@ -11,22 +11,27 @@ func _ready() -> void:
 			print(child.state_name)
 			state_dict[child.state_name] = child
 	
-	active_state = state_dict["idle"]
+	if state_dict.has("idle"):
+		active_state = state_dict["idle"]
+	else:
+		assert("ERROR: idle STATE NOT FOUND")
 
 func switch_state(newstate : String) -> void:
 	if !state_dict.has(newstate):
-		print("INVALID STATE %s" % newstate)
+		push_error("INVALID STATE %s" % newstate)
 	else:
 		active_state.on_exit()
-		#print("CHANGED STATE %s" % newstate)
 		active_state = state_dict[newstate]
 		active_state.on_enter()
 
+## Called every frame
 func process_state(delta : float) -> void:
 	switch_state(active_state.process_state(delta))
 
+## Called every physics process
 func physics_process_state(delta : float) -> void:
 	switch_state(active_state.physics_process_state(delta))
 
+## Called every unhandled input
 func input_handle_state(event : InputEvent) -> void:
 	switch_state(active_state.input_handle_state(event))

@@ -23,7 +23,7 @@ func reset() -> void:
 ## defense and the incoming attack's attack value.
 func damage_calculation(incoming_attack_val : int):
 	# Simplified damage calculation. Will probably change later
-	var final_damage = incoming_attack_val - defense
+	var final_damage = clamp(incoming_attack_val - defense, 0, INF)
 	return final_damage
 
 ## Update health value based on incoming attack
