@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Core-godot"
-run/main_scene="res://scenes/player_character.tscn"
+run/main_scene="res://characters/player/player_character.tscn"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 

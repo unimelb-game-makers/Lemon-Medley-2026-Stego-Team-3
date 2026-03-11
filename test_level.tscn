@@ -1,0 +1,48 @@
+[gd_scene format=4 uid="uid://djradodhav8eb"]
+
+[ext_resource type="TileSet" uid="uid://56rgeaitgaww" path="res://temp_tileset.tres" id="1_4ptq8"]
+[ext_resource type="PackedScene" uid="uid://bt2ju64bl0yrp" path="res://characters/player/player_character.tscn" id="1_f7g2b"]
+[ext_resource type="Texture2D" uid="uid://b58a50e60p4fd" path="res://icon.svg" id="2_4ptq8"]
+[ext_resource type="Script" uid="uid://c3atp4e4h86rb" path="res://base_physics_components/attack_area.gd" id="3_sb12i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gbhdq"]
+size = Vector2(117, 119)
+
+[node name="TestLevel" type="Node2D" unique_id=1287366284]
+
+[node name="Ground" type="TileMapLayer" parent="." unique_id=1026276373]
+scale = Vector2(8, 8)
+tile_map_data = PackedByteArray("AAD/////AQABAAIAAAD//wAAAQABAAIAAAAAAAAAAQABAAIAAAAAAP//AQABAAIAAAD//wEAAQABAAIAAAAAAAEAAQABAAIAAAABAAEAAQABAAIAAAACAAEAAQABAAIAAAADAAEAAQABAAIAAAADAAAAAQABAAIAAAADAP//AQABAAIAAAACAP//AQABAAIAAAABAP//AQABAAIAAAABAAAAAQABAAIAAAACAAAAAQABAAIAAAAEAAEAAQABAAIAAAAEAAAAAQABAAIAAAAFAAAAAQABAAIAAAAFAP//AQABAAIAAAAFAP7/AQABAAIAAAAEAP7/AQABAAIAAAADAP7/AQABAAIAAAACAP7/AQABAAIAAAABAP7/AQABAAIAAAAAAP7/AQABAAIAAAD///7/AQABAAIAAAD+//7/AQABAAIAAAD+////AQABAAIAAAD9////AQABAAIAAAD9/wAAAQABAAIAAAD9/wEAAQABAAIAAAD+/wEAAQABAAIAAAD+/wAAAQABAAIAAAD9//7/AQABAAIAAAD9//3/AQABAAIAAAD+//3/AQABAAIAAAD///3/AQABAAIAAAAAAP3/AQABAAIAAAABAP3/AQABAAIAAAACAP3/AQABAAIAAAADAP3/AQABAAIAAAAEAP3/AQABAAIAAAAFAP3/AQABAAIAAAAEAP//AQABAAIAAAAFAAEAAQABAAIAAAAFAAIAAQABAAIAAAAEAAIAAQABAAIAAAADAAIAAQABAAIAAAACAAIAAQABAAIAAAABAAIAAQABAAIAAAAAAAIAAQABAAIAAAD//wIAAQABAAIAAAD+/wIAAQABAAIAAAD9/wIAAQABAAIAAAA=")
+tile_set = ExtResource("1_4ptq8")
+
+[node name="Walls" type="TileMapLayer" parent="." unique_id=245886041]
+scale = Vector2(8, 8)
+tile_map_data = PackedByteArray("AAD9//z/AQABAAEAAAD+//z/AQABAAEAAAD///z/AQABAAEAAAAAAPz/AQABAAEAAAABAPz/AQABAAEAAAACAPz/AQABAAEAAAADAPz/AQABAAEAAAAEAPz/AQABAAEAAAAFAPz/AQABAAEAAAD8//z/AQAAAAEAAAAGAPz/AQACAAEAAAAGAP3/AQACAAIAAAAGAP7/AQACAAIAAAAGAP//AQACAAIAAAAGAAAAAQACAAIAAAAGAAEAAQACAAIAAAAGAAIAAQACAAIAAAAGAAMAAQACAAMAAAAFAAMAAQABAAMAAAAEAAMAAQABAAMAAAADAAMAAQABAAMAAAACAAMAAQABAAMAAAABAAMAAQABAAMAAAAAAAMAAQABAAMAAAD//wMAAQABAAMAAAD+/wMAAQABAAMAAAD9/wMAAQABAAMAAAD8/wMAAQAAAAMAAAD8/wIAAQAAAAIAAAD8/wEAAQAAAAIAAAD8/wAAAQAAAAIAAAD8////AQAAAAIAAAD8//7/AQAAAAIAAAD8//3/AQAAAAIAAAA=")
+tile_set = ExtResource("1_4ptq8")
+
+[node name="PlayerCharacter" parent="." unique_id=1978286765 instance=ExtResource("1_f7g2b")]
+
+[node name="Camera2D" type="Camera2D" parent="PlayerCharacter" unique_id=639250108]
+zoom = Vector2(0.5, 0.5)
+
+[node name="TestDummy" type="CharacterBody2D" parent="." unique_id=661193362]
+position = Vector2(321, 2)
+collision_layer = 2
+collision_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="TestDummy" unique_id=2049362440]
+texture = ExtResource("2_4ptq8")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TestDummy" unique_id=1533218925]
+position = Vector2(1.5, 1.5)
+shape = SubResource("RectangleShape2D_gbhdq")
+metadata/_edit_lock_ = true
+
+[node name="Area2D" type="Area2D" parent="TestDummy" unique_id=141972784]
+script = ExtResource("3_sb12i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TestDummy/Area2D" unique_id=952961741]
+position = Vector2(1.5, 1.5)
+shape = SubResource("RectangleShape2D_gbhdq")
+metadata/_edit_lock_ = true

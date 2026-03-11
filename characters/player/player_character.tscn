@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://bt2ju64bl0yrp"]
+
+[ext_resource type="Script" uid="uid://b7eruq54oeyly" path="res://characters/player/player.gd" id="1_3kw6f"]
+[ext_resource type="Script" uid="uid://c1gagfk36axyn" path="res://base_classes/statsheet.gd" id="2_lvh8y"]
+[ext_resource type="Texture2D" uid="uid://b58a50e60p4fd" path="res://icon.svg" id="3_lelq3"]
+[ext_resource type="Script" uid="uid://bd1qrnr8tcmdc" path="res://base_classes/state_machine.gd" id="4_dwfcf"]
+[ext_resource type="Script" uid="uid://ddq8nkdp4gpaa" path="res://base_physics_components/damage_area.gd" id="4_lvh8y"]
+[ext_resource type="Script" uid="uid://chy0unnb43hw8" path="res://characters/player/player_walk.gd" id="5_y3qm2"]
+[ext_resource type="Script" uid="uid://0ly0nuwn74ib" path="res://characters/player/player_run.gd" id="6_yabh2"]
+[ext_resource type="Script" uid="uid://dixaietdwmqgd" path="res://characters/player/player_idle.gd" id="7_nmpe6"]
+[ext_resource type="Script" uid="uid://c3atp4e4h86rb" path="res://base_physics_components/attack_area.gd" id="9_lelq3"]
+
+[sub_resource type="Resource" id="Resource_o6xl0"]
+script = ExtResource("2_lvh8y")
+base_health = 10
+base_defense = 10
+base_attack = 10
+base_speed = 300
+speed = 300
+metadata/_custom_type_script = "uid://c1gagfk36axyn"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o5qli"]
+size = Vector2(120, 120)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lvh8y"]
+radius = 92.0
+
+[node name="PlayerCharacter" type="CharacterBody2D" unique_id=1978286765 node_paths=PackedStringArray("debug_state_label", "state_machine", "hurt_box")]
+script = ExtResource("1_3kw6f")
+debug_state_label = NodePath("debug_state_label")
+stats = SubResource("Resource_o6xl0")
+state_machine = NodePath("state_machine")
+hurt_box = NodePath("damage_area")
+
+[node name="icon" type="Sprite2D" parent="." unique_id=920935392]
+texture = ExtResource("3_lelq3")
+
+[node name="shape" type="CollisionShape2D" parent="." unique_id=708662803]
+shape = SubResource("RectangleShape2D_o5qli")
+
+[node name="state_machine" type="Node" parent="." unique_id=614204903]
+script = ExtResource("4_dwfcf")
+
+[node name="normal_state" type="Node" parent="state_machine" unique_id=959702867]
+script = ExtResource("5_y3qm2")
+
+[node name="run_state" type="Node" parent="state_machine" unique_id=883570241]
+script = ExtResource("6_yabh2")
+
+[node name="idle_state" type="Node" parent="state_machine" unique_id=2047713969]
+script = ExtResource("7_nmpe6")
+
+[node name="debug_state_label" type="Label" parent="." unique_id=2016844207]
+offset_left = -22.0
+offset_top = -102.0
+offset_right = 18.0
+offset_bottom = -79.0
+text = "Text"
+
+[node name="damage_area" type="Area2D" parent="." unique_id=1136224295]
+script = ExtResource("4_lvh8y")
+
+[node name="hurt_box" type="CollisionShape2D" parent="damage_area" unique_id=1971043748]
+shape = SubResource("RectangleShape2D_o5qli")
+
+[node name="claymore_attack_area" type="Area2D" parent="." unique_id=290821557]
+collision_layer = 4294967294
+collision_mask = 4294967294
+script = ExtResource("9_lelq3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="claymore_attack_area" unique_id=631539804]
+position = Vector2(91, 0)
+shape = SubResource("CircleShape2D_lvh8y")
