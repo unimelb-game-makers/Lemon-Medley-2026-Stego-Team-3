@@ -12,10 +12,6 @@ func _enter_tree() -> void:
 	state_name = "run"
 	state_machine = get_parent()
 
-func on_enter() -> void:
-	if controlled_character.attacking:
-		controlled_character.claymore_
-
 func input_handle_state(event : InputEvent) -> String:
 	if event.is_action_pressed("Melee"):
 		return "run_attack"
