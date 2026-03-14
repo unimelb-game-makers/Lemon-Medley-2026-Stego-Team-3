@@ -1,17 +1,17 @@
-extends Character
+class_name Player extends Character
 
 @export var debug_state_label : Label
 @export var attack_area : AttackArea
 
-## TEMPORARY VARIABLE, ONCE WE HAVE ATTACK ANIMATION WE WILL NOT USE THIS
+## TEMPORARY VARIABLE, ONCE WE HAVE ATTACK ANIMATION WE MIGHT NOT USE THIS
 @export var ATTACKDURATION : float
+var attacking : bool = false
+var attack_buffered : bool = false
 
 func _ready() -> void:
 	hurt_box.stats = stats
-	attack_area.stats = stats
-	
-	if touch_damage_box:
-		touch_damage_box.stats = stats
+	attack_area.damage = Damage.new(stats)
+	attack_area.finished_attack.connect(finish_attack)
 	
 	hurt_box.damage_taken.connect(take_damage)
 	stats.reset()
@@ -35,18 +35,28 @@ func update_direction() -> void:
 
 ## Attack in the direction of our mouse
 func attack():
+	print("Attacking")
+	attacking = true
 	attack_area.activate(ATTACKDURATION)
 
-func take_damage(attack_val : AttackArea):
-	cancel_attack()
+func finish_attack():
+	attacking = false
+
+func take_damage(damage : Damage, attack_position : Vector2):
+	last_hit = damage
+	last_hit_direction = attack_position.direction_to(global_position)
+	
+	# For player specifically, we just immediately transition to Stun on getting hit
+	# For other enemies, we might want them to only stun from certain states, which is
+	# when we decide to fully implement the state transitions. For now this is fine.
+	state_machine.switch_state("stun")
 
 ## If we are currently attacking, but are interrupted by something, 
 ## e.g Enemy attack then cancel early
 func cancel_attack():
+	attack_buffered = false
+	finish_attack()
 	attack_area.set_active(false)
 
-func _unhandled_input(event : InputEvent) -> void:
-	if event.is_action_pressed("Melee"):
-		attack()
-		
+func _unhandled_input(event : InputEvent) -> void:		
 	state_machine.input_handle_state(event)

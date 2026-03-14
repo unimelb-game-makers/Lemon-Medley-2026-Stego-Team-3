@@ -1,4 +1,4 @@
 extends Character
 
-func take_damage(attack_val : AttackArea):
-	print("I took damage")
+func take_damage(damage : Damage, attack_position : Vector2):
+	pass

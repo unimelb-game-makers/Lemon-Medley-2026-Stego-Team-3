@@ -8,7 +8,11 @@
 [ext_resource type="Script" uid="uid://chy0unnb43hw8" path="res://characters/player/player_walk.gd" id="5_y3qm2"]
 [ext_resource type="Script" uid="uid://0ly0nuwn74ib" path="res://characters/player/player_run.gd" id="6_yabh2"]
 [ext_resource type="Script" uid="uid://dixaietdwmqgd" path="res://characters/player/player_idle.gd" id="7_nmpe6"]
+[ext_resource type="Script" uid="uid://djdkc8385ppec" path="res://characters/player/player_walk_attack.gd" id="8_yabh2"]
 [ext_resource type="Script" uid="uid://c3atp4e4h86rb" path="res://base_physics_components/attack_area.gd" id="9_lelq3"]
+[ext_resource type="Script" uid="uid://cq8amy1ed1fm" path="res://characters/player/player_idle_attack.gd" id="9_nmpe6"]
+[ext_resource type="Script" uid="uid://d1ph50dko3aj4" path="res://characters/player/player_run_attack.gd" id="10_bblrc"]
+[ext_resource type="Script" uid="uid://m755ncu3yqha" path="res://characters/player/player_stun.gd" id="11_nmpe6"]
 
 [sub_resource type="Resource" id="Resource_o6xl0"]
 script = ExtResource("2_lvh8y")
@@ -17,6 +21,7 @@ base_defense = 2
 base_attack = 10
 base_speed = 300
 speed = 300
+knockback_speed = 600.0
 metadata/_custom_type_script = "uid://c1gagfk36axyn"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o5qli"]
@@ -43,7 +48,7 @@ shape = SubResource("RectangleShape2D_o5qli")
 [node name="state_machine" type="Node" parent="." unique_id=614204903]
 script = ExtResource("4_dwfcf")
 
-[node name="normal_state" type="Node" parent="state_machine" unique_id=959702867]
+[node name="walk_state" type="Node" parent="state_machine" unique_id=959702867]
 script = ExtResource("5_y3qm2")
 
 [node name="run_state" type="Node" parent="state_machine" unique_id=883570241]
@@ -51,6 +56,18 @@ script = ExtResource("6_yabh2")
 
 [node name="idle_state" type="Node" parent="state_machine" unique_id=2047713969]
 script = ExtResource("7_nmpe6")
+
+[node name="walk_attack_state" type="Node" parent="state_machine" unique_id=747223124]
+script = ExtResource("8_yabh2")
+
+[node name="idle_attack_state" type="Node" parent="state_machine" unique_id=1148480970]
+script = ExtResource("9_nmpe6")
+
+[node name="run_attack_state" type="Node" parent="state_machine" unique_id=2105511553]
+script = ExtResource("10_bblrc")
+
+[node name="stun_state" type="Node" parent="state_machine" unique_id=179513618]
+script = ExtResource("11_nmpe6")
 
 [node name="debug_state_label" type="Label" parent="." unique_id=2016844207]
 offset_left = -22.0

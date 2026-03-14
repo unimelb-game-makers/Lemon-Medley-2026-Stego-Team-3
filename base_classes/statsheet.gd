@@ -10,6 +10,8 @@ extends Resource
 @export var attack : int
 @export var speed : int
 
+@export var knockback_speed : float
+
 signal death()
 
 ## Reset all stats back to default values
