@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://dhcvf1nonpv3b"]
+
+[ext_resource type="Script" uid="uid://o6wjys324dh1" path="res://dialogue/dialogue_hud.gd" id="1_1ny4s"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ny4s"]
+bg_color = Color(0.89411765, 0.7058824, 0.40392157, 1)
+
+[node name="dialogue_hud" type="CanvasLayer" unique_id=145286354 node_paths=PackedStringArray("dialogue_text", "name_text")]
+script = ExtResource("1_1ny4s")
+dialogue_text = NodePath("Control/dialogue_container/dialogue_box_inner/dialogue_text")
+name_text = NodePath("Control/dialogue_container/name_text")
+
+[node name="Control" type="Control" parent="." unique_id=856272422]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="dialogue_container" type="VBoxContainer" parent="Control" unique_id=186572728]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -160.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="name_text" type="RichTextLabel" parent="Control/dialogue_container" unique_id=1686287351]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 32
+text = "Test"
+metadata/_edit_use_anchors_ = true
+
+[node name="dialogue_box_inner" type="Panel" parent="Control/dialogue_container" unique_id=848839366]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1ny4s")
+metadata/_edit_use_anchors_ = true
+
+[node name="dialogue_text" type="RichTextLabel" parent="Control/dialogue_container/dialogue_box_inner" unique_id=725057148]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+metadata/_edit_use_anchors_ = true

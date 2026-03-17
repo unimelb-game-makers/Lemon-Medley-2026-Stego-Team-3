@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://cq8amy1ed1fm" path="res://characters/player/player_idle_attack.gd" id="9_nmpe6"]
 [ext_resource type="Script" uid="uid://d1ph50dko3aj4" path="res://characters/player/player_run_attack.gd" id="10_bblrc"]
 [ext_resource type="Script" uid="uid://m755ncu3yqha" path="res://characters/player/player_stun.gd" id="11_nmpe6"]
+[ext_resource type="Script" uid="uid://cy3coqlfhdxc8" path="res://characters/player/player_talking.gd" id="12_bblrc"]
 
 [sub_resource type="Resource" id="Resource_o6xl0"]
 script = ExtResource("2_lvh8y")
@@ -29,6 +30,9 @@ size = Vector2(120, 120)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lvh8y"]
 radius = 92.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nmpe6"]
+radius = 200.0
 
 [node name="PlayerCharacter" type="CharacterBody2D" unique_id=1978286765 node_paths=PackedStringArray("debug_state_label", "attack_area", "state_machine", "hurt_box")]
 script = ExtResource("1_3kw6f")
@@ -69,6 +73,9 @@ script = ExtResource("10_bblrc")
 [node name="stun_state" type="Node" parent="state_machine" unique_id=179513618]
 script = ExtResource("11_nmpe6")
 
+[node name="talk_state" type="Node" parent="state_machine" unique_id=1423834846]
+script = ExtResource("12_bblrc")
+
 [node name="debug_state_label" type="Label" parent="." unique_id=2016844207]
 offset_left = -22.0
 offset_top = -102.0
@@ -83,10 +90,17 @@ script = ExtResource("4_lvh8y")
 shape = SubResource("RectangleShape2D_o5qli")
 
 [node name="claymore_attack_area" type="Area2D" parent="." unique_id=290821557]
-collision_layer = 4294967294
-collision_mask = 4294967294
+collision_layer = 4278190082
+collision_mask = 4278190080
 script = ExtResource("9_lelq3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="claymore_attack_area" unique_id=631539804]
 position = Vector2(91, 0)
 shape = SubResource("CircleShape2D_lvh8y")
+
+[node name="player_dialogue_area" type="Area2D" parent="." unique_id=1333761043]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_dialogue_area" unique_id=378642367]
+shape = SubResource("CircleShape2D_nmpe6")

@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://yek2dtlgvysa"]
+
+[ext_resource type="Script" uid="uid://bi4yune75sxmh" path="res://characters/npc/npc.gd" id="1_00gnk"]
+[ext_resource type="Texture2D" uid="uid://b58a50e60p4fd" path="res://icon.svg" id="1_uwkpc"]
+[ext_resource type="Script" uid="uid://bnlx50ogpic1q" path="res://dialogue/dialogue_area.gd" id="2_0mxmm"]
+[ext_resource type="Script" uid="uid://cj3bvpp17mpio" path="res://dialogue/dialogue.gd" id="2_85pjc"]
+[ext_resource type="Script" uid="uid://hry1ksbwy67v" path="res://characters/character_resource.gd" id="3_quc4s"]
+
+[sub_resource type="Resource" id="Resource_664xb"]
+script = ExtResource("3_quc4s")
+character_name = "Jane Curse"
+portrait = Array[Texture2D]([ExtResource("1_uwkpc")])
+portrait_names = Array[String](["normal"])
+metadata/_custom_type_script = "uid://hry1ksbwy67v"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_85pjc"]
+size = Vector2(120, 120)
+
+[node name="ConversableNPC" type="CharacterBody2D" unique_id=242522269]
+script = ExtResource("1_00gnk")
+character_resource = SubResource("Resource_664xb")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=454441481]
+rotation = -3.1415925
+texture = ExtResource("1_uwkpc")
+
+[node name="shape" type="CollisionShape2D" parent="." unique_id=284909314]
+shape = SubResource("RectangleShape2D_85pjc")
+
+[node name="debug_label" type="Label" parent="." unique_id=1992159243]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -29.0
+offset_top = -107.0
+offset_right = 37.0
+offset_bottom = -84.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Cannot Talk"
+
+[node name="dialogue_area" type="Area2D" parent="." unique_id=1372280333 node_paths=PackedStringArray("debug_label")]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("2_0mxmm")
+active = true
+debug_label = NodePath("../debug_label")
+
+[node name="shape" type="CollisionShape2D" parent="dialogue_area" unique_id=629660403]
+shape = SubResource("RectangleShape2D_85pjc")
+
+[node name="Dialogue" type="Node" parent="dialogue_area" unique_id=675788982 node_paths=PackedStringArray("next_dialogue")]
+script = ExtResource("2_85pjc")
+next_dialogue = NodePath("Dialogue")
+dialogue_text = "Testing Testing"
+metadata/_custom_type_script = "uid://cj3bvpp17mpio"
+
+[node name="Dialogue" type="Node" parent="dialogue_area/Dialogue" unique_id=460830976]
+script = ExtResource("2_85pjc")
+terminate = true
+dialogue_text = "PLACEHOLDER TEXT 2"
+character_resource = SubResource("Resource_664xb")
+metadata/_custom_type_script = "uid://cj3bvpp17mpio"
