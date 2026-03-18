@@ -190,17 +190,21 @@ jobs:
         shell: bash
         run: |
           # Check Steam
-          if [ -n "${{ secrets.STEAM_CONFIG_VDF }}" ]; then
-            echo "has_steam=true" >> $GITHUB_OUTPUT
-          else
+          if [ -z "${{ secrets.STEAM_CONFIG_VDF }}" ]; then
             echo "has_steam=false" >> $GITHUB_OUTPUT
+          elif [ -z "${{ secrets.STEAM_USERNAME }}" ]; then
+            echo "has_steam=false" >> $GITHUB_OUTPUT
+          elif [ -z "${{ secrets.STEAM_APPID }}" ]; then
+            echo "has_steam=false" >> $GITHUB_OUTPUT
+          else
+            echo "has_steam=true" >> $GITHUB_OUTPUT
           fi
           # Check Itch
-          if [ -n "${{ secrets.ITCH_IO_API_KEY }}" ]; then
-            echo "has_itch=true" >> $GITHUB_OUTPUT
-          else
+          if [ -z "${{ secrets.ITCH_IO_API_KEY }}" ]; then
             echo "has_itch=false" >> $GITHUB_OUTPUT
-          fi
+          else
+            echo "has_itch=true" >> $GITHUB_OUTPUT
+          fi          
           
   Itch-deploy: # Push only - create itch releases
     if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && needs.Check-Secrets.outputs.has_itch == 'true'
@@ -246,22 +250,6 @@ jobs:
       with:
         name: ${{ env.PROJECT_NAME }}_linux
         path: build/linux
-
-    - name: Check required secrets exist # Fail if secrets not defined
-      env: 
-        STEAM_APPID_LOCAL: ${{ secrets.STEAM_APPID }}
-        STEAM_USERNAME_LOCAL: ${{ secrets.STEAM_USERNAME }}
-        STEAM_CONFIG_VDF_LOCAL: ${{ secrets.STEAM_CONFIG_VDF }}
-      run: |
-        if [ -z "$STEAM_APPID_LOCAL" ]; then
-          exit 1
-        fi
-        if [ -z "$STEAM_USERNAME_LOCAL" ]; then
-          exit 1
-        fi
-        if [ -z "$STEAM_CONFIG_VDF_LOCAL" ]; then
-          exit 1
-        fi
 
     # https://github.com/game-ci/steam-deploy, using configVdf to authenticate
     - uses: game-ci/steam-deploy@v3
