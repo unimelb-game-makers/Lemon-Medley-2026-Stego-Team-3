@@ -180,10 +180,31 @@ jobs:
           asset_path: ${{ env.PROJECT_NAME }}_web.zip
           asset_name: "${{ env.PROJECT_NAME }}_web.zip"
           asset_content_type: application/zip
-
+  Check-Secrets:
+    runs-on: ubuntu-latest
+    outputs:
+      has_steam: ${{ steps.check.outputs.has_steam }}
+      has_itch: ${{ steps.check.outputs.has_itch }}
+    steps:
+      - id: check
+        shell: bash
+        run: |
+          # Check Steam
+          if [ -n "${{ secrets.STEAM_CONFIG_VDF }}" ]; then
+            echo "has_steam=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_steam=false" >> $GITHUB_OUTPUT
+          fi
+          # Check Itch
+          if [ -n "${{ secrets.ITCH_IO_API_KEY }}" ]; then
+            echo "has_itch=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_itch=false" >> $GITHUB_OUTPUT
+          fi
+          
   Itch-deploy: # Push only - create itch releases
-    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
-    needs: [Builds]
+    if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && needs.Check-Secrets.outputs.has_itch == 'true'
+    needs: [Builds, Check-Secrets]
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -203,10 +224,9 @@ jobs:
         ITCH_GAME: ${{ env.PROJECT_NAME }}
         ITCH_USER: gmcunimelb
         PACKAGE: ${{ env.PROJECT_NAME }}_web.zip
-  
   Steam-deploy: # Push only - deploy for steam
-    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
-    needs: [Builds]
+    if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && needs.Check-Secrets.outputs.has_steam == 'true'
+    needs: [Builds, Check-Secrets]
     runs-on: ubuntu-latest
     steps:
     - name: Download Windows Build artifacts
