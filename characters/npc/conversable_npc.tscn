@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://bnlx50ogpic1q" path="res://dialogue/dialogue_area.gd" id="2_0mxmm"]
 [ext_resource type="Script" uid="uid://cj3bvpp17mpio" path="res://dialogue/dialogue.gd" id="2_85pjc"]
 [ext_resource type="Script" uid="uid://hry1ksbwy67v" path="res://characters/character_resource.gd" id="3_quc4s"]
+[ext_resource type="Script" uid="uid://ci8dj0oxrrj0v" path="res://dialogue/dialogue_choice.gd" id="6_quc4s"]
 
 [sub_resource type="Resource" id="Resource_664xb"]
 script = ExtResource("3_quc4s")
@@ -49,15 +50,30 @@ debug_label = NodePath("../debug_label")
 [node name="shape" type="CollisionShape2D" parent="dialogue_area" unique_id=629660403]
 shape = SubResource("RectangleShape2D_85pjc")
 
-[node name="Dialogue" type="Node" parent="dialogue_area" unique_id=675788982 node_paths=PackedStringArray("next_dialogue")]
+[node name="starting_dialogue" type="Node" parent="dialogue_area" unique_id=675788982 node_paths=PackedStringArray("next_dialogue")]
 script = ExtResource("2_85pjc")
-next_dialogue = NodePath("Dialogue")
+next_dialogue = NodePath("dialogue_branch")
 dialogue_text = "Testing Testing"
+character_resource = SubResource("Resource_664xb")
 metadata/_custom_type_script = "uid://cj3bvpp17mpio"
 
-[node name="Dialogue" type="Node" parent="dialogue_area/Dialogue" unique_id=460830976]
+[node name="dialogue_branch" type="Node" parent="dialogue_area/starting_dialogue" unique_id=1541607590 node_paths=PackedStringArray("possible_next_dialogues")]
+script = ExtResource("6_quc4s")
+dialogue_options = Array[String](["Option 1", "Option 2"])
+possible_next_dialogues = [NodePath("branch_a"), NodePath("branch_b")]
+character_resource = SubResource("Resource_664xb")
+metadata/_custom_type_script = "uid://ci8dj0oxrrj0v"
+
+[node name="branch_a" type="Node" parent="dialogue_area/starting_dialogue/dialogue_branch" unique_id=1164272364]
 script = ExtResource("2_85pjc")
 terminate = true
-dialogue_text = "PLACEHOLDER TEXT 2"
+dialogue_text = "You have chosen option 1"
+character_resource = SubResource("Resource_664xb")
+metadata/_custom_type_script = "uid://cj3bvpp17mpio"
+
+[node name="branch_b" type="Node" parent="dialogue_area/starting_dialogue/dialogue_branch" unique_id=1984850060]
+script = ExtResource("2_85pjc")
+terminate = true
+dialogue_text = "You have chosen option 2."
 character_resource = SubResource("Resource_664xb")
 metadata/_custom_type_script = "uid://cj3bvpp17mpio"

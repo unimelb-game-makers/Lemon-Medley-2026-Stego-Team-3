@@ -2,13 +2,22 @@
 
 [ext_resource type="Script" uid="uid://o6wjys324dh1" path="res://dialogue/dialogue_hud.gd" id="1_1ny4s"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4cbqr"]
+bg_color = Color(0.5195325, 0.49865365, 0.5122569, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ny4s"]
 bg_color = Color(0.89411765, 0.7058824, 0.40392157, 1)
 
-[node name="dialogue_hud" type="CanvasLayer" unique_id=145286354 node_paths=PackedStringArray("dialogue_text", "name_text")]
+[node name="dialogue_hud" type="CanvasLayer" unique_id=145286354 node_paths=PackedStringArray("dialogue_text", "name_text", "choice_container", "choice_panel_container")]
 script = ExtResource("1_1ny4s")
 dialogue_text = NodePath("Control/dialogue_container/dialogue_box_inner/dialogue_text")
-name_text = NodePath("Control/dialogue_container/name_text")
+name_text = NodePath("Control/dialogue_container/HBoxContainer/name_text")
+choice_container = NodePath("Control/dialogue_container/HBoxContainer/PanelContainer/Choices")
+choice_panel_container = NodePath("Control/dialogue_container/HBoxContainer/PanelContainer")
 
 [node name="Control" type="Control" parent="." unique_id=856272422]
 layout_mode = 3
@@ -31,13 +40,35 @@ offset_bottom = -10.0
 grow_vertical = 0
 metadata/_edit_use_anchors_ = true
 
-[node name="name_text" type="RichTextLabel" parent="Control/dialogue_container" unique_id=1686287351]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/dialogue_container" unique_id=260173679]
+layout_mode = 2
+
+[node name="name_text" type="RichTextLabel" parent="Control/dialogue_container/HBoxContainer" unique_id=1686287351]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_font_sizes/normal_font_size = 32
 text = "Test"
 metadata/_edit_use_anchors_ = true
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/dialogue_container/HBoxContainer" unique_id=390544247]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_4cbqr")
+
+[node name="Choices" type="VBoxContainer" parent="Control/dialogue_container/HBoxContainer/PanelContainer" unique_id=39055973]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Control/dialogue_container/HBoxContainer/PanelContainer/Choices" unique_id=857840399]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Testing 123"
+
+[node name="Button2" type="Button" parent="Control/dialogue_container/HBoxContainer/PanelContainer/Choices" unique_id=611810539]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Testing 123"
 
 [node name="dialogue_box_inner" type="Panel" parent="Control/dialogue_container" unique_id=848839366]
 custom_minimum_size = Vector2(0, 150)

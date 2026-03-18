@@ -62,6 +62,6 @@ func get_valid_subtree(depth : int = 0) -> bool:
 		if next_dialogue == null:
 			return false
 		else:
-			return next_dialogue.get_valid_tree(depth)
+			return next_dialogue.get_valid_subtree(depth)
 	
 	return true
