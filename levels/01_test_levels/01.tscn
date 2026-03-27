@@ -2,7 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://56rgeaitgaww" path="res://temp_tileset.tres" id="1_2qbse"]
 [ext_resource type="PackedScene" uid="uid://rx07o86j12k6" path="res://characters/dummy/dummy.tscn" id="3_135r1"]
-[ext_resource type="PackedScene" uid="uid://yek2dtlgvysa" path="res://characters/npc/conversable_npc.tscn" id="4_ul220"]
+[ext_resource type="PackedScene" uid="uid://vlpiuopcomwi" path="res://levels/level_transition.tscn" id="4_3i5n6"]
 [ext_resource type="PackedScene" uid="uid://dr4blo7ya448q" path="res://levels/player_spawn.tscn" id="5_axfhl"]
 
 [node name="TestLevel" type="Node2D" unique_id=1287366284]
@@ -16,14 +16,17 @@ tile_set = ExtResource("1_2qbse")
 [node name="Walls" type="TileMapLayer" parent="." unique_id=245886041]
 z_index = -1
 scale = Vector2(8, 8)
-tile_map_data = PackedByteArray("AAD9//z/AQABAAEAAAD+//z/AQABAAEAAAD///z/AQABAAEAAAAAAPz/AQABAAEAAAABAPz/AQABAAEAAAACAPz/AQABAAEAAAADAPz/AQABAAEAAAAEAPz/AQABAAEAAAAFAPz/AQABAAEAAAD8//z/AQAAAAEAAAAGAPz/AQACAAEAAAAGAP3/AQACAAIAAAAGAP7/AQACAAIAAAAGAP//AQACAAIAAAAGAAAAAQACAAIAAAAGAAEAAQACAAIAAAAGAAIAAQACAAIAAAAGAAMAAQACAAMAAAAFAAMAAQABAAMAAAAEAAMAAQABAAMAAAADAAMAAQABAAMAAAACAAMAAQABAAMAAAABAAMAAQABAAMAAAAAAAMAAQABAAMAAAD//wMAAQABAAMAAAD+/wMAAQABAAMAAAD9/wMAAQABAAMAAAD8/wMAAQAAAAMAAAD8/wIAAQAAAAIAAAD8/wEAAQAAAAIAAAD8/wAAAQAAAAIAAAD8////AQAAAAIAAAD8//7/AQAAAAIAAAD8//3/AQAAAAIAAAA=")
+tile_map_data = PackedByteArray("AAD9//z/AQABAAEAAAD+//z/AQABAAEAAAD///z/AQABAAEAAAAAAPz/AQABAAEAAAABAPz/AQABAAEAAAACAPz/AQABAAEAAAADAPz/AQABAAEAAAAEAPz/AQABAAEAAAAFAPz/AQABAAEAAAD8//z/AQAAAAEAAAAGAPz/AQACAAEAAAAGAP3/AQACAAIAAAAGAP7/AQACAAIAAAAGAP//AQACAAIAAAAGAAAAAQACAAIAAAAGAAMAAQACAAMAAAAFAAMAAQABAAMAAAAEAAMAAQABAAMAAAADAAMAAQABAAMAAAACAAMAAQABAAMAAAABAAMAAQABAAMAAAAAAAMAAQABAAMAAAD//wMAAQABAAMAAAD+/wMAAQABAAMAAAD9/wMAAQABAAMAAAD8/wMAAQAAAAMAAAD8/wIAAQAAAAIAAAD8/wEAAQAAAAIAAAD8/wAAAQAAAAIAAAD8////AQAAAAIAAAD8//7/AQAAAAIAAAD8//3/AQAAAAIAAAA=")
 tile_set = ExtResource("1_2qbse")
 
 [node name="TestDummy" parent="." unique_id=844775230 instance=ExtResource("3_135r1")]
 position = Vector2(444, 18)
 
-[node name="ConversableNPC" parent="." unique_id=242522269 instance=ExtResource("4_ul220")]
-position = Vector2(259, -200)
-
 [node name="PlayerSpawn" parent="." unique_id=1130876726 instance=ExtResource("5_axfhl")]
 position = Vector2(234, 242)
+
+[node name="LevelTransition" parent="." unique_id=71749614 instance=ExtResource("4_3i5n6")]
+position = Vector2(768, 256)
+level = "uid://w28xn3kq1h13"
+size = 8
+side = 1

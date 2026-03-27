@@ -73,6 +73,7 @@ _data = {
 }
 
 [node name="SceneTransition" type="CanvasLayer" unique_id=1860379899]
+process_mode = 3
 script = ExtResource("1_qhvm4")
 
 [node name="Control" type="Control" parent="." unique_id=1024231343]

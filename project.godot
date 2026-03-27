@@ -22,8 +22,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 LevelManager="*uid://d3fmr34okgu6d"
-DialogueManager="*uid://dhcvf1nonpv3b"
-PlayerManager="*uid://7timfyyxvsuc"
+PlayerManager="*uid://dnhe3w8ws1fth"
 SceneTransition="*uid://cgu22qyl3irkq"
 
 [input]
