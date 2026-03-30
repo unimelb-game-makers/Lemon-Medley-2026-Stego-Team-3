@@ -1,6 +1,11 @@
 @abstract class_name Character extends CharacterBody2D
 
+## What direction is this character currently facing.
 var direction: Vector2 = Vector2.ZERO
+
+## What direction was this character last facing.
+var last_direction: Vector2 = Vector2.RIGHT
+
 @export var stats : StatSheet
 @export var state_machine : StateMachine
 

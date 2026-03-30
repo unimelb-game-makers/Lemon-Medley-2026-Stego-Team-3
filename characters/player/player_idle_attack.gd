@@ -32,6 +32,9 @@ func process_state(delta : float) -> String:
 func input_handle_state(event : InputEvent) -> String:
 	if event.is_action_pressed("Melee"):
 		controlled_character.attack_buffered = true
+	if event.is_action_pressed("Dash") and controlled_character.can_dash:
+		return "dash_attack"
+	
 	return state_name
 
 func physics_process_state(delta : float) -> String:

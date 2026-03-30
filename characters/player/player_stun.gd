@@ -17,6 +17,7 @@ func _enter_tree() -> void:
 func on_enter() -> void:
 	controlled_character.hurt_box.make_invulnerable(INVULNERABILITYTIMER)
 	controlled_character.cancel_attack()
+	controlled_character.stop_dash()
 	
 	knockback_velocity = (controlled_character.last_hit_direction *
 						  controlled_character.last_hit.knockback_strength *

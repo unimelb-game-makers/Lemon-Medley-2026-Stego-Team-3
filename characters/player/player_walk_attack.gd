@@ -26,15 +26,16 @@ func process_state(delta : float) -> String:
 	
 	if controlled_character.direction == Vector2.ZERO:
 		return "idle_attack"
-	
-	if Input.is_action_pressed("Run"):
-		return "run_attack"
-	
+		
 	return state_name
 
 func input_handle_state(event : InputEvent) -> String:
 	if event.is_action_pressed("Melee"):
 		controlled_character.attack_buffered = true
+	
+	if event.is_action_pressed("Dash") and controlled_character.can_dash:
+		return "dash_attack"
+	
 	return state_name
 
 func physics_process_state(delta : float) -> String:

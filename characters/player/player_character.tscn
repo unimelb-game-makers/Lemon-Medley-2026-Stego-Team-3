@@ -7,12 +7,12 @@
 [ext_resource type="Script" uid="uid://bd1qrnr8tcmdc" path="res://base_classes/state_machine.gd" id="4_dwfcf"]
 [ext_resource type="Script" uid="uid://ddq8nkdp4gpaa" path="res://base_physics_components/damage_area.gd" id="4_lvh8y"]
 [ext_resource type="Script" uid="uid://chy0unnb43hw8" path="res://characters/player/player_walk.gd" id="5_y3qm2"]
-[ext_resource type="Script" uid="uid://0ly0nuwn74ib" path="res://characters/player/player_run.gd" id="6_yabh2"]
+[ext_resource type="Script" uid="uid://0ly0nuwn74ib" path="res://characters/player/player_dash.gd" id="6_yabh2"]
 [ext_resource type="Script" uid="uid://dixaietdwmqgd" path="res://characters/player/player_idle.gd" id="7_nmpe6"]
 [ext_resource type="Script" uid="uid://djdkc8385ppec" path="res://characters/player/player_walk_attack.gd" id="8_yabh2"]
 [ext_resource type="Script" uid="uid://c3atp4e4h86rb" path="res://base_physics_components/attack_area.gd" id="9_lelq3"]
 [ext_resource type="Script" uid="uid://cq8amy1ed1fm" path="res://characters/player/player_idle_attack.gd" id="9_nmpe6"]
-[ext_resource type="Script" uid="uid://d1ph50dko3aj4" path="res://characters/player/player_run_attack.gd" id="10_bblrc"]
+[ext_resource type="Script" uid="uid://d1ph50dko3aj4" path="res://characters/player/player_dash_attack.gd" id="10_bblrc"]
 [ext_resource type="Script" uid="uid://m755ncu3yqha" path="res://characters/player/player_stun.gd" id="11_nmpe6"]
 [ext_resource type="Script" path="res://characters/player/player_talking.gd" id="12_bblrc"]
 
@@ -35,12 +35,14 @@ radius = 92.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_nmpe6"]
 radius = 200.0
 
-[node name="PlayerCharacter" type="CharacterBody2D" unique_id=1978286765 node_paths=PackedStringArray("debug_state_label", "attack_area", "state_machine", "hurt_box")]
-collision_mask = 16
+[node name="PlayerCharacter" type="CharacterBody2D" unique_id=1978286765 node_paths=PackedStringArray("debug_state_label", "debug_dash_label", "attack_area", "dash_cooldown_timer", "dash_timer", "state_machine", "hurt_box")]
 script = ExtResource("1_3kw6f")
 debug_state_label = NodePath("debug_state_label")
+debug_dash_label = NodePath("debug_dash_label")
 attack_area = NodePath("claymore_attack_area")
 ATTACKDURATION = 0.5
+dash_cooldown_timer = NodePath("timers/dash_cooldown")
+dash_timer = NodePath("timers/dash_timer")
 stats = SubResource("Resource_o6xl0")
 state_machine = NodePath("state_machine")
 hurt_box = NodePath("damage_area")
@@ -61,7 +63,7 @@ script = ExtResource("4_dwfcf")
 [node name="walk_state" type="Node" parent="state_machine" unique_id=959702867]
 script = ExtResource("5_y3qm2")
 
-[node name="run_state" type="Node" parent="state_machine" unique_id=883570241]
+[node name="dash_state" type="Node" parent="state_machine" unique_id=883570241]
 script = ExtResource("6_yabh2")
 
 [node name="idle_state" type="Node" parent="state_machine" unique_id=2047713969]
@@ -73,7 +75,7 @@ script = ExtResource("8_yabh2")
 [node name="idle_attack_state" type="Node" parent="state_machine" unique_id=1148480970]
 script = ExtResource("9_nmpe6")
 
-[node name="run_attack_state" type="Node" parent="state_machine" unique_id=2105511553]
+[node name="dash_attack_state" type="Node" parent="state_machine" unique_id=2105511553]
 script = ExtResource("10_bblrc")
 
 [node name="stun_state" type="Node" parent="state_machine" unique_id=179513618]
@@ -81,13 +83,6 @@ script = ExtResource("11_nmpe6")
 
 [node name="talk_state" type="Node" parent="state_machine" unique_id=1423834846]
 script = ExtResource("12_bblrc")
-
-[node name="debug_state_label" type="Label" parent="." unique_id=2016844207]
-offset_left = -22.0
-offset_top = -102.0
-offset_right = 18.0
-offset_bottom = -79.0
-text = "Text"
 
 [node name="damage_area" type="Area2D" parent="." unique_id=1136224295]
 script = ExtResource("4_lvh8y")
@@ -110,3 +105,27 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_dialogue_area" unique_id=378642367]
 shape = SubResource("CircleShape2D_nmpe6")
+
+[node name="debug_state_label" type="Label" parent="." unique_id=2016844207]
+offset_left = -22.0
+offset_top = -102.0
+offset_right = 18.0
+offset_bottom = -79.0
+text = "Text"
+
+[node name="debug_dash_label" type="Label" parent="." unique_id=1377834602]
+offset_left = -21.0
+offset_top = -128.0
+offset_right = 19.0
+offset_bottom = -105.0
+text = "Text"
+
+[node name="timers" type="Node" parent="." unique_id=1465195983]
+
+[node name="dash_timer" type="Timer" parent="timers" unique_id=114230950]
+wait_time = 0.5
+one_shot = true
+
+[node name="dash_cooldown" type="Timer" parent="timers" unique_id=892717750]
+wait_time = 5.0
+one_shot = true
