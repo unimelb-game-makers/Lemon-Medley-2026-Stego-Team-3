@@ -71,8 +71,6 @@ func show_dialogue_choice(dialogue : Dialogue) -> void:
 func show_dialogue(dialogue : Dialogue) -> void:
 	if dialogue is DialogueChoice:
 		show_dialogue_choice(dialogue)
-	elif dialogue is DialogueCheck:
-		pass
 	else:
 		show_simple_dialogue(dialogue)
 
