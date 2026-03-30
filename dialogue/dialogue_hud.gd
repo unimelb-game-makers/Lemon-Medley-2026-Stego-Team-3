@@ -78,31 +78,27 @@ func show_dialogue(dialogue : Dialogue) -> void:
 
 func end_dialogue() -> void:
 	semaphore -= 1
-	if semaphore == 0:
-		is_active = false
+	is_active = false
 	visible = false
-	
-	PlayerManager.player.state_machine.switch_state("idle")
 	
 	dialogue_text.text = ""
 	name_text.text = ""
 	current_dialogue = null
+	
+	PlayerManager.player.state_machine.switch_state("idle")
 
 func _unhandled_input(event: InputEvent) -> void:
 	if !is_active:
 		return 
-		
-	if current_dialogue:
-		print("Current Dialogue: %s" % current_dialogue.dialogue_text)
-	else:
-		print("Current Dialogue null")
 	
 	if current_dialogue is DialogueChoice:
 		return
 	
 	if Input.is_action_pressed("Interact"):
+		
 		if current_dialogue.terminate:
 			print("Terminating")
 			end_dialogue()
 		else:
 			start_dialogue(current_dialogue.next_dialogue)
+ 
