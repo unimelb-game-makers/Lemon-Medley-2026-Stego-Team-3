@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b7eruq54oeyly" path="res://characters/player/player.gd" id="1_3kw6f"]
 [ext_resource type="Script" uid="uid://c1gagfk36axyn" path="res://base_classes/statsheet.gd" id="2_lvh8y"]
+[ext_resource type="Script" uid="uid://05q26lf1unnh" path="res://characters/player/player_camera.gd" id="3_gnfn5"]
 [ext_resource type="Texture2D" uid="uid://b58a50e60p4fd" path="res://icon.svg" id="3_lelq3"]
 [ext_resource type="Script" uid="uid://bd1qrnr8tcmdc" path="res://base_classes/state_machine.gd" id="4_dwfcf"]
 [ext_resource type="Script" uid="uid://ddq8nkdp4gpaa" path="res://base_physics_components/damage_area.gd" id="4_lvh8y"]
@@ -35,6 +36,7 @@ radius = 92.0
 radius = 200.0
 
 [node name="PlayerCharacter" type="CharacterBody2D" unique_id=1978286765 node_paths=PackedStringArray("debug_state_label", "attack_area", "state_machine", "hurt_box")]
+collision_mask = 16
 script = ExtResource("1_3kw6f")
 debug_state_label = NodePath("debug_state_label")
 attack_area = NodePath("claymore_attack_area")
@@ -43,7 +45,11 @@ stats = SubResource("Resource_o6xl0")
 state_machine = NodePath("state_machine")
 hurt_box = NodePath("damage_area")
 
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1647469862]
+script = ExtResource("3_gnfn5")
+
 [node name="icon" type="Sprite2D" parent="." unique_id=920935392]
+modulate = Color(0.627451, 1, 0, 1)
 texture = ExtResource("3_lelq3")
 
 [node name="shape" type="CollisionShape2D" parent="." unique_id=708662803]
