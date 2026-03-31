@@ -18,6 +18,10 @@ func process_state(delta : float) -> String:
 func input_handle_state(event : InputEvent) -> String:
 	if event.is_action_pressed("Melee"):
 		return "idle_attack"
+	
+	if event.is_action_pressed("Interact"):
+		PlayerManager.interact()
+		
 	return state_name
 
 func physics_process_state(delta : float) -> String:

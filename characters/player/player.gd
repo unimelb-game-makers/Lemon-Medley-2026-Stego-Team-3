@@ -9,6 +9,8 @@ var attacking : bool = false
 var attack_buffered : bool = false
 
 func _ready() -> void:
+	PlayerManager.player = self
+	
 	hurt_box.stats = stats
 	attack_area.damage = Damage.new(stats)
 	attack_area.finished_attack.connect(finish_attack)
