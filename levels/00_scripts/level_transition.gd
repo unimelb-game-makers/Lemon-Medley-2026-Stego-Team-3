@@ -5,8 +5,6 @@ signal entered_from_here
 
 enum SIDE { LEFT, RIGHT, TOP, BOTTOM }
 
-const OFFSET_FACTOR: int = 4 ## Tacky solution due to offset code below assuming a smaller sprite scale.
-
 @export_file( "*.tscn" ) var level
 @export var target_transition_area : String = "LevelTransition"
 @export var center_player : bool = false
@@ -77,7 +75,7 @@ func get_offset() -> Vector2:
 			offset.y = 0
 		else:
 			offset.y = player_pos.y - global_position.y
-		offset.x = 16
+		offset.x = 64
 		if side == SIDE.LEFT:
 			offset.x *= -1
 	else:
@@ -85,11 +83,11 @@ func get_offset() -> Vector2:
 			offset.x = 0
 		else:
 			offset.x = player_pos.x - global_position.x
-		offset.y = 16
+		offset.y = 64
 		if side == SIDE.TOP:
 			offset.y *= -1
 
-	return offset * OFFSET_FACTOR
+	return offset
 
 
 
