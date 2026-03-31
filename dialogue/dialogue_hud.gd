@@ -71,15 +71,12 @@ func show_dialogue_choice(dialogue : Dialogue) -> void:
 func show_dialogue(dialogue : Dialogue) -> void:
 	if dialogue is DialogueChoice:
 		show_dialogue_choice(dialogue)
-	elif dialogue is DialogueCheck:
-		pass
 	else:
 		show_simple_dialogue(dialogue)
 
 func end_dialogue() -> void:
 	semaphore -= 1
-	if semaphore == 0:
-		is_active = false
+	is_active = false
 	visible = false
 	
 	dialogue_text.text = ""
@@ -96,8 +93,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 	
 	if Input.is_action_pressed("Interact"):
+		
 		if current_dialogue.terminate:
 			print("Terminating")
 			end_dialogue()
 		else:
 			start_dialogue(current_dialogue.next_dialogue)
+ 

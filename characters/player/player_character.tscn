@@ -14,7 +14,7 @@
 [ext_resource type="Script" uid="uid://cq8amy1ed1fm" path="res://characters/player/player_idle_attack.gd" id="9_nmpe6"]
 [ext_resource type="Script" uid="uid://d1ph50dko3aj4" path="res://characters/player/player_dash_attack.gd" id="10_bblrc"]
 [ext_resource type="Script" uid="uid://m755ncu3yqha" path="res://characters/player/player_stun.gd" id="11_nmpe6"]
-[ext_resource type="Script" path="res://characters/player/player_talking.gd" id="12_bblrc"]
+[ext_resource type="Script" uid="uid://cy3coqlfhdxc8" path="res://characters/player/player_talking.gd" id="12_bblrc"]
 
 [sub_resource type="Resource" id="Resource_o6xl0"]
 script = ExtResource("2_lvh8y")

@@ -17,6 +17,8 @@ var can_dash : bool = true
 var dash_vector : Vector2
 
 func _ready() -> void:
+	PlayerManager.player = self
+	
 	hurt_box.stats = stats
 	attack_area.damage = Damage.new(stats)
 	attack_area.finished_attack.connect(finish_attack)
