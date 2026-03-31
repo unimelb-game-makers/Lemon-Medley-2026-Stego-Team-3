@@ -83,6 +83,10 @@ func end_dialogue() -> void:
 	name_text.text = ""
 	current_dialogue = null
 	
+	# Awaits a little to avoid double handling
+	await get_tree().process_frame
+	await get_tree().process_frame
+	
 	PlayerManager.player.state_machine.switch_state("idle")
 
 func _unhandled_input(event: InputEvent) -> void:
