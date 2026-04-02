@@ -21,7 +21,10 @@ func input_handle_state(event : InputEvent) -> String:
 	
 	if event.is_action_pressed("Interact"):
 		PlayerManager.interact()
-		
+	
+	if event.is_action_pressed("Dash") and controlled_character.can_dash:
+		return "dash"
+	
 	return state_name
 
 func physics_process_state(delta : float) -> String:

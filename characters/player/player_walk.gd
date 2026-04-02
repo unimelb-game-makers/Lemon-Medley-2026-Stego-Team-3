@@ -18,12 +18,12 @@ func input_handle_state(event : InputEvent):
 	if event.is_action_pressed("Melee"):
 		return "walk_attack"
 	
+	if event.is_action_pressed("Dash") and controlled_character.can_dash:
+		return "dash"
+	
 	return state_name
 
 func process_state(delta : float):
-	if Input.is_action_pressed("Run"):
-		return "run"
-		
 	if controlled_character.direction == Vector2.ZERO:
 		return "idle"
 	return state_name

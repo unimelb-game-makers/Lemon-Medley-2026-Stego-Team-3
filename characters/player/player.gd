@@ -1,6 +1,7 @@
 class_name Player extends Character
 
 @export var debug_state_label : Label
+@export var debug_dash_label : Label
 @export var attack_area : AttackArea
 
 ## TEMPORARY VARIABLE, ONCE WE HAVE ATTACK ANIMATION WE MIGHT NOT USE THIS
@@ -8,18 +9,28 @@ class_name Player extends Character
 var attacking : bool = false
 var attack_buffered : bool = false
 
+# Dash related variables
+@export var dash_cooldown_timer : Timer
+@export var dash_timer : Timer
+var is_dashing : bool = false
+var can_dash : bool = true
+var dash_vector : Vector2
+
 func _ready() -> void:
 	PlayerManager.player = self
 	
 	hurt_box.stats = stats
 	attack_area.damage = Damage.new(stats)
 	attack_area.finished_attack.connect(finish_attack)
+	dash_cooldown_timer.timeout.connect(func(): can_dash = true)
+	dash_timer.timeout.connect(stop_dash)
 	
 	hurt_box.damage_taken.connect(take_damage)
 	stats.reset()
 
 func _process(delta: float) -> void:
 	debug_state_label.text = state_machine.active_state.state_name
+	debug_dash_label.text = "Can Dash" if can_dash else "Cannot Dash"
 	update_direction()
 	update_claymore_direction()
 	state_machine.process_state(delta)
@@ -34,6 +45,9 @@ func update_direction() -> void:
 	var VerticalAxis = Input.get_action_strength("Down") - Input.get_action_strength("Up")
 	
 	direction = Vector2(HorizontalAxis, VerticalAxis).normalized()
+	
+	if direction != Vector2.ZERO:
+		last_direction = direction
 
 ## Attack in the direction of our mouse
 func attack():
@@ -43,6 +57,14 @@ func attack():
 
 func finish_attack():
 	attacking = false
+
+func stop_dash():
+	if !dash_timer.is_stopped():
+		dash_timer.stop()
+		
+	if is_dashing:
+		is_dashing = false
+		dash_cooldown_timer.start()
 
 func take_damage(damage : Damage, attack_position : Vector2):
 	last_hit = damage
