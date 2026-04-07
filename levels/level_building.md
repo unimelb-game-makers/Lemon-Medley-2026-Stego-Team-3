@@ -5,18 +5,14 @@
 This step is to build the general layout of the map. 
 Centralize all used tilemaps within res://02_tiles/
 
-Use *LevelTileMapLayer* only, and exactly 1 per level.
+Use *LevelTileMapLayer* only.
 - Make sure you assign the tilemap to the *LevelTileMapLayer*, because this makes the camera work correctly when panning.
-- Multiple LevelTileMapLayer will make camera choice of which to use for panning ambiguous in the current setup.
+- To use multiple tilemaplayers, make sure update bounds is off for all but one of them.
 
 Assign the global group *tile_layer* to the tilemap. 
 - This will be used for data layer purposes like giving custom foot step noise depending on terrain.
 
 Store all TileMap sprites in the res://02_tiles/sprites/
-
-Need another TileMapLayer?
-- Make a generic TileMapLayer for the level scene specifically.
-- You do not need to put it in the 02_tiles folder.
 
 ## Step 2: Logic
 
