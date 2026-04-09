@@ -26,6 +26,10 @@ PlayerManager="*uid://dnhe3w8ws1fth"
 SceneTransition="*uid://cgu22qyl3irkq"
 DialogueManager="*uid://dhcvf1nonpv3b"
 
+[global_group]
+
+tile_layer="Reference to TileMapLayers for easier access to custom data layer"
+
 [input]
 
 Left={
