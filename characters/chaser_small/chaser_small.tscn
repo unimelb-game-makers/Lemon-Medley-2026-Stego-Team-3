@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://cnkg66hk5nciw"]
+
+[ext_resource type="Texture2D" uid="uid://b58a50e60p4fd" path="res://icon.svg" id="1_5anwu"]
+[ext_resource type="Script" uid="uid://dq7lmgfyho0cl" path="res://characters/chaser_small/chaser_small.gd" id="1_7n7dc"]
+[ext_resource type="Script" uid="uid://ddq8nkdp4gpaa" path="res://base_physics_components/damage_area.gd" id="2_mmexc"]
+[ext_resource type="Script" uid="uid://bvq0g8q51b3ay" path="res://characters/chaser_small/chaser_small_states/chaser_small_idle.gd" id="2_t4m6g"]
+[ext_resource type="Script" uid="uid://c1gagfk36axyn" path="res://base_classes/statsheet.gd" id="2_wslbi"]
+[ext_resource type="Script" uid="uid://ct1exflkqfmee" path="res://characters/chaser_small/chaser_small_states/chaser_small_chase.gd.gd" id="3_ifclk"]
+[ext_resource type="Script" uid="uid://c3atp4e4h86rb" path="res://base_physics_components/attack_area.gd" id="3_t4m6g"]
+[ext_resource type="Script" uid="uid://bd1qrnr8tcmdc" path="res://base_classes/state_machine.gd" id="3_wslbi"]
+[ext_resource type="Script" uid="uid://cmo6cy44r25gt" path="res://base_physics_components/enrage_area.gd" id="9_djrq5"]
+
+[sub_resource type="Resource" id="Resource_djrq5"]
+script = ExtResource("2_wslbi")
+base_health = 1
+base_defense = 2
+base_attack = 5
+base_speed = 200
+metadata/_custom_type_script = "uid://c1gagfk36axyn"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ifclk"]
+size = Vector2(120, 120)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wslbi"]
+radius = 201.10196
+
+[node name="ChaserSmall" type="CharacterBody2D" unique_id=1878560309 node_paths=PackedStringArray("chase_radius", "debug_state_label", "state_machine", "hurt_box", "touch_damage_box")]
+collision_layer = 2
+collision_mask = 18
+script = ExtResource("1_7n7dc")
+chase_radius = NodePath("chase_radius")
+debug_state_label = NodePath("debug_state_label")
+stats = SubResource("Resource_djrq5")
+state_machine = NodePath("state_machine")
+hurt_box = NodePath("damage_area")
+touch_damage_box = NodePath("attack_area")
+
+[node name="icon" type="Sprite2D" parent="." unique_id=1168362971]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_5anwu")
+
+[node name="shape" type="CollisionShape2D" parent="." unique_id=251099949]
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_ifclk")
+
+[node name="state_machine" type="Node" parent="." unique_id=228717900]
+script = ExtResource("3_wslbi")
+
+[node name="idle_state" type="Node" parent="state_machine" unique_id=1395136063]
+script = ExtResource("2_t4m6g")
+
+[node name="chase_state" type="Node" parent="state_machine" unique_id=713288926 node_paths=PackedStringArray("navigation_agent", "forget_timer")]
+script = ExtResource("3_ifclk")
+navigation_agent = NodePath("../../navigation_agent")
+forget_timer = NodePath("../../forget_timer")
+
+[node name="damage_area" type="Area2D" parent="." unique_id=1284772838]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("2_mmexc")
+
+[node name="shape" type="CollisionShape2D" parent="damage_area" unique_id=1130276582]
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_ifclk")
+
+[node name="attack_area" type="Area2D" parent="." unique_id=1334911790]
+script = ExtResource("3_t4m6g")
+metadata/_custom_type_script = "uid://c3atp4e4h86rb"
+
+[node name="shape" type="CollisionShape2D" parent="attack_area" unique_id=1917968483]
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_ifclk")
+
+[node name="debug_state_label" type="Label" parent="." unique_id=1921449811]
+offset_left = -55.0
+offset_top = -58.0
+offset_right = 55.0
+offset_bottom = -35.0
+text = "State: Chasing"
+
+[node name="navigation_agent" type="NavigationAgent2D" parent="." unique_id=822126444]
+path_desired_distance = 5.0
+target_desired_distance = 1.0
+path_max_distance = 200.0
+
+[node name="chase_radius" type="Area2D" parent="." unique_id=146060016]
+script = ExtResource("9_djrq5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="chase_radius" unique_id=98886291]
+shape = SubResource("CircleShape2D_wslbi")
+
+[node name="forget_timer" type="Timer" parent="." unique_id=107716306]
+wait_time = 2.0
+one_shot = true
