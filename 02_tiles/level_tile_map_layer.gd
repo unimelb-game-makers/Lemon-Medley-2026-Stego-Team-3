@@ -3,6 +3,7 @@ class_name LevelTileMapLayer extends TileMapLayer
 @export var tile_size : float = 32
 @export var update_bounds : bool = true
 
+@export var walls: TileMapLayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -20,3 +21,20 @@ func _get_tilemap_bounds() -> Array[ Vector2 ]:
 		scale * (Vector2( get_used_rect().end * tile_size ) + position)
 	)
 	return bounds
+
+## Both functions used to update navigation layer to remove
+## tiles with walls on them
+func _use_tile_data_runtime_update(coords: Vector2i) -> bool:
+	if walls == null:
+		return false
+		
+	if coords in walls.get_used_cells_by_id(1):
+		return true
+	return false
+
+func _tile_data_runtime_update(coords: Vector2i, tile_data: TileData) -> void:
+	if walls == null:
+		return
+		
+	if coords in walls.get_used_cells_by_id(1):
+		tile_data.set_navigation_polygon(0, null)
