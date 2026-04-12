@@ -49,6 +49,7 @@ state_machine = NodePath("state_machine")
 hurt_box = NodePath("damage_area")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1647469862]
+zoom = Vector2(0.5, 0.5)
 script = ExtResource("3_gnfn5")
 
 [node name="icon" type="Sprite2D" parent="." unique_id=920935392]
@@ -93,7 +94,7 @@ shape = SubResource("RectangleShape2D_o5qli")
 
 [node name="claymore_attack_area" type="Area2D" parent="." unique_id=290821557]
 collision_layer = 4278190082
-collision_mask = 4278190080
+collision_mask = 4278190082
 script = ExtResource("9_lelq3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="claymore_attack_area" unique_id=631539804]
@@ -113,6 +114,7 @@ offset_top = -102.0
 offset_right = 18.0
 offset_bottom = -79.0
 text = "Text"
+metadata/_edit_use_anchors_ = true
 
 [node name="debug_dash_label" type="Label" parent="." unique_id=1377834602]
 offset_left = -21.0
@@ -120,6 +122,7 @@ offset_top = -128.0
 offset_right = 19.0
 offset_bottom = -105.0
 text = "Text"
+metadata/_edit_use_anchors_ = true
 
 [node name="timers" type="Node" parent="." unique_id=1465195983]
 

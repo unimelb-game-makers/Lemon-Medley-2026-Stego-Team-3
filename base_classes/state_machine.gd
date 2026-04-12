@@ -6,6 +6,7 @@ var active_state : State
 
 func _ready() -> void:
 	for child in get_children():
+		print(child.name)
 		if child is State:
 			child.initialize(get_parent())
 
@@ -14,6 +15,7 @@ func _ready() -> void:
 	
 	if state_dict.has("idle"):
 		active_state = state_dict["idle"]
+		active_state.on_enter()
 	else:
 		assert("ERROR: idle STATE NOT FOUND")
 
@@ -29,12 +31,15 @@ func switch_state(newstate : String) -> void:
 
 ## Called every frame
 func process_state(delta : float) -> void:
-	switch_state(active_state.process_state(delta))
+	if(active_state != null):
+		switch_state(active_state.process_state(delta))
 
 ## Called every physics process
 func physics_process_state(delta : float) -> void:
-	switch_state(active_state.physics_process_state(delta))
+	if(active_state != null):
+		switch_state(active_state.physics_process_state(delta))
 
 ## Called every unhandled input
 func input_handle_state(event : InputEvent) -> void:
-	switch_state(active_state.input_handle_state(event))
+	if(active_state != null):
+		switch_state(active_state.input_handle_state(event))
