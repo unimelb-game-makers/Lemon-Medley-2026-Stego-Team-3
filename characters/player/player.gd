@@ -1,5 +1,7 @@
 class_name Player extends Character
 
+@onready var footstep_audio_2d: FootstepAudio2D = $FootstepAudio2D
+
 @export var debug_state_label : Label
 @export var debug_dash_label : Label
 @export var attack_area : AttackArea
@@ -15,6 +17,11 @@ var attack_buffered : bool = false
 var is_dashing : bool = false
 var can_dash : bool = true
 var dash_vector : Vector2
+
+@onready var footstep_timer: Timer = $FootstepAudio2D/FootstepTimer
+# NOTE: This footstep timer is temporary until we can key frame animations
+func _on_footstep_timer_timeout() -> void:
+	footstep_audio_2d.play_footstep()
 
 func _ready() -> void:
 	PlayerManager.player = self

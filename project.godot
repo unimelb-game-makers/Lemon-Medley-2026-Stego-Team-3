@@ -19,6 +19,10 @@ run/main_scene="res://characters/player/player_character.tscn"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://crnxvmvemtymt"
+
 [autoload]
 
 AudioManager="*uid://cjfaj0dcwh86d"
@@ -29,7 +33,7 @@ DialogueManager="*uid://dhcvf1nonpv3b"
 
 [global_group]
 
-tile_layer="Reference to TileMapLayers for easier access to custom data layer"
+tile_layers="Reference to TileMapLayers for easier access to custom data layer"
 
 [input]
 

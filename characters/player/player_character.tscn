@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b58a50e60p4fd" path="res://icon.svg" id="3_lelq3"]
 [ext_resource type="Script" uid="uid://bd1qrnr8tcmdc" path="res://base_classes/state_machine.gd" id="4_dwfcf"]
 [ext_resource type="Script" uid="uid://ddq8nkdp4gpaa" path="res://base_physics_components/damage_area.gd" id="4_lvh8y"]
+[ext_resource type="PackedScene" uid="uid://cp758fjbxaxim" path="res://03_general_nodes/footsteps_audio_2d/footstep_audio_2d.tscn" id="4_qdqua"]
 [ext_resource type="Script" uid="uid://chy0unnb43hw8" path="res://characters/player/player_walk.gd" id="5_y3qm2"]
 [ext_resource type="Script" uid="uid://0ly0nuwn74ib" path="res://characters/player/player_dash.gd" id="6_yabh2"]
 [ext_resource type="Script" uid="uid://dixaietdwmqgd" path="res://characters/player/player_idle.gd" id="7_nmpe6"]
@@ -51,6 +52,12 @@ hurt_box = NodePath("damage_area")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1647469862]
 zoom = Vector2(0.5, 0.5)
 script = ExtResource("3_gnfn5")
+
+[node name="FootstepAudio2D" parent="." unique_id=296342753 instance=ExtResource("4_qdqua")]
+
+[node name="FootstepTimer" type="Timer" parent="FootstepAudio2D" unique_id=1970414197]
+wait_time = 0.3
+autostart = true
 
 [node name="icon" type="Sprite2D" parent="." unique_id=920935392]
 modulate = Color(0.627451, 1, 0, 1)
@@ -133,3 +140,5 @@ one_shot = true
 [node name="dash_cooldown" type="Timer" parent="timers" unique_id=892717750]
 wait_time = 5.0
 one_shot = true
+
+[connection signal="timeout" from="FootstepAudio2D/FootstepTimer" to="." method="_on_footstep_timer_timeout"]
