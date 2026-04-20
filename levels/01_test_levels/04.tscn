@@ -1,11 +1,13 @@
-[gd_scene format=4 uid="uid://csq8jvm3atxfj"]
+[gd_scene format=4 uid="uid://c3fqy8qqpmscd"]
 
 [ext_resource type="TileSet" uid="uid://56rgeaitgaww" path="res://temp_tileset.tres" id="1_e4y8o"]
+[ext_resource type="Script" uid="uid://d2eyblbal755o" path="res://levels/00_scripts/level.gd" id="1_rrylu"]
 [ext_resource type="Script" uid="uid://dsjxqtwkdb1d1" path="res://02_tiles/level_tile_map_layer.gd" id="2_nyl57"]
 [ext_resource type="PackedScene" uid="uid://dr4blo7ya448q" path="res://levels/player_spawn.tscn" id="3_02d5u"]
 [ext_resource type="PackedScene" uid="uid://cnkg66hk5nciw" path="res://characters/chaser_small/chaser_small.tscn" id="5_0lu2h"]
 
 [node name="04_tscn" type="Node2D" unique_id=743991209]
+script = ExtResource("1_rrylu")
 
 [node name="Ground" type="TileMapLayer" parent="." unique_id=1119071905 node_paths=PackedStringArray("walls")]
 z_index = -1

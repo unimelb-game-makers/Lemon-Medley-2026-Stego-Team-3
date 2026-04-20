@@ -21,6 +21,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+AudioManager="*uid://cjfaj0dcwh86d"
 LevelManager="*uid://d3fmr34okgu6d"
 PlayerManager="*uid://dnhe3w8ws1fth"
 SceneTransition="*uid://cgu22qyl3irkq"

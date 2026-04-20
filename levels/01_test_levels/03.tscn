@@ -1,7 +1,9 @@
 [gd_scene format=4 uid="uid://b5t2m7nt0726y"]
 
+[ext_resource type="Script" uid="uid://d2eyblbal755o" path="res://levels/00_scripts/level.gd" id="1_0lu2h"]
 [ext_resource type="PackedScene" uid="uid://ctqf2vj4ik6k" path="res://02_tiles/test_tiles_01.tscn" id="1_e4y8o"]
 [ext_resource type="PackedScene" uid="uid://rx07o86j12k6" path="res://characters/dummy/dummy.tscn" id="2_0lu2h"]
+[ext_resource type="AudioStream" uid="uid://dfslgral8irox" path="res://levels/02_music/example_music_03.ogg" id="2_02d5u"]
 [ext_resource type="PackedScene" uid="uid://dr4blo7ya448q" path="res://levels/player_spawn.tscn" id="3_02d5u"]
 [ext_resource type="PackedScene" uid="uid://vlpiuopcomwi" path="res://levels/level_transition.tscn" id="4_e7g5j"]
 
@@ -21,6 +23,8 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 1)
 
 [node name="TestLevel" type="Node2D" unique_id=1287366284]
+script = ExtResource("1_0lu2h")
+music = ExtResource("2_02d5u")
 
 [node name="DarknessShader" type="CanvasModulate" parent="." unique_id=556438269]
 color = Color(0.36508796, 0.36508796, 0.36508796, 1)
@@ -44,7 +48,8 @@ metadata/_edit_lock_ = true
 
 [node name="LevelTransition" parent="." unique_id=1404411649 instance=ExtResource("4_e7g5j")]
 position = Vector2(-384, 256)
-level = "uid://d3fw6t7abasa2"
+level = "uid://w28xn3kq1h13"
+target_transition_area = "LevelTransition2"
 center_player = true
 size = 8
 metadata/_edit_lock_ = true
