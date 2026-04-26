@@ -38,6 +38,7 @@ func _process(delta: float) -> void:
 ## Update where our attack is depending on mouse position.
 func update_claymore_direction():
 	var mouse_global_position = get_global_mouse_position()
+	print(global_position.angle_to(mouse_global_position))
 	attack_area.rotation = global_position.angle_to(mouse_global_position)
 
 func update_direction() -> void:

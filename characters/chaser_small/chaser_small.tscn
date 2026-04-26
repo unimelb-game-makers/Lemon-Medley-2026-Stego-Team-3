@@ -18,6 +18,9 @@ base_attack = 5
 base_speed = 200
 metadata/_custom_type_script = "uid://c1gagfk36axyn"
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_djrq5"]
+size = Vector2(120, 120)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ifclk"]
 size = Vector2(120, 120)
 
@@ -41,7 +44,7 @@ texture = ExtResource("1_5anwu")
 
 [node name="shape" type="CollisionShape2D" parent="." unique_id=251099949]
 scale = Vector2(0.5, 0.5)
-shape = SubResource("RectangleShape2D_ifclk")
+shape = SubResource("RectangleShape2D_djrq5")
 
 [node name="state_machine" type="Node" parent="." unique_id=228717900]
 script = ExtResource("3_wslbi")
