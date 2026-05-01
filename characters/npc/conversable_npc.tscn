@@ -7,11 +7,9 @@
 [ext_resource type="Script" uid="uid://hry1ksbwy67v" path="res://characters/character_resource.gd" id="3_quc4s"]
 [ext_resource type="Script" uid="uid://ci8dj0oxrrj0v" path="res://dialogue/dialogue_choice.gd" id="6_quc4s"]
 
-[sub_resource type="Resource" id="Resource_664xb"]
+[sub_resource type="Resource" id="Resource_quc4s"]
 script = ExtResource("3_quc4s")
-character_name = "Jane Curse"
-portrait = Array[Texture2D]([ExtResource("1_uwkpc")])
-portrait_names = Array[String](["normal"])
+character_name = "Test"
 metadata/_custom_type_script = "uid://hry1ksbwy67v"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85pjc"]
@@ -19,7 +17,7 @@ size = Vector2(120, 120)
 
 [node name="ConversableNPC" type="CharacterBody2D" unique_id=242522269]
 script = ExtResource("1_00gnk")
-character_resource = SubResource("Resource_664xb")
+character_resource = SubResource("Resource_quc4s")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=454441481]
 rotation = -3.1415925
@@ -53,27 +51,31 @@ shape = SubResource("RectangleShape2D_85pjc")
 [node name="starting_dialogue" type="Node" parent="dialogue_area" unique_id=675788982 node_paths=PackedStringArray("next_dialogue")]
 script = ExtResource("2_85pjc")
 next_dialogue = NodePath("dialogue_branch")
-dialogue_text = "Testing Testing"
-character_resource = SubResource("Resource_664xb")
+dialogue_text = "Welcome to the prototype!"
 metadata/_custom_type_script = "uid://cj3bvpp17mpio"
 
 [node name="dialogue_branch" type="Node" parent="dialogue_area/starting_dialogue" unique_id=1541607590 node_paths=PackedStringArray("possible_next_dialogues")]
 script = ExtResource("6_quc4s")
-dialogue_options = Array[String](["Option 1", "Option 2"])
+dialogue_options = Array[String](["Movement", "Attacking"])
 possible_next_dialogues = [NodePath("branch_a"), NodePath("branch_b")]
-character_resource = SubResource("Resource_664xb")
+dialogue_text = "What controls do you need help with?
+"
 metadata/_custom_type_script = "uid://ci8dj0oxrrj0v"
 
-[node name="branch_a" type="Node" parent="dialogue_area/starting_dialogue/dialogue_branch" unique_id=1164272364]
+[node name="branch_a" type="Node" parent="dialogue_area/starting_dialogue/dialogue_branch" unique_id=1164272364 node_paths=PackedStringArray("next_dialogue")]
 script = ExtResource("2_85pjc")
-terminate = true
-dialogue_text = "You have chosen option 1"
-character_resource = SubResource("Resource_664xb")
+next_dialogue = NodePath("../../term_dialogue")
+dialogue_text = "Move around with WASD and use L-Shift to Dash in a direction. This has a cooldown."
 metadata/_custom_type_script = "uid://cj3bvpp17mpio"
 
-[node name="branch_b" type="Node" parent="dialogue_area/starting_dialogue/dialogue_branch" unique_id=1984850060]
+[node name="branch_b" type="Node" parent="dialogue_area/starting_dialogue/dialogue_branch" unique_id=1984850060 node_paths=PackedStringArray("next_dialogue")]
+script = ExtResource("2_85pjc")
+next_dialogue = NodePath("../../term_dialogue")
+dialogue_text = "Aim using your mouse to direct where to attack and then press Left Mouse Button (Or Enter) to attack in that direction."
+metadata/_custom_type_script = "uid://cj3bvpp17mpio"
+
+[node name="term_dialogue" type="Node" parent="dialogue_area/starting_dialogue" unique_id=72396807]
 script = ExtResource("2_85pjc")
 terminate = true
-dialogue_text = "You have chosen option 2."
-character_resource = SubResource("Resource_664xb")
+dialogue_text = "The next room has a Scuttler enemy. It will chase you if you get too close to it. "
 metadata/_custom_type_script = "uid://cj3bvpp17mpio"

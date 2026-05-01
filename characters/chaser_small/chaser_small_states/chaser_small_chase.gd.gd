@@ -23,7 +23,8 @@ func on_exit() -> void:
 ## When the player is out of radius from the enemy, 
 ## The enemy will continue to chase, but after some time will return to idle
 func start_forget_timer() -> void:
-	forget_timer.start()
+	if forget_timer.is_inside_tree():
+		forget_timer.start()
 
 func stop_chase() -> void:
 	is_chasing = false
