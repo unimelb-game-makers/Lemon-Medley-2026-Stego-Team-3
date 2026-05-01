@@ -22,7 +22,7 @@ func process_state(delta : float) -> String:
 		controlled_character.attack_buffered = false
 		
 	if !controlled_character.attacking:
-		return "idle"	
+		return "idle"
 	
 	if controlled_character.direction == Vector2.ZERO:
 		return "idle_attack"

@@ -15,6 +15,8 @@
 [ext_resource type="Script" uid="uid://d1ph50dko3aj4" path="res://characters/player/states/player_dash_attack.gd" id="10_bblrc"]
 [ext_resource type="Script" uid="uid://m755ncu3yqha" path="res://characters/player/states/player_stun.gd" id="11_nmpe6"]
 [ext_resource type="Script" uid="uid://c0yx2l6bgusa0" path="res://characters/player/states/player_talking.gd" id="12_bblrc"]
+[ext_resource type="Script" uid="uid://u8nseulu3yoo" path="res://characters/player/curse_manager.gd" id="14_qdqua"]
+[ext_resource type="Script" uid="uid://ty852ubkfk3p" path="res://base_classes/curse.gd" id="15_yrhyy"]
 
 [sub_resource type="Resource" id="Resource_o6xl0"]
 script = ExtResource("2_lvh8y")
@@ -92,6 +94,15 @@ script = ExtResource("11_nmpe6")
 
 [node name="talk_state" type="Node" parent="state_machine" unique_id=1423834846]
 script = ExtResource("12_bblrc")
+
+[node name="curse_attack_state" type="Node" parent="state_machine" unique_id=1050934224]
+
+[node name="curse_manager" type="Node" parent="." unique_id=2141213762 node_paths=PackedStringArray("player_statemachine")]
+script = ExtResource("14_qdqua")
+player_statemachine = NodePath("../state_machine")
+
+[node name="test_curse" type="Node" parent="curse_manager" unique_id=926974525]
+script = ExtResource("15_yrhyy")
 
 [node name="damage_area" type="Area2D" parent="." unique_id=1136224295]
 script = ExtResource("4_lvh8y")

@@ -9,7 +9,7 @@ func _ready() -> void:
 		print(child.name)
 		if child is State:
 			child.initialize(get_parent())
-
+			
 			print(child.state_name)
 			state_dict[child.state_name] = child
 	
