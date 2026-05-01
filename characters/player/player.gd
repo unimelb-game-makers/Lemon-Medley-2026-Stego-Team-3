@@ -37,8 +37,8 @@ func _process(delta: float) -> void:
 
 ## Update where our attack is depending on mouse position.
 func update_claymore_direction():
-	var mouse_global_position = get_global_mouse_position()
-	attack_area.rotation = global_position.angle_to(mouse_global_position)
+	var local_mouse_pos = get_local_mouse_position()
+	attack_area.rotation = local_mouse_pos.angle()
 
 func update_direction() -> void:
 	var HorizontalAxis = Input.get_action_strength("Right") - Input.get_action_strength("Left")
@@ -86,4 +86,5 @@ func _unhandled_input(event : InputEvent) -> void:
 	if event.is_action_pressed("test"):
 		PlayerManager.shake_camera()
 		return
+
 	state_machine.input_handle_state(event)
