@@ -26,7 +26,7 @@ func process_state(delta : float) -> String:
 	
 	if controlled_character.direction == Vector2.ZERO:
 		return "idle_attack"
-		
+	
 	return state_name
 
 func input_handle_state(event : InputEvent) -> String:

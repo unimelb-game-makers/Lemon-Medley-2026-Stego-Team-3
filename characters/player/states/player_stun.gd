@@ -1,8 +1,11 @@
 extends State
 
+@export var INVULNERABILITYTIMER = 2.0
+
 var stun_timer : float = 0.0
 var knockback_velocity : Vector2 = Vector2.ZERO
-@export var INVULNERABILITYTIMER = 2.0
+
+signal player_stunned
 
 func initialize(character : Character):
 	if character is Player:
@@ -22,7 +25,7 @@ func on_enter() -> void:
 	knockback_velocity = (controlled_character.last_hit_direction *
 						  controlled_character.last_hit.knockback_strength *
 						  controlled_character.stats.knockback_speed)
-						
+	
 	stun_timer = controlled_character.last_hit.stun_window
 
 func on_exit() -> void:
