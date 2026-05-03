@@ -12,9 +12,17 @@ func _ready() -> void:
 		if child is Ability:
 			abilities.append(child)
 
-func _process(delta: float) -> void:
-	if stopped:
+func set_controller(controller: Player):
+	for ability in abilities:
+		ability.controller = controller
+
+func ability_process(delta: float) -> void:
+	if stopped: ## If player is stunned or something -> do nothing
 		return
 	for ability: Ability in abilities:
-		if Input.is_key_pressed(ability.key) or Input.is_action_pressed(ability.input):
+		# if the ability is not activated and the player presses a key for the ability
+		if not ability.activated and (Input.is_key_pressed(ability.key) or Input.is_action_pressed(ability.input)):
 			ability.activate()
+		# if ability is activated, run the ability each frame
+		elif ability.activated:
+			ability.run()

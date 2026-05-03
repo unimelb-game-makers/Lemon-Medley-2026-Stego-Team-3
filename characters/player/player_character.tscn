@@ -88,6 +88,7 @@ input = "Melee"
 [node name="dash" type="Node" parent="ability_manager" unique_id=811919256]
 script = ExtResource("19_scicj")
 input = "Dash"
+cooldown = 3.0
 
 [node name="cooldown_timer" type="Timer" parent="ability_manager/dash" unique_id=892717750]
 wait_time = 5.0

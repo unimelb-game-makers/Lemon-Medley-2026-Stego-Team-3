@@ -24,7 +24,7 @@ func _enter_tree() -> void:
 func input_handle_state(event : InputEvent) -> String:
 	if event.is_action_pressed("Melee"):
 		return "dash_attack"
-		
+	
 	return state_name
 
 func process_state(delta : float) -> String:

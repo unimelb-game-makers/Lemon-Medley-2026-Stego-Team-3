@@ -10,12 +10,14 @@ func _ready() -> void:
 	hurt_box.stats = stats
 	hurt_box.damage_taken.connect(take_damage)
 	stats.reset()
+	ability_manager.set_controller(self)
 
 func _process(delta: float) -> void:
 	debug_state_label.text = state_machine.active_state.state_name
 	#debug_dash_label.text = "Can Dash" if can_dash else "Cannot Dash"
 	update_direction()
 	state_machine.process_state(delta)
+	ability_manager.ability_process(delta)
 
 func update_direction() -> void:
 	var HorizontalAxis = Input.get_action_strength("Right") - Input.get_action_strength("Left")

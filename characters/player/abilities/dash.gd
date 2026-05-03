@@ -1,22 +1,24 @@
 extends Ability
 
+@export var SPEEDMULTIPLIER : float = 2.0
+
 @onready var dash_timer : Timer = $dash_timer
 
-var is_dashing : bool = false
-var can_dash : bool = true
 var dash_vector : Vector2
 
 func _ready() -> void:
-	cooldown_timer.timeout.connect(func(): can_dash = true)
 	dash_timer.timeout.connect(stop_dash)
 
 func activate():
-	print("Dash")
+	if dash_timer.is_stopped() and cooldown_timer.is_stopped():
+		activated = true
+		dash_timer.start()
+		dash_vector = controller.last_direction
+
+func run():
+	controller.velocity = dash_vector * controller.stats.speed * SPEEDMULTIPLIER
+	controller.velocity += controller.direction * controller.stats.speed
 
 func stop_dash():
-	if !dash_timer.is_stopped():
-		dash_timer.stop()
-		
-	if is_dashing:
-		is_dashing = false
-		cooldown_timer.start()
+	activated = false
+	cooldown_timer.start(cooldown)

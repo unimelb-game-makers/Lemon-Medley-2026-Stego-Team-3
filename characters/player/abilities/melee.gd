@@ -5,7 +5,6 @@ extends Ability
 @export var attack_area : AttackArea
 @export var damage: int = 10
 
-var attacking : bool = false
 var attack_buffered : bool = false
 
 func _ready() -> void:
@@ -13,18 +12,19 @@ func _ready() -> void:
 	attack_area.finished_attack.connect(finish_attack)
 
 func activate():
+	activated = true
+	attack()
+
+func run():
 	update_claymore_direction()
-	if !attacking:
-		attack()
 
 ## Attack in the direction of our mouse
 func attack():
 	print("Attacking")
 	attack_area.activate(ATTACKDURATION)
-	attacking = true
 
 func finish_attack():
-	attacking = false
+	activated = false
 
 ## Update where our attack is depending on mouse position.
 func update_claymore_direction():
