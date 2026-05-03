@@ -18,6 +18,7 @@ func activate():
 func run():
 	controller.velocity = dash_vector * controller.stats.speed * SPEEDMULTIPLIER
 	controller.velocity += controller.direction * controller.stats.speed
+	print("dash")
 
 func stop_dash():
 	activated = false

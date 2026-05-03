@@ -13,7 +13,7 @@ func _ready() -> void:
 	ability_manager.set_controller(self)
 
 func _process(delta: float) -> void:
-	debug_state_label.text = state_machine.active_state.state_name
+	#debug_state_label.text = state_machine.active_state.state_name
 	#debug_dash_label.text = "Can Dash" if can_dash else "Cannot Dash"
 	update_direction()
 	state_machine.process_state(delta)
@@ -27,6 +27,8 @@ func update_direction() -> void:
 	
 	if direction != Vector2.ZERO:
 		last_direction = direction
+	
+	velocity = direction * stats.speed
 
 func take_damage(damage : Damage, attack_position : Vector2):
 	last_hit = damage
@@ -48,5 +50,7 @@ func _unhandled_input(event : InputEvent) -> void:
 	if event.is_action_pressed("test"):
 		PlayerManager.shake_camera()
 		return
-	
+		
+	if event.is_action_pressed("Interact"):
+		PlayerManager.interact()
 	state_machine.input_handle_state(event)

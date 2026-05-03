@@ -12,6 +12,7 @@ func _enter_tree() -> void:
 
 func physics_process_state(delta : float):
 	controlled_character.velocity = controlled_character.direction * controlled_character.stats.speed
+	print("walk")
 	return state_name
 
 func input_handle_state(event : InputEvent):

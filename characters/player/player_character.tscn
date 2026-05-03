@@ -6,8 +6,6 @@
 [ext_resource type="Script" uid="uid://bd1qrnr8tcmdc" path="res://base_classes/state_machine.gd" id="4_dwfcf"]
 [ext_resource type="Texture2D" uid="uid://dopxl3s52sbpl" path="res://characters/player/MCSPRITE_FRONT.png" id="4_gnfn5"]
 [ext_resource type="Script" uid="uid://ddq8nkdp4gpaa" path="res://base_physics_components/damage_area.gd" id="4_lvh8y"]
-[ext_resource type="Script" uid="uid://chy0unnb43hw8" path="res://characters/player/states/player_walk.gd" id="5_y3qm2"]
-[ext_resource type="Script" uid="uid://dixaietdwmqgd" path="res://characters/player/states/player_idle.gd" id="7_nmpe6"]
 [ext_resource type="Script" uid="uid://c3atp4e4h86rb" path="res://base_physics_components/attack_area.gd" id="9_lelq3"]
 [ext_resource type="Script" uid="uid://m755ncu3yqha" path="res://characters/player/states/player_stun.gd" id="11_nmpe6"]
 [ext_resource type="Script" uid="uid://c0yx2l6bgusa0" path="res://characters/player/states/player_talking.gd" id="12_bblrc"]
@@ -63,12 +61,6 @@ shape = SubResource("RectangleShape2D_gnfn5")
 
 [node name="statemachine" type="Node" parent="." unique_id=614204903]
 script = ExtResource("4_dwfcf")
-
-[node name="walk_state" type="Node" parent="statemachine" unique_id=959702867]
-script = ExtResource("5_y3qm2")
-
-[node name="idle_state" type="Node" parent="statemachine" unique_id=2047713969]
-script = ExtResource("7_nmpe6")
 
 [node name="talk_state" type="Node" parent="statemachine" unique_id=1423834846]
 script = ExtResource("12_bblrc")
