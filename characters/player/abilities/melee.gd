@@ -3,7 +3,8 @@ extends Ability
 ## TEMPORARY VARIABLE, ONCE WE HAVE ATTACK ANIMATION WE MIGHT NOT USE THIS
 @export var ATTACKDURATION : float = 0.5
 @export var attack_area : AttackArea
-@export var damage: int
+@export var damage: int = 10
+
 var attacking : bool = false
 var attack_buffered : bool = false
 

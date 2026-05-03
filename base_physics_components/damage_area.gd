@@ -19,7 +19,6 @@ func take_damage(damage : Damage, position : Vector2) -> void:
 	# Update stats to take damage
 	stats.take_damage(damage.damage * damage.multiplier)
 	print("Health After Attack: %s" % stats.health)
-	
 
 func make_invulnerable(duration: float = 1.0) -> void:
 	process_mode = Node.PROCESS_MODE_DISABLED

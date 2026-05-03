@@ -80,13 +80,22 @@ script = ExtResource("11_nmpe6")
 script = ExtResource("14_qdqua")
 player_statemachine = NodePath("../statemachine")
 
-[node name="melee" type="Node" parent="ability_manager" unique_id=1290752711]
+[node name="melee" type="Node" parent="ability_manager" unique_id=1290752711 node_paths=PackedStringArray("attack_area")]
 script = ExtResource("20_br0vv")
+attack_area = NodePath("../../claymore_attack_area")
 input = "Melee"
 
 [node name="dash" type="Node" parent="ability_manager" unique_id=811919256]
 script = ExtResource("19_scicj")
 input = "Dash"
+
+[node name="cooldown_timer" type="Timer" parent="ability_manager/dash" unique_id=892717750]
+wait_time = 5.0
+one_shot = true
+
+[node name="dash_timer" type="Timer" parent="ability_manager/dash" unique_id=114230950]
+wait_time = 0.5
+one_shot = true
 
 [node name="damage_area" type="Area2D" parent="." unique_id=1136224295]
 script = ExtResource("4_lvh8y")
@@ -126,13 +135,3 @@ offset_right = 19.0
 offset_bottom = -105.0
 text = "Text"
 metadata/_edit_use_anchors_ = true
-
-[node name="timers" type="Node" parent="." unique_id=1465195983]
-
-[node name="dash_timer" type="Timer" parent="timers" unique_id=114230950]
-wait_time = 0.5
-one_shot = true
-
-[node name="dash_cooldown" type="Timer" parent="timers" unique_id=892717750]
-wait_time = 5.0
-one_shot = true

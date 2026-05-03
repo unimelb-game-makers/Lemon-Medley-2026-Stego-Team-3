@@ -1,7 +1,7 @@
 extends Ability
 
-# Dash related variables
-@export var dash_timer : Timer
+@onready var dash_timer : Timer = $dash_timer
+
 var is_dashing : bool = false
 var can_dash : bool = true
 var dash_vector : Vector2

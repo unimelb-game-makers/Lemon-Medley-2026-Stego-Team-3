@@ -3,7 +3,7 @@ class_name Player extends Character
 @export var debug_state_label : Label
 @export var debug_dash_label : Label
 
-@onready var ability_manager: AbilityManager
+@onready var ability_manager: AbilityManager = $ability_manager
 
 func _ready() -> void:
 	PlayerManager.player = self
