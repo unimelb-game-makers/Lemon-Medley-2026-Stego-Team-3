@@ -16,8 +16,13 @@ func _process(delta: float) -> void:
 	#debug_state_label.text = state_machine.active_state.state_name
 	#debug_dash_label.text = "Can Dash" if can_dash else "Cannot Dash"
 	update_direction()
+	
 	state_machine.process_state(delta)
+
+func _physics_process(delta: float) -> void:
+	state_machine.physics_process_state(delta)
 	ability_manager.ability_process(delta)
+	move_and_slide()
 
 func update_direction() -> void:
 	var HorizontalAxis = Input.get_action_strength("Right") - Input.get_action_strength("Left")
@@ -27,8 +32,6 @@ func update_direction() -> void:
 	
 	if direction != Vector2.ZERO:
 		last_direction = direction
-	
-	velocity = direction * stats.speed
 
 func take_damage(damage : Damage, attack_position : Vector2):
 	last_hit = damage

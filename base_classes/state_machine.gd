@@ -13,11 +13,11 @@ func _ready() -> void:
 			print(child.state_name)
 			state_dict[child.state_name] = child
 	
-	#if state_dict.has("idle"):
-		#active_state = state_dict["idle"]
-		#active_state.on_enter()
-	#else:
-		#assert("ERROR: idle STATE NOT FOUND")
+	if state_dict.has("idle"):
+		active_state = state_dict["idle"]
+		active_state.on_enter()
+	else:
+		assert("ERROR: idle STATE NOT FOUND")
 
 func switch_state(newstate : String) -> void:
 	if !state_dict.has(newstate):
