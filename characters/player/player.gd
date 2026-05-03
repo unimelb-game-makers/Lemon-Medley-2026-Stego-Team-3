@@ -16,6 +16,8 @@ var is_dashing : bool = false
 var can_dash : bool = true
 var dash_vector : Vector2
 
+@onready var ability_manager: AbilityManager
+
 func _ready() -> void:
 	PlayerManager.player = self
 	
@@ -82,9 +84,16 @@ func cancel_attack():
 	finish_attack()
 	attack_area.set_active(false)
 
+## Stop all abilities. Pause processing input for them.
+func stop_abilities():
+	ability_manager.stopped = true
+
+func continue_abilities():
+	ability_manager.stopped = false
+
 func _unhandled_input(event : InputEvent) -> void:
 	if event.is_action_pressed("test"):
 		PlayerManager.shake_camera()
 		return
-
+	
 	state_machine.input_handle_state(event)

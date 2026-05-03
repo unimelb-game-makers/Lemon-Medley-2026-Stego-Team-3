@@ -1,17 +1,20 @@
 extends Node 
-class_name CurseManager
+class_name AbilityManager
 
+@export var stopped: bool = false
 @export var player_statemachine: StateMachine
 @export var curse_state: State
 
-var curse_list: Array[Curse]
+var abilities: Array[Ability]
 
 func _ready() -> void:
 	for child in get_children():
-		if child is Curse:
-			curse_list.append(child)
+		if child is Ability:
+			abilities.append(child)
 
 func _process(delta: float) -> void:
-	for curse: Curse in curse_list:
-		if Input.is_key_pressed(curse.key):
-			curse.activate_curse()
+	if stopped:
+		return
+	for ability: Ability in abilities:
+		if Input.is_key_pressed(ability.key) or Input.is_action_pressed(ability.input):
+			ability.activate()
