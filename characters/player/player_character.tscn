@@ -28,11 +28,11 @@ metadata/_custom_type_script = "uid://c1gagfk36axyn"
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gnfn5"]
 size = Vector2(217, 324)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o5qli"]
-size = Vector2(59, 213)
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_lvh8y"]
 radius = 150.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o5qli"]
+size = Vector2(59, 213)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nmpe6"]
 radius = 350.0
@@ -97,12 +97,6 @@ one_shot = true
 wait_time = 0.5
 one_shot = true
 
-[node name="damage_area" type="Area2D" parent="." unique_id=1136224295]
-script = ExtResource("4_lvh8y")
-
-[node name="hurt_box" type="CollisionShape2D" parent="damage_area" unique_id=1971043748]
-shape = SubResource("RectangleShape2D_o5qli")
-
 [node name="claymore_attack_area" type="Area2D" parent="." unique_id=290821557]
 collision_layer = 4278190082
 collision_mask = 4278190082
@@ -111,6 +105,12 @@ script = ExtResource("9_lelq3")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="claymore_attack_area" unique_id=631539804]
 position = Vector2(152, 0)
 shape = SubResource("CircleShape2D_lvh8y")
+
+[node name="damage_area" type="Area2D" parent="." unique_id=1136224295]
+script = ExtResource("4_lvh8y")
+
+[node name="hurt_box" type="CollisionShape2D" parent="damage_area" unique_id=1971043748]
+shape = SubResource("RectangleShape2D_o5qli")
 
 [node name="player_dialogue_area" type="Area2D" parent="." unique_id=1333761043]
 collision_layer = 4

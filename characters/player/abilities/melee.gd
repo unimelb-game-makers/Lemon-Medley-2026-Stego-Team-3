@@ -14,13 +14,14 @@ func _ready() -> void:
 
 func activate():
 	update_claymore_direction()
-	print("Melee")
+	if !attacking:
+		attack()
 
 ## Attack in the direction of our mouse
 func attack():
 	print("Attacking")
-	attacking = true
 	attack_area.activate(ATTACKDURATION)
+	attacking = true
 
 func finish_attack():
 	attacking = false
