@@ -2,45 +2,20 @@ class_name Player extends Character
 
 @export var debug_state_label : Label
 @export var debug_dash_label : Label
-@export var attack_area : AttackArea
-
-## TEMPORARY VARIABLE, ONCE WE HAVE ATTACK ANIMATION WE MIGHT NOT USE THIS
-@export var ATTACKDURATION : float
-var attacking : bool = false
-var attack_buffered : bool = false
-
-# Dash related variables
-@export var dash_cooldown_timer : Timer
-@export var dash_timer : Timer
-var is_dashing : bool = false
-var can_dash : bool = true
-var dash_vector : Vector2
 
 @onready var ability_manager: AbilityManager
 
 func _ready() -> void:
 	PlayerManager.player = self
-	
 	hurt_box.stats = stats
-	attack_area.damage = Damage.new(stats)
-	attack_area.finished_attack.connect(finish_attack)
-	dash_cooldown_timer.timeout.connect(func(): can_dash = true)
-	dash_timer.timeout.connect(stop_dash)
-	
 	hurt_box.damage_taken.connect(take_damage)
 	stats.reset()
 
 func _process(delta: float) -> void:
 	debug_state_label.text = state_machine.active_state.state_name
-	debug_dash_label.text = "Can Dash" if can_dash else "Cannot Dash"
+	#debug_dash_label.text = "Can Dash" if can_dash else "Cannot Dash"
 	update_direction()
-	update_claymore_direction()
 	state_machine.process_state(delta)
-
-## Update where our attack is depending on mouse position.
-func update_claymore_direction():
-	var local_mouse_pos = get_local_mouse_position()
-	attack_area.rotation = local_mouse_pos.angle()
 
 func update_direction() -> void:
 	var HorizontalAxis = Input.get_action_strength("Right") - Input.get_action_strength("Left")
@@ -51,23 +26,6 @@ func update_direction() -> void:
 	if direction != Vector2.ZERO:
 		last_direction = direction
 
-## Attack in the direction of our mouse
-func attack():
-	print("Attacking")
-	attacking = true
-	attack_area.activate(ATTACKDURATION)
-
-func finish_attack():
-	attacking = false
-
-func stop_dash():
-	if !dash_timer.is_stopped():
-		dash_timer.stop()
-		
-	if is_dashing:
-		is_dashing = false
-		dash_cooldown_timer.start()
-
 func take_damage(damage : Damage, attack_position : Vector2):
 	last_hit = damage
 	last_hit_direction = attack_position.direction_to(global_position)
@@ -76,13 +34,6 @@ func take_damage(damage : Damage, attack_position : Vector2):
 	# For other enemies, we might want them to only stun from certain states, which is
 	# when we decide to fully implement the state transitions. For now this is fine.
 	state_machine.switch_state("stun")
-
-## If we are currently attacking, but are interrupted by something, 
-## e.g Enemy attack then cancel early
-func cancel_attack():
-	attack_buffered = false
-	finish_attack()
-	attack_area.set_active(false)
 
 ## Stop all abilities. Pause processing input for them.
 func stop_abilities():

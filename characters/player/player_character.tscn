@@ -37,16 +37,12 @@ radius = 150.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_nmpe6"]
 radius = 350.0
 
-[node name="PlayerCharacter" type="CharacterBody2D" unique_id=1978286765 node_paths=PackedStringArray("debug_state_label", "debug_dash_label", "attack_area", "dash_cooldown_timer", "dash_timer", "state_machine", "hurt_box")]
+[node name="PlayerCharacter" type="CharacterBody2D" unique_id=1978286765 node_paths=PackedStringArray("debug_state_label", "debug_dash_label", "state_machine", "hurt_box")]
 scale = Vector2(0.3, 0.3)
 collision_mask = 17
 script = ExtResource("1_3kw6f")
 debug_state_label = NodePath("debug_state_label")
 debug_dash_label = NodePath("debug_dash_label")
-attack_area = NodePath("claymore_attack_area")
-ATTACKDURATION = 0.5
-dash_cooldown_timer = NodePath("timers/dash_cooldown")
-dash_timer = NodePath("timers/dash_timer")
 stats = SubResource("Resource_o6xl0")
 state_machine = NodePath("statemachine")
 hurt_box = NodePath("damage_area")

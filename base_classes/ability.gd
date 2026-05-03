@@ -6,7 +6,7 @@ class_name Ability
 
 @export var cooldown: float
 
-@onready var timer: Timer = $Timer # Each ability/curse will have a timer for their own cooldown
+@onready var cooldown_timer: Timer = $cooldown_timer # Each ability/curse will have a timer for their own cooldown
 
 func activate():
 	pass

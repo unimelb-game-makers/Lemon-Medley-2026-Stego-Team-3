@@ -17,7 +17,7 @@ func take_damage(damage : Damage, position : Vector2) -> void:
 	# TODO Play audio through singleton.
 	
 	# Update stats to take damage
-	stats.take_damage(damage.stats.attack * damage.multiplier)
+	stats.take_damage(damage.damage * damage.multiplier)
 	print("Health After Attack: %s" % stats.health)
 	
 

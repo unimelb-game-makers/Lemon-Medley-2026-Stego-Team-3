@@ -27,7 +27,7 @@ func _ready() -> void:
 	
 	if touch_damage_box:
 		touch_damage_box.set_active(true)
-		touch_damage_box.damage = Damage.new(stats)
+		touch_damage_box.damage = Damage.new(stats.attack)
 	
 	hurt_box.damage_taken.connect(take_damage)
 	stats.reset()
