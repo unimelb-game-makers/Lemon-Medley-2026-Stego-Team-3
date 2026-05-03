@@ -53,7 +53,5 @@ func _unhandled_input(event : InputEvent) -> void:
 	if event.is_action_pressed("test"):
 		PlayerManager.shake_camera()
 		return
-		
-	if event.is_action_pressed("Interact"):
-		PlayerManager.interact()
+	
 	state_machine.input_handle_state(event)
