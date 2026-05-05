@@ -9,9 +9,10 @@ class_name Player extends Character
 var distance_traveled: float = 0.0
 var footstep_cooldown: float = 0.0
 var footstep_min_interval: float = 0.3
-@onready var dash_emitter: FmodEventEmitter2D = $DashEmitter
 @onready var heartbeat_emitter: FmodEventEmitter2D = $HeartbeatEmitter
 @onready var tile_map: TileMapLayer
+@onready var dash_emitter: FmodEventEmitter2D = $DashEmitter
+@onready var dash_ability = $ability_manager/dash
 
 func _ready() -> void:
 	PlayerManager.player = self
@@ -30,6 +31,7 @@ func _process(delta: float) -> void:
 	
 	state_machine.process_state(delta)
 	handle_footsteps(delta)
+	update_heartbeat()
 
 func _physics_process(delta: float) -> void:
 	state_machine.physics_process_state(delta)
@@ -45,29 +47,6 @@ func update_direction() -> void:
 	if direction != Vector2.ZERO:
 		last_direction = direction
 
-## Attack in the direction of our mouse
-func attack():
-	print("Attacking")
-	attacking = true
-	attack_area.activate(ATTACKDURATION)
-	
-	var event = FmodServer.create_event_instance("event:/sword_swipe")
-	event.set_2d_attributes(global_transform)
-	event.start()
-	event.release()
-
-func finish_attack():
-	attacking = false
-
-func stop_dash():
-	if !dash_timer.is_stopped():
-		dash_timer.stop()
-		
-	if is_dashing:
-		is_dashing = false
-		dash_cooldown_timer.start()
-		dash_emitter.stop()
-
 func take_damage(damage : Damage, attack_position : Vector2):
 	last_hit = damage
 	last_hit_direction = attack_position.direction_to(global_position)
@@ -76,7 +55,6 @@ func take_damage(damage : Damage, attack_position : Vector2):
 	# For other enemies, we might want them to only stun from certain states, which is
 	# when we decide to fully implement the state transitions. For now this is fine.
 	state_machine.switch_state("stun")
-	update_heartbeat()
 
 ## Stop all abilities. Pause processing input for them.
 func stop_abilities():
@@ -97,7 +75,7 @@ func _unhandled_input(event : InputEvent) -> void:
 func handle_footsteps(delta: float) -> void:
 	footstep_cooldown -= delta
 	
-	if direction != Vector2.ZERO and not is_dashing:
+	if direction != Vector2.ZERO and not dash_ability.is_dashing():
 		distance_traveled += velocity.length() * delta
 		
 		if distance_traveled >= 30.0 and footstep_cooldown <= 0.0:
@@ -127,9 +105,6 @@ func get_surface_type() -> float:
 	if tile_data:
 		return tile_data.get_custom_data("surface_type")
 	return 0.0
-
-func start_dash_audio() -> void:
-	dash_emitter.play()
 	
 func update_heartbeat() -> void:
 	var health_ratio = float(stats.health) / float(stats.base_health)

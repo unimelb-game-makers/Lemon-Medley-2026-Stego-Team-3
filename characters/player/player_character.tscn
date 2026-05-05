@@ -11,7 +11,7 @@
 [ext_resource type="Script" uid="uid://c3atp4e4h86rb" path="res://base_physics_components/attack_area.gd" id="9_lelq3"]
 [ext_resource type="Script" uid="uid://m755ncu3yqha" path="res://characters/player/states/player_stun.gd" id="11_nmpe6"]
 [ext_resource type="Script" uid="uid://c0yx2l6bgusa0" path="res://characters/player/states/player_talking.gd" id="12_bblrc"]
-[ext_resource type="Script" uid="uid://u8nseulu3yoo" path="res://characters/player/ability_manager.gd" id="14_qdqua"]
+[ext_resource type="Script" path="res://characters/player/ability_manager.gd" id="14_qdqua"]
 [ext_resource type="Script" uid="uid://mdqdv4s3cq5f" path="res://characters/player/abilities/dash.gd" id="19_scicj"]
 [ext_resource type="Script" uid="uid://bvan8anr6wkia" path="res://characters/player/abilities/melee.gd" id="20_br0vv"]
 
@@ -139,11 +139,11 @@ metadata/_edit_use_anchors_ = true
 
 [node name="timers" type="Node" parent="." unique_id=1465195983]
 
-[node name="dash_timer" type="Timer" parent="timers" unique_id=114230950]
+[node name="dash_timer" type="Timer" parent="timers" unique_id=2088787934]
 wait_time = 0.5
 one_shot = true
 
-[node name="dash_cooldown" type="Timer" parent="timers" unique_id=892717750]
+[node name="dash_cooldown" type="Timer" parent="timers" unique_id=290738606]
 wait_time = 5.0
 one_shot = true
 

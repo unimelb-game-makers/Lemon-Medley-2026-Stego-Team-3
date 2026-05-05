@@ -23,6 +23,7 @@ var last_hit : Damage
 var last_hit_direction : Vector2
 
 func _ready() -> void:
+	stats.reset()
 	hurt_box.stats = stats
 	
 	if touch_damage_box:
@@ -30,7 +31,7 @@ func _ready() -> void:
 		touch_damage_box.damage = Damage.new(stats.attack)
 	
 	hurt_box.damage_taken.connect(take_damage)
-	stats.reset()
+	#stats.reset()
 
 ## Runs when this character is damaged
 @abstract func take_damage(damage : Damage, attack_position : Vector2)

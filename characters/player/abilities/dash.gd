@@ -14,6 +14,7 @@ func activate():
 		activated = true
 		dash_timer.start()
 		dash_vector = controller.last_direction
+		controller.dash_emitter.play() 
 
 func run():
 	controller.velocity = dash_vector * controller.stats.speed * SPEEDMULTIPLIER
@@ -23,3 +24,7 @@ func run():
 func stop_dash():
 	activated = false
 	cooldown_timer.start(cooldown)
+	controller.dash_emitter.stop()
+
+func is_dashing() -> bool:
+	return activated
