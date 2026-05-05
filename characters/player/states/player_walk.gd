@@ -12,15 +12,12 @@ func _enter_tree() -> void:
 
 func physics_process_state(delta : float):
 	controlled_character.velocity = controlled_character.direction * controlled_character.stats.speed
+	#print("walk")
 	return state_name
 
 func input_handle_state(event : InputEvent):
-	if event.is_action_pressed("Melee"):
-		return "walk_attack"
-	
-	if event.is_action_pressed("Dash") and controlled_character.can_dash:
-		return "dash"
-	
+	if event.is_action_pressed("Interact"):
+		PlayerManager.interact()
 	return state_name
 
 func process_state(delta : float):

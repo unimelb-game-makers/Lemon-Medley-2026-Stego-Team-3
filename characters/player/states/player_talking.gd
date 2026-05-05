@@ -11,8 +11,10 @@ func _enter_tree() -> void:
 	state_machine = get_parent()
 
 func on_enter():
-	controlled_character.cancel_attack()
-	controlled_character.stop_dash()
+	controlled_character.stop_abilities()
+
+func on_exit():
+	controlled_character.continue_abilities()
 
 func physics_process_state(delta : float) -> String:
 	controlled_character.velocity = Vector2.ZERO

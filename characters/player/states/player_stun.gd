@@ -1,8 +1,9 @@
 extends State
 
+@export var INVULNERABILITYTIMER = 2.0
+
 var stun_timer : float = 0.0
 var knockback_velocity : Vector2 = Vector2.ZERO
-@export var INVULNERABILITYTIMER = 2.0
 
 func initialize(character : Character):
 	if character is Player:
@@ -16,17 +17,17 @@ func _enter_tree() -> void:
 
 func on_enter() -> void:
 	controlled_character.hurt_box.make_invulnerable(INVULNERABILITYTIMER)
-	controlled_character.cancel_attack()
-	controlled_character.stop_dash()
+	controlled_character.stop_abilities()
 	
 	knockback_velocity = (controlled_character.last_hit_direction *
 						  controlled_character.last_hit.knockback_strength *
 						  controlled_character.stats.knockback_speed)
-						
+	
 	stun_timer = controlled_character.last_hit.stun_window
 
 func on_exit() -> void:
 	knockback_velocity = Vector2.ZERO
+	controlled_character.continue_abilities()
 
 func process_state(delta : float) -> String:
 	stun_timer -= delta

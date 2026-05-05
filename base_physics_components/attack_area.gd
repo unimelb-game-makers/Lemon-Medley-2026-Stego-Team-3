@@ -34,11 +34,9 @@ func activate(duration: float = 0.1) -> void:
 		set_active(false)
 		finished_attack.emit()
 
-
 func set_active(value: bool = true) -> void:
 	monitoring = value
 	visible = value
-
 
 ## WARNING: To be fixed for when top-down is implemented
 func flip(direction_x: float) -> void:

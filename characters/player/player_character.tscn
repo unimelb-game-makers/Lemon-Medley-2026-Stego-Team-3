@@ -7,14 +7,13 @@
 [ext_resource type="Texture2D" uid="uid://dopxl3s52sbpl" path="res://characters/player/MCSPRITE_FRONT.png" id="4_gnfn5"]
 [ext_resource type="Script" uid="uid://ddq8nkdp4gpaa" path="res://base_physics_components/damage_area.gd" id="4_lvh8y"]
 [ext_resource type="Script" uid="uid://chy0unnb43hw8" path="res://characters/player/states/player_walk.gd" id="5_y3qm2"]
-[ext_resource type="Script" uid="uid://0ly0nuwn74ib" path="res://characters/player/states/player_dash.gd" id="6_yabh2"]
 [ext_resource type="Script" uid="uid://dixaietdwmqgd" path="res://characters/player/states/player_idle.gd" id="7_nmpe6"]
-[ext_resource type="Script" uid="uid://djdkc8385ppec" path="res://characters/player/states/player_walk_attack.gd" id="8_yabh2"]
 [ext_resource type="Script" uid="uid://c3atp4e4h86rb" path="res://base_physics_components/attack_area.gd" id="9_lelq3"]
-[ext_resource type="Script" uid="uid://cq8amy1ed1fm" path="res://characters/player/states/player_idle_attack.gd" id="9_nmpe6"]
-[ext_resource type="Script" uid="uid://d1ph50dko3aj4" path="res://characters/player/states/player_dash_attack.gd" id="10_bblrc"]
 [ext_resource type="Script" uid="uid://m755ncu3yqha" path="res://characters/player/states/player_stun.gd" id="11_nmpe6"]
 [ext_resource type="Script" uid="uid://c0yx2l6bgusa0" path="res://characters/player/states/player_talking.gd" id="12_bblrc"]
+[ext_resource type="Script" uid="uid://u8nseulu3yoo" path="res://characters/player/ability_manager.gd" id="14_qdqua"]
+[ext_resource type="Script" uid="uid://mdqdv4s3cq5f" path="res://characters/player/abilities/dash.gd" id="19_scicj"]
+[ext_resource type="Script" uid="uid://bvan8anr6wkia" path="res://characters/player/abilities/melee.gd" id="20_br0vv"]
 
 [sub_resource type="Resource" id="Resource_o6xl0"]
 script = ExtResource("2_lvh8y")
@@ -29,27 +28,23 @@ metadata/_custom_type_script = "uid://c1gagfk36axyn"
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gnfn5"]
 size = Vector2(217, 324)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o5qli"]
-size = Vector2(59, 213)
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_lvh8y"]
 radius = 150.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o5qli"]
+size = Vector2(59, 213)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nmpe6"]
 radius = 350.0
 
-[node name="PlayerCharacter" type="CharacterBody2D" unique_id=1978286765 node_paths=PackedStringArray("debug_state_label", "debug_dash_label", "attack_area", "dash_cooldown_timer", "dash_timer", "state_machine", "hurt_box")]
+[node name="PlayerCharacter" type="CharacterBody2D" unique_id=1978286765 node_paths=PackedStringArray("debug_state_label", "debug_dash_label", "state_machine", "hurt_box")]
 scale = Vector2(0.3, 0.3)
 collision_mask = 17
 script = ExtResource("1_3kw6f")
 debug_state_label = NodePath("debug_state_label")
 debug_dash_label = NodePath("debug_dash_label")
-attack_area = NodePath("claymore_attack_area")
-ATTACKDURATION = 0.5
-dash_cooldown_timer = NodePath("timers/dash_cooldown")
-dash_timer = NodePath("timers/dash_timer")
 stats = SubResource("Resource_o6xl0")
-state_machine = NodePath("state_machine")
+state_machine = NodePath("statemachine")
 hurt_box = NodePath("damage_area")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1647469862]
@@ -66,38 +61,42 @@ offset = Vector2(-1460, 0)
 position = Vector2(1.5, -16)
 shape = SubResource("RectangleShape2D_gnfn5")
 
-[node name="state_machine" type="Node" parent="." unique_id=614204903]
+[node name="statemachine" type="Node" parent="." unique_id=614204903]
 script = ExtResource("4_dwfcf")
 
-[node name="walk_state" type="Node" parent="state_machine" unique_id=959702867]
+[node name="walk_state" type="Node" parent="statemachine" unique_id=959702867]
 script = ExtResource("5_y3qm2")
 
-[node name="dash_state" type="Node" parent="state_machine" unique_id=883570241]
-script = ExtResource("6_yabh2")
-
-[node name="idle_state" type="Node" parent="state_machine" unique_id=2047713969]
+[node name="idle_state" type="Node" parent="statemachine" unique_id=2047713969]
 script = ExtResource("7_nmpe6")
 
-[node name="walk_attack_state" type="Node" parent="state_machine" unique_id=747223124]
-script = ExtResource("8_yabh2")
-
-[node name="idle_attack_state" type="Node" parent="state_machine" unique_id=1148480970]
-script = ExtResource("9_nmpe6")
-
-[node name="dash_attack_state" type="Node" parent="state_machine" unique_id=2105511553]
-script = ExtResource("10_bblrc")
-
-[node name="stun_state" type="Node" parent="state_machine" unique_id=179513618]
-script = ExtResource("11_nmpe6")
-
-[node name="talk_state" type="Node" parent="state_machine" unique_id=1423834846]
+[node name="talk_state" type="Node" parent="statemachine" unique_id=1423834846]
 script = ExtResource("12_bblrc")
 
-[node name="damage_area" type="Area2D" parent="." unique_id=1136224295]
-script = ExtResource("4_lvh8y")
+[node name="stun_state" type="Node" parent="statemachine" unique_id=179513618]
+script = ExtResource("11_nmpe6")
 
-[node name="hurt_box" type="CollisionShape2D" parent="damage_area" unique_id=1971043748]
-shape = SubResource("RectangleShape2D_o5qli")
+[node name="ability_manager" type="Node" parent="." unique_id=2141213762 node_paths=PackedStringArray("player_statemachine")]
+script = ExtResource("14_qdqua")
+player_statemachine = NodePath("../statemachine")
+
+[node name="melee" type="Node" parent="ability_manager" unique_id=1290752711 node_paths=PackedStringArray("attack_area")]
+script = ExtResource("20_br0vv")
+attack_area = NodePath("../../claymore_attack_area")
+input = "Melee"
+
+[node name="dash" type="Node" parent="ability_manager" unique_id=811919256]
+script = ExtResource("19_scicj")
+input = "Dash"
+cooldown = 3.0
+
+[node name="cooldown_timer" type="Timer" parent="ability_manager/dash" unique_id=892717750]
+wait_time = 5.0
+one_shot = true
+
+[node name="dash_timer" type="Timer" parent="ability_manager/dash" unique_id=114230950]
+wait_time = 0.5
+one_shot = true
 
 [node name="claymore_attack_area" type="Area2D" parent="." unique_id=290821557]
 collision_layer = 4278190082
@@ -107,6 +106,12 @@ script = ExtResource("9_lelq3")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="claymore_attack_area" unique_id=631539804]
 position = Vector2(152, 0)
 shape = SubResource("CircleShape2D_lvh8y")
+
+[node name="damage_area" type="Area2D" parent="." unique_id=1136224295]
+script = ExtResource("4_lvh8y")
+
+[node name="hurt_box" type="CollisionShape2D" parent="damage_area" unique_id=1971043748]
+shape = SubResource("RectangleShape2D_o5qli")
 
 [node name="player_dialogue_area" type="Area2D" parent="." unique_id=1333761043]
 collision_layer = 4
@@ -131,13 +136,3 @@ offset_right = 19.0
 offset_bottom = -105.0
 text = "Text"
 metadata/_edit_use_anchors_ = true
-
-[node name="timers" type="Node" parent="." unique_id=1465195983]
-
-[node name="dash_timer" type="Timer" parent="timers" unique_id=114230950]
-wait_time = 0.5
-one_shot = true
-
-[node name="dash_cooldown" type="Timer" parent="timers" unique_id=892717750]
-wait_time = 5.0
-one_shot = true
