@@ -8,6 +8,8 @@ signal camera_shook( trauma : float )
 signal interact_pressed
 
 func _ready() -> void:
+	while not FmodManager.banks_loaded:
+		await get_tree().process_frame
 	add_player_instance()
 	await get_tree().create_timer(0.2).timeout
 	player_spawned = true
@@ -16,8 +18,12 @@ func _ready() -> void:
 func add_player_instance() -> void:
 	player = PLAYER.instantiate()
 	add_child( player )
+	player.tile_map = get_tree().get_first_node_in_group("tile_layer")
+
 
 func set_player_position( _new_pos : Vector2 ) -> void:
+	while player == null:
+		await get_tree().process_frame
 	player.global_position = _new_pos
 	pass
 

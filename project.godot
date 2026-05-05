@@ -8,6 +8,10 @@
 
 config_version=5
 
+[Fmod]
+
+General/banks_path="res://assets/banks"
+
 [animation]
 
 compatibility/default_parent_skeleton_in_mesh_instance_3d=true
@@ -25,6 +29,11 @@ LevelManager="*uid://d3fmr34okgu6d"
 PlayerManager="*uid://dnhe3w8ws1fth"
 SceneTransition="*uid://cgu22qyl3irkq"
 DialogueManager="*uid://dhcvf1nonpv3b"
+FmodManager="*uid://cds10pm7hwn3p"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/fmod/plugin.cfg")
 
 [debug]
 
