@@ -18,8 +18,6 @@ func _ready() -> void:
 func add_player_instance() -> void:
 	player = PLAYER.instantiate()
 	add_child( player )
-	player.tile_map = get_tree().get_first_node_in_group("tile_layer")
-
 
 func set_player_position( _new_pos : Vector2 ) -> void:
 	while player == null:

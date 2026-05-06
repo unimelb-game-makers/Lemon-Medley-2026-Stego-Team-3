@@ -31,13 +31,13 @@ SceneTransition="*uid://cgu22qyl3irkq"
 DialogueManager="*uid://dhcvf1nonpv3b"
 FmodManager="*uid://cds10pm7hwn3p"
 
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/fmod/plugin.cfg")
-
 [debug]
 
 gdscript/warnings/unused_parameter=0
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/fmod/plugin.cfg")
 
 [global_group]
 
