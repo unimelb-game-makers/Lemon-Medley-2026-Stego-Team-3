@@ -4,6 +4,8 @@ class_name Player extends Character
 @export var debug_dash_label : Label
 
 @onready var ability_manager: AbilityManager = $ability_manager
+@onready var audio_manager: PlayerAudioManager = $player_audio_manager
+@onready var dash_ability = $ability_manager/dash
 
 func _ready() -> void:
 	PlayerManager.player = self
@@ -11,6 +13,7 @@ func _ready() -> void:
 	hurt_box.damage_taken.connect(take_damage)
 	stats.reset()
 	ability_manager.set_controller(self)
+	audio_manager.set_controller(self)
 
 func _process(delta: float) -> void:
 	#debug_state_label.text = state_machine.active_state.state_name

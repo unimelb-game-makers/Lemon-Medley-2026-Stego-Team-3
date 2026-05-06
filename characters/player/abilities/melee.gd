@@ -22,6 +22,11 @@ func run():
 func attack():
 	print("Attacking")
 	attack_area.activate(ATTACKDURATION)
+	
+	var event = FmodServer.create_event_instance("event:/sword_swipe")
+	event.set_2d_attributes(controller.global_transform)
+	event.start()
+	event.release()
 
 func finish_attack():
 	activated = false

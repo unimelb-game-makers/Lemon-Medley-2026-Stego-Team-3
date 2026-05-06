@@ -1,0 +1,41 @@
+[gd_scene format=4 uid="uid://b41cs65exhyjr"]
+
+[ext_resource type="TileSet" uid="uid://56rgeaitgaww" path="res://temp_tileset.tres" id="1_dlbop"]
+[ext_resource type="Script" uid="uid://cvnbddtexm1l1" path="res://test_level_with_audio.gd" id="1_eibe5"]
+[ext_resource type="PackedScene" uid="uid://rx07o86j12k6" path="res://characters/dummy/dummy.tscn" id="2_eibe5"]
+[ext_resource type="PackedScene" uid="uid://yek2dtlgvysa" path="res://characters/npc/conversable_npc.tscn" id="3_mbc62"]
+[ext_resource type="PackedScene" uid="uid://dr4blo7ya448q" path="res://levels/player_spawn.tscn" id="4_sq15m"]
+
+[node name="TestLevel" type="Node2D" unique_id=1287366284]
+script = ExtResource("1_eibe5")
+
+[node name="Ground" type="TileMapLayer" parent="." unique_id=1026276373 groups=["tile_layer"]]
+z_index = -1
+scale = Vector2(8, 8)
+tile_map_data = PackedByteArray("AAD/////AQABAAIAAAD//wAAAQABAAIAAAAAAAAAAQABAAIAAAAAAP//AQABAAIAAAD//wEAAQABAAIAAAAAAAEAAQABAAIAAAABAAEAAQAFAAMAAAACAAEAAQAFAAMAAAADAAEAAQAFAAMAAAADAAAAAQAFAAMAAAADAP//AQAFAAMAAAACAP//AQAFAAMAAAABAP//AQAFAAMAAAABAAAAAQAFAAMAAAACAAAAAQAFAAMAAAAEAAEAAQAFAAMAAAAEAAAAAQAFAAMAAAAFAAAAAQAFAAMAAAAFAP//AQAFAAMAAAAFAP7/AQAFAAMAAAAEAP7/AQAFAAMAAAADAP7/AQAFAAMAAAACAP7/AQAFAAMAAAABAP7/AQAFAAMAAAAAAP7/AQABAAIAAAD///7/AQABAAIAAAD+//7/AQABAAIAAAD+////AQABAAIAAAD9////AQABAAIAAAD9/wAAAQABAAIAAAD9/wEAAQABAAIAAAD+/wEAAQABAAIAAAD+/wAAAQABAAIAAAD9//7/AQABAAIAAAD9//3/AQABAAIAAAD+//3/AQABAAIAAAD///3/AQABAAIAAAAAAP3/AQABAAIAAAABAP3/AQAFAAMAAAACAP3/AQAFAAMAAAADAP3/AQAFAAMAAAAEAP3/AQAFAAMAAAAFAP3/AQAFAAMAAAAEAP//AQAFAAMAAAAFAAEAAQAFAAMAAAAFAAIAAQAFAAMAAAAEAAIAAQAFAAMAAAADAAIAAQAFAAMAAAACAAIAAQAFAAMAAAABAAIAAQAFAAMAAAAAAAIAAQABAAIAAAD//wIAAQABAAIAAAD+/wIAAQABAAIAAAD9/wIAAQABAAIAAAA=")
+tile_set = ExtResource("1_dlbop")
+
+[node name="Walls" type="TileMapLayer" parent="." unique_id=245886041]
+z_index = -1
+scale = Vector2(8, 8)
+tile_map_data = PackedByteArray("AAD9//z/AQABAAEAAAD+//z/AQABAAEAAAD///z/AQABAAEAAAAAAPz/AQABAAEAAAABAPz/AQABAAEAAAACAPz/AQABAAEAAAADAPz/AQABAAEAAAAEAPz/AQABAAEAAAAFAPz/AQABAAEAAAD8//z/AQAAAAEAAAAGAPz/AQACAAEAAAAGAP3/AQACAAIAAAAGAP7/AQACAAIAAAAGAP//AQACAAIAAAAGAAAAAQACAAIAAAAGAAEAAQACAAIAAAAGAAIAAQACAAIAAAAGAAMAAQACAAMAAAAFAAMAAQABAAMAAAAEAAMAAQABAAMAAAADAAMAAQABAAMAAAACAAMAAQABAAMAAAABAAMAAQABAAMAAAAAAAMAAQABAAMAAAD//wMAAQABAAMAAAD+/wMAAQABAAMAAAD9/wMAAQABAAMAAAD8/wMAAQAAAAMAAAD8/wIAAQAAAAIAAAD8/wEAAQAAAAIAAAD8/wAAAQAAAAIAAAD8////AQAAAAIAAAD8//7/AQAAAAIAAAD8//3/AQAAAAIAAAA=")
+tile_set = ExtResource("1_dlbop")
+
+[node name="TestDummy" parent="." unique_id=844775230 instance=ExtResource("2_eibe5")]
+position = Vector2(444, 18)
+
+[node name="ConversableNPC" parent="." unique_id=242522269 instance=ExtResource("3_mbc62")]
+position = Vector2(259, -200)
+
+[node name="PlayerSpawn" parent="." unique_id=1130876726 instance=ExtResource("4_sq15m")]
+position = Vector2(-133, 143)
+
+[node name="LevelMusicEmitter" type="FmodEventEmitter2D" parent="." unique_id=1875701706]
+event_name = "event:/forest_level_theme"
+event_guid = "{8128d21d-d086-4707-8e6a-53acd8c0e054}"
+fmod_parameters/player_health/id = 3468414479418034112
+fmod_parameters/player_health = 1.0
+fmod_parameters/player_health/variant_type = 3
+fmod_parameters/combat_intensity/id = 8974812905943375529
+fmod_parameters/combat_intensity = 0.0
+fmod_parameters/combat_intensity/variant_type = 3
