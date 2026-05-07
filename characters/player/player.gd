@@ -9,6 +9,9 @@ class_name Player extends Character
 var attacking : bool = false
 var attack_buffered : bool = false
 
+## Animation related
+@onready var _animated_sprite = $AnimatedSprite2D
+
 # Dash related variables
 @export var dash_cooldown_timer : Timer
 @export var dash_timer : Timer
@@ -27,6 +30,9 @@ func _ready() -> void:
 	
 	hurt_box.damage_taken.connect(take_damage)
 	stats.reset()
+	
+	# Start in idle animation
+	_animated_sprite.play("default")
 
 func _process(delta: float) -> void:
 	debug_state_label.text = state_machine.active_state.state_name

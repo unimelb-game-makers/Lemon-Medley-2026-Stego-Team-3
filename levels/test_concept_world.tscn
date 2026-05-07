@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 [gd_scene format=4 uid="uid://bxeiqvg62wx73"]
 
 [ext_resource type="Texture2D" path="res://02_tiles/temp_art/istockphoto-1342412649-612x612.png" id="2_a4bke"]
@@ -14,6 +15,24 @@
 [ext_resource type="Texture2D" path="res://02_tiles/temp_art/WaddlingRock/pebblit_frame0006.png" id="11_6go5y"]
 [ext_resource type="Texture2D" path="res://02_tiles/temp_art/WaddlingRock/pebblit_frame0007.png" id="12_jmppq"]
 [ext_resource type="Texture2D" path="res://02_tiles/temp_art/WaddlingRock/pebblit_frame0008.png" id="13_8jkhd"]
+=======
+[gd_scene format=4 uid="uid://hcxg64kfctjl"]
+
+[ext_resource type="Texture2D" uid="uid://dvt0plqlb8i00" path="res://02_tiles/temp_art/istockphoto-1342412649-612x612.png" id="2_a4bke"]
+[ext_resource type="Texture2D" uid="uid://cyavv2idbrdss" path="res://02_tiles/temp_art/Bric.png" id="2_lgua0"]
+[ext_resource type="Texture2D" uid="uid://b3c4i58bq5n8q" path="res://02_tiles/temp_art/Splotch.png" id="3_vlks3"]
+[ext_resource type="Script" uid="uid://dsjxqtwkdb1d1" path="res://02_tiles/level_tile_map_layer.gd" id="4_otxwi"]
+[ext_resource type="Texture2D" uid="uid://dmdqg4eutyu8y" path="res://02_tiles/temp_art/WaddlingRock/pebblit_frame0000.png" id="5_eywkp"]
+[ext_resource type="Texture2D" uid="uid://dcf6syvgdtkpc" path="res://02_tiles/temp_art/spritesheet.png" id="5_h6a0f"]
+[ext_resource type="Texture2D" uid="uid://b2nrgbb4ecf3h" path="res://02_tiles/temp_art/WaddlingRock/pebblit_frame0001.png" id="6_bkmk5"]
+[ext_resource type="Texture2D" uid="uid://f0jp6wn7nqyk" path="res://02_tiles/temp_art/WaddlingRock/pebblit_frame0002.png" id="7_j6j7y"]
+[ext_resource type="Texture2D" uid="uid://blcndf725j1bn" path="res://02_tiles/temp_art/WaddlingRock/pebblit_frame0003.png" id="8_0kwl3"]
+[ext_resource type="Texture2D" uid="uid://dcp7hrb7xv27k" path="res://02_tiles/temp_art/WaddlingRock/pebblit_frame0004.png" id="9_fvj6q"]
+[ext_resource type="Texture2D" uid="uid://c20esf57smoag" path="res://02_tiles/temp_art/WaddlingRock/pebblit_frame0005.png" id="10_jr7co"]
+[ext_resource type="Texture2D" uid="uid://8nmeym2fpp1u" path="res://02_tiles/temp_art/WaddlingRock/pebblit_frame0006.png" id="11_6go5y"]
+[ext_resource type="Texture2D" uid="uid://cfilg8p4jyyov" path="res://02_tiles/temp_art/WaddlingRock/pebblit_frame0007.png" id="12_jmppq"]
+[ext_resource type="Texture2D" uid="uid://bxtiexjwbjj43" path="res://02_tiles/temp_art/WaddlingRock/pebblit_frame0008.png" id="13_8jkhd"]
+>>>>>>> Stashed changes
 [ext_resource type="Script" path="res://levels/01_test_levels/animated_sprite_2d.gd" id="14_bkmk5"]
 [ext_resource type="PackedScene" uid="uid://dr4blo7ya448q" path="res://levels/player_spawn.tscn" id="15_otxwi"]
 
@@ -544,7 +563,11 @@ script = ExtResource("14_bkmk5")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Rock Container" unique_id=2047829636]
 position = Vector2(289, -160)
 sprite_frames = SubResource("SpriteFrames_wn27o")
+<<<<<<< Updated upstream
 frame_progress = 0.5053553
+=======
+frame_progress = 0.318713
+>>>>>>> Stashed changes
 
 [node name="PlayerSpawn" parent="." unique_id=1130876726 instance=ExtResource("15_otxwi")]
 position = Vector2(-83, 2)
