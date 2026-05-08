@@ -1,4 +1,5 @@
 @abstract
+@icon("res://characters/00_general_assets/state.svg")
 class_name State
 extends Node
 
@@ -8,6 +9,11 @@ var state_machine : StateMachine
 
 func initialize(character : Character):
 	controlled_character = character
+
+## For the state to handle its setup of signals and other things if needed
+func setup() -> void:
+	pass
+
 
 ## Call when we expected one Character type but got another
 func assert_wrong_character(character : Character, expected):

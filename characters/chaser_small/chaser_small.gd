@@ -1,16 +1,12 @@
+@icon("res://characters/00_general_assets/enemy.svg")
 class_name ChaserSmall extends Character
 
 @export var chase_radius : EnrageArea
 @export var debug_state_label : Label
 
 func _ready() -> void:
-	if touch_damage_box:
-		touch_damage_box.set_active(true)
-		touch_damage_box.damage = Damage.new(stats.base_attack)
-
-	hurt_box.damage_taken.connect(take_damage)
+	super._ready()
 	stats.death.connect(die)
-	stats.reset()
 
 func _process(delta: float) -> void:
 	update_direction()

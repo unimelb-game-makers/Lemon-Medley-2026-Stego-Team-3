@@ -36,7 +36,6 @@ func update_direction() -> void:
 		last_direction = direction
 
 func take_damage(damage : Damage, attack_position : Vector2):
-	print("PLAYER TAKE DAMGE")
 	last_hit = damage
 	last_hit_direction = attack_position.direction_to(global_position)
 	stats.take_damage(damage.get_damage_value())

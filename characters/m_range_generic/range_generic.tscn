@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://0oxwaqqk4b1i"]
-
-[ext_resource type="Script" uid="uid://bd6do1ejuc268" path="res://characters/m_range_generic/range_generic.gd" id="1_7v5n0"]
-
-[node name="RangeGeneric" type="CharacterBody2D" unique_id=282997317]
-script = ExtResource("1_7v5n0")

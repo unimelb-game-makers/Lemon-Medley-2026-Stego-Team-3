@@ -39,6 +39,7 @@ radius = 350.0
 
 [node name="PlayerCharacter" type="CharacterBody2D" unique_id=1978286765 node_paths=PackedStringArray("debug_state_label", "debug_dash_label", "state_machine", "hurt_box")]
 scale = Vector2(0.3, 0.3)
+collision_layer = 8
 collision_mask = 17
 script = ExtResource("1_3kw6f")
 debug_state_label = NodePath("debug_state_label")
@@ -60,6 +61,7 @@ offset = Vector2(-1460, 0)
 [node name="shape" type="CollisionShape2D" parent="." unique_id=708662803]
 position = Vector2(1.5, -16)
 shape = SubResource("RectangleShape2D_gnfn5")
+debug_color = Color(0.4, 0.6039216, 0.20784314, 0.1764706)
 
 [node name="statemachine" type="Node" parent="." unique_id=614204903]
 script = ExtResource("4_dwfcf")
@@ -108,10 +110,12 @@ position = Vector2(152, 0)
 shape = SubResource("CircleShape2D_lvh8y")
 
 [node name="damage_area" type="Area2D" parent="." unique_id=1136224295]
+collision_mask = 0
 script = ExtResource("4_lvh8y")
 
 [node name="hurt_box" type="CollisionShape2D" parent="damage_area" unique_id=1971043748]
 shape = SubResource("RectangleShape2D_o5qli")
+debug_color = Color(0.7661011, 0.4438372, 0.1749435, 0.41960785)
 
 [node name="player_dialogue_area" type="Area2D" parent="." unique_id=1333761043]
 collision_layer = 4
@@ -119,6 +123,7 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_dialogue_area" unique_id=378642367]
 shape = SubResource("CircleShape2D_nmpe6")
+debug_color = Color(3.970787e-07, 0.23839179, 0.2826319, 0.12156863)
 metadata/_edit_lock_ = true
 
 [node name="debug_state_label" type="Label" parent="." unique_id=2016844207]

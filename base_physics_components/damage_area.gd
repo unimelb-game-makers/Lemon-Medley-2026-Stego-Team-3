@@ -10,6 +10,7 @@ signal damage_taken(damage : Damage, position : Vector2)
 @export var audio: AudioStream # NOTE: This is following tutorial, we can implement differently.
 
 func take_damage(damage_took : Damage, damage_position : Vector2) -> void:
+	#print("[DamageArea] Take Damage")
 	damage_taken.emit(damage_took, damage_position)
 	# TODO Play audio through singleton.
 
