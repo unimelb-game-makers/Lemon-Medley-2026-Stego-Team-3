@@ -5,8 +5,11 @@ class_name Damage extends Resource
 @export var stun_window : float = 0.5
 @export var knockback_strength : float = 1.0
 
-func _init(damage: int, multiplier : float = 1.0, stun_window : float = 0.5, knockback_strength : float = 1.0):
-	self.multiplier = multiplier
-	self.damage = damage
-	self.stun_window = stun_window
-	self.knockback_strength = knockback_strength
+func _init(init_damage: int, init_multiplier : float = 1.0, init_stun_window : float = 0.5, init_knockback_strength : float = 1.0):
+	self.multiplier = init_multiplier
+	self.damage = init_damage
+	self.stun_window = init_stun_window
+	self.knockback_strength = init_knockback_strength
+
+func get_damage_value() -> int:
+	return int(floor(damage * multiplier))

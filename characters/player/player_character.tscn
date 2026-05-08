@@ -11,7 +11,7 @@
 [ext_resource type="Script" uid="uid://c3atp4e4h86rb" path="res://base_physics_components/attack_area.gd" id="9_lelq3"]
 [ext_resource type="Script" uid="uid://m755ncu3yqha" path="res://characters/player/states/player_stun.gd" id="11_nmpe6"]
 [ext_resource type="Script" uid="uid://c0yx2l6bgusa0" path="res://characters/player/states/player_talking.gd" id="12_bblrc"]
-[ext_resource type="Script" path="res://characters/player/ability_manager.gd" id="14_qdqua"]
+[ext_resource type="Script" uid="uid://u8nseulu3yoo" path="res://characters/player/ability_manager.gd" id="14_qdqua"]
 [ext_resource type="Script" uid="uid://bbcf8d7cavo6f" path="res://characters/player/player_audio_manager.gd" id="15_gnfn5"]
 [ext_resource type="Script" uid="uid://mdqdv4s3cq5f" path="res://characters/player/abilities/dash.gd" id="19_scicj"]
 [ext_resource type="Script" uid="uid://bvan8anr6wkia" path="res://characters/player/abilities/melee.gd" id="20_br0vv"]
@@ -22,7 +22,6 @@ base_health = 10
 base_defense = 2
 base_attack = 10
 base_speed = 300
-speed = 300
 knockback_speed = 600.0
 metadata/_custom_type_script = "uid://c1gagfk36axyn"
 
@@ -100,7 +99,7 @@ wait_time = 0.5
 one_shot = true
 
 [node name="claymore_attack_area" type="Area2D" parent="." unique_id=290821557]
-collision_layer = 4278190082
+collision_layer = 4278190080
 collision_mask = 4278190082
 script = ExtResource("9_lelq3")
 

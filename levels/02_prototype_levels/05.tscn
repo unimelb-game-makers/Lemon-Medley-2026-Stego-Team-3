@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dr4blo7ya448q" path="res://levels/player_spawn.tscn" id="3_arvmo"]
 [ext_resource type="PackedScene" uid="uid://yek2dtlgvysa" path="res://characters/npc/conversable_npc.tscn" id="4_l3q8i"]
 [ext_resource type="PackedScene" uid="uid://vlpiuopcomwi" path="res://levels/level_transition.tscn" id="5_to4wo"]
+[ext_resource type="PackedScene" uid="uid://cnkg66hk5nciw" path="res://characters/chaser_small/chaser_small.tscn" id="6_5584w"]
 
 [node name="PrototypeLevel" type="Node2D" unique_id=1287366284]
 
@@ -43,3 +44,6 @@ position = Vector2(1539, 392)
 level = "uid://ceesima423p7y"
 size = 8
 side = 1
+
+[node name="ChaserSmall" parent="." unique_id=1878560309 instance=ExtResource("6_5584w")]
+position = Vector2(976, 680)

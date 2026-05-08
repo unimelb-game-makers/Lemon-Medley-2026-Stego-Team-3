@@ -9,7 +9,6 @@ class_name Player extends Character
 
 func _ready() -> void:
 	PlayerManager.player = self
-	hurt_box.stats = stats
 	hurt_box.damage_taken.connect(take_damage)
 	stats.reset()
 	ability_manager.set_controller(self)
@@ -37,9 +36,10 @@ func update_direction() -> void:
 		last_direction = direction
 
 func take_damage(damage : Damage, attack_position : Vector2):
+	print("PLAYER TAKE DAMGE")
 	last_hit = damage
 	last_hit_direction = attack_position.direction_to(global_position)
-	
+	stats.take_damage(damage.get_damage_value())
 	# For player specifically, we just immediately transition to Stun on getting hit
 	# For other enemies, we might want them to only stun from certain states, which is
 	# when we decide to fully implement the state transitions. For now this is fine.

@@ -4,12 +4,10 @@ class_name ChaserSmall extends Character
 @export var debug_state_label : Label
 
 func _ready() -> void:
-	hurt_box.stats = stats
-	
 	if touch_damage_box:
 		touch_damage_box.set_active(true)
-		touch_damage_box.damage = Damage.new(stats.attack)
-	
+		touch_damage_box.damage = Damage.new(stats.base_attack)
+
 	hurt_box.damage_taken.connect(take_damage)
 	stats.death.connect(die)
 	stats.reset()
@@ -41,4 +39,5 @@ func die() -> void:
 	queue_free()
 
 func take_damage(damage : Damage, attack_position : Vector2):
+	stats.take_damage(damage.get_damage_value())
 	return

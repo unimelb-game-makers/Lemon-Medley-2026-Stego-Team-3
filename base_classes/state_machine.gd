@@ -6,11 +6,11 @@ var active_state : State
 
 func _ready() -> void:
 	for child in get_children():
-		print(child.name)
+		#print(child.name)
 		if child is State:
 			child.initialize(get_parent())
 			
-			print(child.state_name)
+			#print(child.state_name)
 			state_dict[child.state_name] = child
 	
 	if state_dict.has("idle"):

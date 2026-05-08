@@ -5,14 +5,20 @@ extends Resource
 @export var base_attack : int
 @export var base_speed : int
 
-@export var health : int
-@export var defense : int
-@export var attack : int
-@export var speed : int
+var health : int
+var defense : int
+var attack : int
+var speed : int
 
 @export var knockback_speed : float
 
 signal death()
+
+func _init() -> void:
+	health = base_health
+	defense = base_defense
+	attack = base_attack
+	speed = base_speed
 
 ## Reset all stats back to default values
 func reset() -> void:
