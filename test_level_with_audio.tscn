@@ -1,7 +1,7 @@
-[gd_scene format=4 uid="uid://b41cs65exhyjr"]
+[gd_scene format=4 uid="uid://bartcfmgfeapf"]
 
 [ext_resource type="TileSet" uid="uid://56rgeaitgaww" path="res://temp_tileset.tres" id="1_dlbop"]
-[ext_resource type="Script" uid="uid://cvnbddtexm1l1" path="res://test_level_with_audio.gd" id="1_eibe5"]
+[ext_resource type="Script" path="res://test_level_with_audio.gd" id="1_eibe5"]
 [ext_resource type="PackedScene" uid="uid://rx07o86j12k6" path="res://characters/dummy/dummy.tscn" id="2_eibe5"]
 [ext_resource type="PackedScene" uid="uid://yek2dtlgvysa" path="res://characters/npc/conversable_npc.tscn" id="3_mbc62"]
 [ext_resource type="PackedScene" uid="uid://dr4blo7ya448q" path="res://levels/player_spawn.tscn" id="4_sq15m"]

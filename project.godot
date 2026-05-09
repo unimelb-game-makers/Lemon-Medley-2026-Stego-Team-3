@@ -23,6 +23,10 @@ run/main_scene="uid://b8k2fbi78btib"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://ddvp3ee1ya0qb"
+
 [autoload]
 
 LevelManager="*uid://d3fmr34okgu6d"
@@ -90,7 +94,10 @@ test={
 
 [layer_names]
 
-2d_physics/layer_1="Player"
+2d_physics/layer_1="PlayerHurtBox"
+2d_physics/layer_2="Enemy"
+2d_physics/layer_3="PlayerDialogue"
+2d_physics/layer_4="PlayerVisibility"
 2d_physics/layer_5="Walls"
 
 [rendering]

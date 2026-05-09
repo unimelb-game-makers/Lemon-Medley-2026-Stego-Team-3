@@ -7,18 +7,12 @@ can be on different layers
 
 signal damage_taken(damage : Damage, position : Vector2)
 
-@export var stats : StatSheet
-
 @export var audio: AudioStream # NOTE: This is following tutorial, we can implement differently.
 
-func take_damage(damage : Damage, position : Vector2) -> void:
-	print("Health Before Attack: %s" % stats.health)
-	damage_taken.emit(damage, position)
+func take_damage(damage_took : Damage, damage_position : Vector2) -> void:
+	#print("[DamageArea] Take Damage")
+	damage_taken.emit(damage_took, damage_position)
 	# TODO Play audio through singleton.
-	
-	# Update stats to take damage
-	stats.take_damage(damage.damage * damage.multiplier)
-	print("Health After Attack: %s" % stats.health)
 
 func make_invulnerable(duration: float = 1.0) -> void:
 	process_mode = Node.PROCESS_MODE_DISABLED
