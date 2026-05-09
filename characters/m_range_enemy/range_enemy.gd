@@ -11,6 +11,7 @@ extends Character
 func _ready() -> void:
 	super._ready()
 	setup_projectile_emitter()
+	stats.death.connect(_on_death)
 
 func _process(delta: float) -> void:
 	state_machine.process_state(delta)
@@ -58,9 +59,11 @@ func update_direction() -> void:
 #region Damage
 
 func take_damage(damage: Damage, attack_position: Vector2) -> void:
-	return
+	stats.take_damage(damage.get_damage_value())
+	print("Life: ",stats.health)
 
 func _on_death() -> void:
-	pass
+	queue_free()
+	print("range enemy dead")
 
 #endregion

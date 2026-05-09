@@ -123,7 +123,7 @@ projectile_emitter = NodePath("../../ProjectileEmitter")
 
 [node name="VisionArea" type="Area2D" parent="." unique_id=567746832]
 collision_layer = 0
-collision_mask = 8
+collision_mask = 9
 script = ExtResource("8_1751t")
 metadata/_custom_type_script = "uid://bi0vhn1beo38r"
 
