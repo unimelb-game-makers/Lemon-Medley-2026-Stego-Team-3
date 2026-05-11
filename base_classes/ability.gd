@@ -14,5 +14,6 @@ var activated: bool = false ## Set true in activate() function, and set false wh
 
 ## Activate the ability -> One shot
 @abstract func activate()
+
 ## Run the ability -> Continuous after activation
 @abstract func run()

@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bbu7t7v4emrna"]
+
+[ext_resource type="Script" uid="uid://rdirb0n8rbyv" path="res://characters/player/abilities/drain_radius.gd" id="1_wus6i"]
+
+[node name="drain_radius" type="Node" unique_id=156676281]
+script = ExtResource("1_wus6i")
+key = 49
+cooldown = 10.0
+
+[node name="cooldown_timer" type="Timer" parent="." unique_id=68663907]
+one_shot = true
