@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://m755ncu3yqha" path="res://characters/player/states/player_stun.gd" id="11_nmpe6"]
 [ext_resource type="Script" uid="uid://c0yx2l6bgusa0" path="res://characters/player/states/player_talking.gd" id="12_bblrc"]
 [ext_resource type="Script" uid="uid://u8nseulu3yoo" path="res://characters/player/ability_manager.gd" id="14_qdqua"]
+[ext_resource type="PackedScene" uid="uid://bbu7t7v4emrna" path="res://characters/player/abilities/drain_radius.tscn" id="14_yrhyy"]
 [ext_resource type="Script" uid="uid://bbcf8d7cavo6f" path="res://characters/player/player_audio_manager.gd" id="15_gnfn5"]
 [ext_resource type="Script" uid="uid://mdqdv4s3cq5f" path="res://characters/player/abilities/dash.gd" id="19_scicj"]
 [ext_resource type="Script" uid="uid://bvan8anr6wkia" path="res://characters/player/abilities/melee.gd" id="20_br0vv"]
@@ -95,7 +96,7 @@ script = ExtResource("9_lelq3")
 position = Vector2(152, 0)
 shape = SubResource("CircleShape2D_lvh8y")
 
-[node name="dash" type="Node" parent="ability_manager" unique_id=811919256]
+[node name="dash" type="Node2D" parent="ability_manager" unique_id=286998789]
 script = ExtResource("19_scicj")
 input = "Dash"
 cooldown = 1.5
@@ -107,6 +108,8 @@ one_shot = true
 [node name="dash_timer" type="Timer" parent="ability_manager/dash" unique_id=114230950]
 wait_time = 0.5
 one_shot = true
+
+[node name="drain_radius" parent="ability_manager" unique_id=55580869 instance=ExtResource("14_yrhyy")]
 
 [node name="damage_area" type="Area2D" parent="." unique_id=1136224295]
 collision_mask = 0
