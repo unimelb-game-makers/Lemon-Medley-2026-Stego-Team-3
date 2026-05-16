@@ -1,11 +1,13 @@
 [gd_scene format=4 uid="uid://ceesima423p7y"]
 
+[ext_resource type="Script" uid="uid://d2eyblbal755o" path="res://levels/00_scripts/level.gd" id="1_61y6s"]
 [ext_resource type="TileSet" uid="uid://56rgeaitgaww" path="res://temp_tileset.tres" id="1_n6jco"]
 [ext_resource type="Script" uid="uid://dsjxqtwkdb1d1" path="res://02_tiles/level_tile_map_layer.gd" id="2_61y6s"]
 [ext_resource type="PackedScene" uid="uid://vlpiuopcomwi" path="res://levels/level_transition.tscn" id="3_8ue0g"]
 [ext_resource type="PackedScene" uid="uid://cnkg66hk5nciw" path="res://characters/chaser_small/chaser_small.tscn" id="4_l6fdm"]
 
 [node name="06" type="Node2D" unique_id=337220154]
+script = ExtResource("1_61y6s")
 
 [node name="LevelTileMapLayer" type="TileMapLayer" parent="." unique_id=1667089874 node_paths=PackedStringArray("walls")]
 z_index = -1
@@ -25,6 +27,7 @@ tile_set = ExtResource("1_n6jco")
 [node name="LevelTransition" parent="." unique_id=1931505785 instance=ExtResource("3_8ue0g")]
 position = Vector2(-256, 384)
 level = "uid://b8k2fbi78btib"
+one_way = false
 size = 8
 
 [node name="ChaserSmall" parent="." unique_id=1878560309 instance=ExtResource("4_l6fdm")]

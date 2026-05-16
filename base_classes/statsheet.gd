@@ -7,13 +7,25 @@ extends Resource
 @export var base_speed: int
 @export var knockback_speed: float
 
-var health: int
-var defense: int
-var attack: int
-var speed: int
+@export var health: int
+@export var defense: int
+@export var attack: int
+@export var speed: int
 
 signal death()
 
+
+func load(_statsheet : StatSheet) -> void:
+	base_health = _statsheet.base_health
+	base_defense = _statsheet.base_defense
+	base_attack = _statsheet.base_attack
+	base_speed = _statsheet.base_speed
+	knockback_speed = _statsheet.knockback_speed
+	
+	health = _statsheet.health
+	defense = _statsheet.defense
+	attack = _statsheet.attack
+	speed = _statsheet.speed
 
 ## Reset all runtime stats back to their base values.
 func reset() -> void:
