@@ -21,7 +21,7 @@ func ability_process(delta: float) -> void:
 		return
 	for ability: Ability in abilities:
 		# if the ability is not activated and the player presses a key for the ability
-		if not ability.activated and (Input.is_key_pressed(ability.key) or Input.is_action_pressed(ability.input)):
+		if not ability.activated and (Input.is_key_pressed(ability.key) or (ability.input != "" and Input.is_action_pressed(ability.input))):
 			ability.activate()
 		# if ability is activated, run the ability each frame
 		elif ability.activated:

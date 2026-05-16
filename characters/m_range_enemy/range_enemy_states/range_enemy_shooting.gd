@@ -20,7 +20,7 @@ func setup() -> void:
 	if detection_area:
 		detection_area.player_entered.connect(_on_player_enter)
 		detection_area.player_exited.connect(_on_player_exit)
-
+	
 	shoot_timer = Timer.new()
 	shoot_timer.one_shot = false
 	shoot_timer.wait_time = shoot_cooldown
