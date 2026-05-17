@@ -29,6 +29,7 @@ position = Vector2(561, 465)
 [node name="LevelTransition" parent="." unique_id=1072105267 instance=ExtResource("5_v4amk")]
 position = Vector2(1539, 392)
 level = "uid://ceesima423p7y"
+one_way = false
 size = 8
 side = 1
 

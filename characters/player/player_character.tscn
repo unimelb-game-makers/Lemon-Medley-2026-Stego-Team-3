@@ -89,7 +89,7 @@ input = "Melee"
 
 [node name="claymore_attack_area" type="Area2D" parent="ability_manager/melee" unique_id=290821557]
 collision_layer = 4278190080
-collision_mask = 4278190082
+collision_mask = 4278190114
 script = ExtResource("9_lelq3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ability_manager/melee/claymore_attack_area" unique_id=631539804]

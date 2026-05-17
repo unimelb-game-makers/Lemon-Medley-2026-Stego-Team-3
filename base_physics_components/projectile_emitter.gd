@@ -1,5 +1,5 @@
 class_name ProjectileEmitter
-extends Node
+extends Node2D
 
 @export var projectile_scene: PackedScene
 @export var projectile_holder: Node
@@ -22,4 +22,9 @@ func shoot(direction: Vector2) -> void:
 		push_error("ProjectileEmitter has no Damage assigned.")
 		bullet.damage = null
 
-	projectile_holder.add_child(bullet)
+	if projectile_holder:
+		projectile_holder.add_child(bullet)
+	else:
+		get_tree().current_scene.add_child(bullet)
+
+	bullet.global_position = global_position

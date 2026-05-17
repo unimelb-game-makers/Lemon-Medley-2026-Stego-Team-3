@@ -16,7 +16,7 @@ script = ExtResource("2_u7c71")
 base_health = 20
 base_defense = 2
 base_attack = 5
-base_speed = 10
+base_speed = 100
 metadata/_custom_type_script = "uid://c1gagfk36axyn"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tis73"]
@@ -76,11 +76,9 @@ horizontal_alignment = 1
 shape = SubResource("RectangleShape2D_tis73")
 debug_color = Color(0, 0.6488342, 0.17783692, 0.41960785)
 
-[node name="ProjectileEmitter" type="Node" parent="." unique_id=1017971465 node_paths=PackedStringArray("projectile_holder")]
+[node name="ProjectileEmitter" type="Node2D" parent="." unique_id=338638239]
 script = ExtResource("3_280m2")
 projectile_scene = ExtResource("4_mq453")
-projectile_holder = NodePath("..")
-metadata/_custom_type_script = "uid://fmtas1ns83no"
 
 [node name="RangeGenericSprite" type="Sprite2D" parent="." unique_id=848765339]
 texture = SubResource("GradientTexture2D_n0k81")
@@ -120,6 +118,8 @@ script = ExtResource("7_j82x6")
 detection_area = NodePath("../../VisionArea")
 target_escaped_state = NodePath("../IdleState")
 projectile_emitter = NodePath("../../ProjectileEmitter")
+kite_variance = 1.5
+direction_change_rate = 0.5
 
 [node name="VisionArea" type="Area2D" parent="." unique_id=567746832]
 collision_layer = 0

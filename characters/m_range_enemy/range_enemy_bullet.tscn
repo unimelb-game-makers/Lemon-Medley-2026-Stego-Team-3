@@ -18,7 +18,7 @@ size = Vector2(64, 16)
 
 [node name="RangeEnemyBullet" type="Node2D" unique_id=1341823178 node_paths=PackedStringArray("attack_area")]
 script = ExtResource("1_4avxh")
-speed = 100.0
+speed = 400.0
 attack_area = NodePath("HurtBox")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=27326769]
