@@ -8,6 +8,7 @@ enum SIDE { LEFT, RIGHT, TOP, BOTTOM }
 @export_file( "*.tscn" ) var level
 @export var target_transition_area : String = "LevelTransition"
 @export var center_player : bool = false
+@export var one_way : bool = false
 
 @export_category("Collision Area Settings")
 
@@ -55,8 +56,8 @@ func _ready() -> void:
 
 
 func _player_entered( _p : Node2D ) -> void:
-	LevelManager.load_new_level( level, target_transition_area, get_offset() )
-	pass
+	if !one_way:
+		LevelManager.load_new_level( level, target_transition_area, get_offset() )
 
 
 func _place_player() -> void:
