@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bx270kyoio6tf"]
 
-[ext_resource type="Script" uid="uid://dhqng5yviwvn1" path="res://base_classes/curse_pickup.gd" id="1_6ceka"]
+[ext_resource type="Script" uid="uid://dhqng5yviwvn1" path="res://base_classes/ability_pickup.gd" id="1_6ceka"]
 [ext_resource type="PackedScene" uid="uid://cgm7oaei5bg0c" path="res://characters/player/abilities/dash.tscn" id="2_cw26w"]
 [ext_resource type="Shader" uid="uid://d0r2mr6imx6mb" path="res://shaders/star_shine.gdshader" id="3_08a6e"]
 [ext_resource type="Texture2D" uid="uid://donpcah03ehix" path="res://characters/00_general_assets/loot_drop.svg" id="3_311cp"]
@@ -19,14 +19,12 @@ shader_parameter/shadow_mult = 1.6
 shader_parameter/frequency = 0.7350000349125
 shader_parameter/transparency = 0.0
 
-[node name="dash_pickup" type="Node2D" unique_id=276436123]
+[node name="dash_pickup" type="Area2D" unique_id=1873902903]
 script = ExtResource("1_6ceka")
 ability_scene = ExtResource("2_cw26w")
 ability_text = "Shift to Dash"
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1931551679]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=108081795]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=108081795]
 shape = SubResource("CircleShape2D_08a6e")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=784962932]

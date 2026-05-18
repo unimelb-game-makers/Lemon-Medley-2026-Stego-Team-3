@@ -26,3 +26,12 @@ func ability_process(delta: float) -> void:
 		# if ability is activated, run the ability each frame
 		elif ability.activated:
 			ability.run()
+
+## From ability detector
+func add_ability(ability: Ability):
+	add_child(ability)
+	if ability in abilities: # if we already have the ability
+		ability.queue_free()
+	else:
+		abilities.append(ability)
+		ability.position = Vector2.ZERO
