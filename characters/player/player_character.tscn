@@ -48,6 +48,8 @@ hurt_box = NodePath("damage_area")
 zoom = Vector2(0.5, 0.5)
 script = ExtResource("3_gnfn5")
 
+[node name="PlayerUI" type="CanvasLayer" parent="." unique_id=1428886957]
+
 [node name="icon" type="Sprite2D" parent="." unique_id=920935392]
 modulate = Color(0.627451, 1, 0, 1)
 scale = Vector2(0.1, 0.1)

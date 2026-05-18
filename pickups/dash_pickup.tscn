@@ -22,7 +22,6 @@ shader_parameter/transparency = 0.0
 [node name="dash_pickup" type="Area2D" unique_id=1873902903]
 script = ExtResource("1_6ceka")
 ability_scene = ExtResource("2_cw26w")
-ability_text = "Shift to Dash"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=108081795]
 shape = SubResource("CircleShape2D_08a6e")
