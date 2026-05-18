@@ -1,14 +1,15 @@
 [gd_scene format=4 uid="uid://b8k2fbi78btib"]
 
 [ext_resource type="TileSet" uid="uid://56rgeaitgaww" path="res://temp_tileset.tres" id="1_l3q8i"]
+[ext_resource type="Script" uid="uid://d2eyblbal755o" path="res://levels/00_scripts/level.gd" id="1_um76v"]
 [ext_resource type="Script" uid="uid://dsjxqtwkdb1d1" path="res://02_tiles/level_tile_map_layer.gd" id="2_to4wo"]
-[ext_resource type="PackedScene" uid="uid://dr4blo7ya448q" path="res://levels/player_spawn.tscn" id="3_arvmo"]
 [ext_resource type="PackedScene" uid="uid://yek2dtlgvysa" path="res://characters/npc/conversable_npc.tscn" id="4_l3q8i"]
 [ext_resource type="PackedScene" uid="uid://vlpiuopcomwi" path="res://levels/level_transition.tscn" id="5_to4wo"]
 [ext_resource type="PackedScene" uid="uid://cnkg66hk5nciw" path="res://characters/chaser_small/chaser_small.tscn" id="6_5584w"]
 [ext_resource type="PackedScene" uid="uid://okl6wlx1osma" path="res://pickups/drain_radius_pickup.tscn" id="7_um76v"]
 
 [node name="PrototypeLevel" type="Node2D" unique_id=1287366284]
+script = ExtResource("1_um76v")
 
 [node name="LevelTileMapLayer" type="TileMapLayer" parent="." unique_id=985130433 node_paths=PackedStringArray("walls")]
 z_index = -1
@@ -25,9 +26,6 @@ z_as_relative = false
 tile_map_data = PackedByteArray("AAD9//7/AQAAAAIAAAD9////AQAAAAIAAAD9/wAAAQAAAAIAAAD9/wEAAQAAAAIAAAD9/wIAAQAAAAIAAAD9/wMAAQAAAAIAAAD9/wQAAQAAAAIAAAD9/wUAAQAAAAIAAAD9/wYAAQAAAAIAAAD9/wcAAQAAAAIAAAD9/wgAAQAAAAIAAAD9/wkAAQAAAAIAAAD9/woAAQAAAAIAAAAMAP7/AQACAAIAAAAMAP//AQACAAIAAAAMAAAAAQACAAIAAAAMAAEAAQACAAIAAAAMAAQAAQACAAIAAAAMAAUAAQACAAIAAAAMAAYAAQACAAIAAAAMAAcAAQACAAIAAAAMAAgAAQACAAIAAAAMAAkAAQACAAIAAAAMAAoAAQACAAIAAAD+/wsAAQABAAMAAAD//wsAAQABAAMAAAAAAAsAAQABAAMAAAABAAsAAQABAAMAAAACAAsAAQABAAMAAAADAAsAAQABAAMAAAAEAAsAAQABAAMAAAAFAAsAAQABAAMAAAAGAAsAAQABAAMAAAAHAAsAAQABAAMAAAAIAAsAAQABAAMAAAAJAAsAAQABAAMAAAAKAAsAAQABAAMAAAALAAsAAQABAAMAAAD+//3/AQABAAEAAAD///3/AQABAAEAAAAAAP3/AQABAAEAAAABAP3/AQABAAEAAAACAP3/AQABAAEAAAADAP3/AQABAAEAAAAEAP3/AQABAAEAAAAFAP3/AQABAAEAAAAGAP3/AQABAAEAAAAHAP3/AQABAAEAAAAIAP3/AQABAAEAAAAJAP3/AQABAAEAAAAKAP3/AQABAAEAAAALAP3/AQABAAEAAAD9//3/AQAAAAEAAAAMAP3/AQACAAEAAAAMAAsAAQACAAMAAAD9/wsAAQAAAAMAAAA=")
 tile_set = ExtResource("1_l3q8i")
 
-[node name="PlayerSpawn" parent="." unique_id=1130876726 instance=ExtResource("3_arvmo")]
-position = Vector2(561, 465)
-
 [node name="Label" type="Label" parent="." unique_id=1214497607]
 offset_left = 4.0
 offset_top = -219.0
@@ -43,6 +41,7 @@ position = Vector2(568, 29)
 [node name="LevelTransition" parent="." unique_id=1072105267 instance=ExtResource("5_to4wo")]
 position = Vector2(1539, 392)
 level = "uid://ceesima423p7y"
+one_way = false
 size = 8
 side = 1
 
