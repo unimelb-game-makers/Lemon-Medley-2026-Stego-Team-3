@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://sikff7uadwk5"]
+
+[ext_resource type="Script" uid="uid://bvan8anr6wkia" path="res://characters/player/abilities/melee.gd" id="1_ufj4h"]
+[ext_resource type="Script" uid="uid://c3atp4e4h86rb" path="res://base_physics_components/attack_area.gd" id="2_wi7i5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lvh8y"]
+radius = 150.0
+
+[node name="melee" type="Node2D" unique_id=1855612360 node_paths=PackedStringArray("attack_area")]
+script = ExtResource("1_ufj4h")
+attack_area = NodePath("claymore_attack_area")
+input = "Melee"
+
+[node name="claymore_attack_area" type="Area2D" parent="." unique_id=2026954148]
+collision_layer = 4278190080
+collision_mask = 4278190082
+script = ExtResource("2_wi7i5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="claymore_attack_area" unique_id=463584290]
+position = Vector2(152, 0)
+shape = SubResource("CircleShape2D_lvh8y")

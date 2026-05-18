@@ -8,14 +8,13 @@
 [ext_resource type="Script" uid="uid://ddq8nkdp4gpaa" path="res://base_physics_components/damage_area.gd" id="4_lvh8y"]
 [ext_resource type="Script" uid="uid://chy0unnb43hw8" path="res://characters/player/states/player_walk.gd" id="5_y3qm2"]
 [ext_resource type="Script" uid="uid://dixaietdwmqgd" path="res://characters/player/states/player_idle.gd" id="7_nmpe6"]
-[ext_resource type="Script" uid="uid://c3atp4e4h86rb" path="res://base_physics_components/attack_area.gd" id="9_lelq3"]
+[ext_resource type="PackedScene" uid="uid://sikff7uadwk5" path="res://characters/player/abilities/melee.tscn" id="11_gnfn5"]
 [ext_resource type="Script" uid="uid://m755ncu3yqha" path="res://characters/player/states/player_stun.gd" id="11_nmpe6"]
 [ext_resource type="Script" uid="uid://c0yx2l6bgusa0" path="res://characters/player/states/player_talking.gd" id="12_bblrc"]
+[ext_resource type="PackedScene" uid="uid://cgm7oaei5bg0c" path="res://characters/player/abilities/dash.tscn" id="13_qdqua"]
 [ext_resource type="Script" uid="uid://u8nseulu3yoo" path="res://characters/player/ability_manager.gd" id="14_qdqua"]
 [ext_resource type="PackedScene" uid="uid://bbu7t7v4emrna" path="res://characters/player/abilities/drain_radius.tscn" id="14_yrhyy"]
 [ext_resource type="Script" uid="uid://bbcf8d7cavo6f" path="res://characters/player/player_audio_manager.gd" id="15_gnfn5"]
-[ext_resource type="Script" uid="uid://mdqdv4s3cq5f" path="res://characters/player/abilities/dash.gd" id="19_scicj"]
-[ext_resource type="Script" uid="uid://bvan8anr6wkia" path="res://characters/player/abilities/melee.gd" id="20_br0vv"]
 
 [sub_resource type="Resource" id="Resource_o6xl0"]
 script = ExtResource("2_lvh8y")
@@ -28,9 +27,6 @@ metadata/_custom_type_script = "uid://c1gagfk36axyn"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gnfn5"]
 size = Vector2(217, 324)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_lvh8y"]
-radius = 150.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o5qli"]
 size = Vector2(59, 213)
@@ -82,32 +78,9 @@ script = ExtResource("11_nmpe6")
 script = ExtResource("14_qdqua")
 player_statemachine = NodePath("../statemachine")
 
-[node name="melee" type="Node2D" parent="ability_manager" unique_id=386084306 node_paths=PackedStringArray("attack_area")]
-script = ExtResource("20_br0vv")
-attack_area = NodePath("claymore_attack_area")
-input = "Melee"
+[node name="melee" parent="ability_manager" unique_id=1855612360 instance=ExtResource("11_gnfn5")]
 
-[node name="claymore_attack_area" type="Area2D" parent="ability_manager/melee" unique_id=290821557]
-collision_layer = 4278190080
-collision_mask = 4278190082
-script = ExtResource("9_lelq3")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ability_manager/melee/claymore_attack_area" unique_id=631539804]
-position = Vector2(152, 0)
-shape = SubResource("CircleShape2D_lvh8y")
-
-[node name="dash" type="Node2D" parent="ability_manager" unique_id=286998789]
-script = ExtResource("19_scicj")
-input = "Dash"
-cooldown = 1.5
-
-[node name="cooldown_timer" type="Timer" parent="ability_manager/dash" unique_id=892717750]
-wait_time = 5.0
-one_shot = true
-
-[node name="dash_timer" type="Timer" parent="ability_manager/dash" unique_id=114230950]
-wait_time = 0.5
-one_shot = true
+[node name="dash" parent="ability_manager" unique_id=238176876 instance=ExtResource("13_qdqua")]
 
 [node name="drain_radius" parent="ability_manager" unique_id=55580869 instance=ExtResource("14_yrhyy")]
 
