@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://okl6wlx1osma"]
+
+[ext_resource type="Script" uid="uid://dhqng5yviwvn1" path="res://base_classes/ability_pickup.gd" id="1_dix7x"]
+[ext_resource type="PackedScene" uid="uid://bbu7t7v4emrna" path="res://characters/player/abilities/drain_radius.tscn" id="2_dix7x"]
+[ext_resource type="Shader" uid="uid://d0r2mr6imx6mb" path="res://shaders/star_shine.gdshader" id="3_57u1q"]
+[ext_resource type="Texture2D" uid="uid://donpcah03ehix" path="res://characters/00_general_assets/loot_drop.svg" id="4_nwmie"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_08a6e"]
+radius = 42.047592
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n7182"]
+shader = ExtResource("3_57u1q")
+shader_parameter/shain = true
+shader_parameter/onecolor = false
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_scale = 1.0
+shader_parameter/shadow = 0.298000014155
+shader_parameter/shadow_mult = 1.6
+shader_parameter/frequency = 0.7350000349125
+shader_parameter/transparency = 0.0
+
+[node name="drain_radius_pickup" type="Area2D" unique_id=1873902903]
+script = ExtResource("1_dix7x")
+ability_scene = ExtResource("2_dix7x")
+ability_text = "1 to activate radius"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=108081795]
+shape = SubResource("CircleShape2D_08a6e")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=784962932]
+material = SubResource("ShaderMaterial_n7182")
+scale = Vector2(5, 5)
+texture = ExtResource("4_nwmie")

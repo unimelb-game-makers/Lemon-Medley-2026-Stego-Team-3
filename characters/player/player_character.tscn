@@ -14,7 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://cgm7oaei5bg0c" path="res://characters/player/abilities/dash.tscn" id="13_qdqua"]
 [ext_resource type="Script" uid="uid://u8nseulu3yoo" path="res://characters/player/ability_manager.gd" id="14_qdqua"]
 [ext_resource type="Script" uid="uid://cee4shmh444wc" path="res://characters/player/ability_detector.gd" id="14_y38xb"]
-[ext_resource type="PackedScene" uid="uid://bbu7t7v4emrna" path="res://characters/player/abilities/drain_radius.tscn" id="14_yrhyy"]
 [ext_resource type="Script" uid="uid://bbcf8d7cavo6f" path="res://characters/player/player_audio_manager.gd" id="15_gnfn5"]
 
 [sub_resource type="Resource" id="Resource_o6xl0"]
@@ -82,8 +81,6 @@ player_statemachine = NodePath("../statemachine")
 [node name="melee" parent="ability_manager" unique_id=1855612360 instance=ExtResource("11_gnfn5")]
 
 [node name="dash" parent="ability_manager" unique_id=238176876 instance=ExtResource("13_qdqua")]
-
-[node name="drain_radius" parent="ability_manager" unique_id=55580869 instance=ExtResource("14_yrhyy")]
 
 [node name="ability_detector" type="Area2D" parent="." unique_id=1660000536 node_paths=PackedStringArray("ability_manager")]
 script = ExtResource("14_y38xb")
