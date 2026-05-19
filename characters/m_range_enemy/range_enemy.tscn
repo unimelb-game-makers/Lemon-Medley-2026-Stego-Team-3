@@ -50,6 +50,8 @@ size = Vector2(32, 32)
 radius = 600.0
 
 [node name="RangeEnemy" type="CharacterBody2D" unique_id=282997317 node_paths=PackedStringArray("state_machine", "hurt_box", "touch_damage_box")]
+collision_layer = 0
+collision_mask = 17
 script = ExtResource("1_kmmmt")
 stats = SubResource("Resource_p7mku")
 state_machine = NodePath("StateMachine")

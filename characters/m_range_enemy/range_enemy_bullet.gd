@@ -21,3 +21,11 @@ func _update_rotation_to_direction() -> void:
 
 func _on_collision_box_area_entered(area: Area2D) -> void:
 	despawn()
+
+
+func _on_body_entered(body: Node2D) -> void:
+	despawn()
+
+
+func _on_hurt_box_finished_attack() -> void:
+	despawn()

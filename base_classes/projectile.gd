@@ -1,5 +1,5 @@
 class_name Projectile
-extends Node2D
+extends Area2D
 
 @export var attack_area: AttackArea
 @export var disappear_time: float = 999.0
