@@ -29,6 +29,9 @@ func update_direction() -> void:
 	
 	if direction != Vector2.ZERO:
 		last_direction = direction
+	
+	# Handle sprite face direction
+	anim.flip_h = direction.x >= 0
 
 func die() -> void:
 	print("DYING")
@@ -37,3 +40,6 @@ func die() -> void:
 func take_damage(damage : Damage, attack_position : Vector2):
 	stats.take_damage(damage.get_damage_value())
 	return
+
+func play_animation(anim: String):
+	pass
