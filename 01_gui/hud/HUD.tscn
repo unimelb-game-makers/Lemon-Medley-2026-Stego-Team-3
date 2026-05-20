@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://bpg7l15lvq4lw"]
+
+[ext_resource type="Texture2D" uid="uid://bfm4om38k781a" path="res://01_gui/hud/timer_cooldowns/CircularProgress.png" id="1_l0wyp"]
+[ext_resource type="Script" uid="uid://cqml2j8yu14ha" path="res://01_gui/hud/health_bar/health_bar.gd" id="1_pd0xw"]
+[ext_resource type="Texture2D" uid="uid://b58a50e60p4fd" path="res://icon.svg" id="2_ieftq"]
+[ext_resource type="Texture2D" uid="uid://d1toutmmep30" path="res://01_gui/hud/health_bar/Bar.png" id="2_mxofg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_05jt3"]
+atlas = ExtResource("2_mxofg")
+region = Rect2(4, 4, 78, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_awnhe"]
+atlas = ExtResource("2_mxofg")
+region = Rect2(4, 20, 78, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aec6l"]
+atlas = ExtResource("2_mxofg")
+region = Rect2(4, 36, 78, 10)
+
+[node name="HUD" type="CanvasLayer" unique_id=885035255]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=2114439682]
+offset_left = 12.0
+offset_top = 31.0
+offset_right = 212.0
+offset_bottom = 231.0
+scale = Vector2(0.25, 0.25)
+value = 90.0
+fill_mode = 4
+texture_under = ExtResource("1_l0wyp")
+texture_progress = ExtResource("1_l0wyp")
+tint_under = Color(1, 1, 1, 0.59607846)
+
+[node name="TextureRect" type="TextureRect" parent="TextureProgressBar" unique_id=3366252]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.75, 0.75)
+pivot_offset = Vector2(64, 64)
+texture = ExtResource("2_ieftq")
+metadata/_edit_lock_ = true
+
+[node name="HealthBar" type="Control" parent="." unique_id=1167987464]
+layout_mode = 3
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 10.0
+offset_bottom = 10.0
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_pd0xw")
+
+[node name="Regular" type="TextureProgressBar" parent="HealthBar" unique_id=1198253970]
+layout_mode = 1
+offset_right = 78.0
+offset_bottom = 10.0
+scale = Vector2(4, 4)
+value = 50.0
+texture_over = SubResource("AtlasTexture_05jt3")
+texture_progress = SubResource("AtlasTexture_awnhe")
+tint_progress = Color(0.7411765, 0, 0.14901961, 1)
+
+[node name="Burst" type="TextureProgressBar" parent="HealthBar" unique_id=684659370]
+z_index = -1
+layout_mode = 0
+offset_right = 78.0
+offset_bottom = 10.0
+scale = Vector2(4, 4)
+step = 0.0
+value = 80.0
+texture_under = SubResource("AtlasTexture_aec6l")
+texture_over = SubResource("AtlasTexture_05jt3")
+texture_progress = SubResource("AtlasTexture_awnhe")

@@ -23,11 +23,13 @@ func _ready() -> void:
 func new_game():
 	save_state = SaveState.new()
 	LevelManager.save_state = save_state
+	HUD.get_node("HealthBar").initialise()
 	LevelManager.load_new_level(start_level, "Enter", Vector2.ZERO)
 
 func continue_game():
 	PlayerManager.player.stats.load(save_state.player_stats)
 	LevelManager.save_state = save_state
+	HUD.get_node("HealthBar").initialise()
 	LevelManager.load_new_level(save_state.level_path, 
 								save_state.target_transition, 
 								save_state.position_offset)

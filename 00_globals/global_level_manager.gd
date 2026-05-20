@@ -32,7 +32,7 @@ func load_new_level(
 		push_error("Save is null, making new save")
 		PlayerManager.player.stats.load(save_state.player_stats)
 		save_state = SaveState.new()
-		
+	
 	save_state.player_stats = PlayerManager.player.stats.duplicate(true)
 	save_state.level_path = level_path
 	save_state.target_transition = _target_transition
@@ -57,6 +57,7 @@ func load_new_level(
 	
 	await get_tree().process_frame
 	
+	HUD.visible = true
 	level_loaded.emit()
 	
 	

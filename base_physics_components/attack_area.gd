@@ -20,6 +20,7 @@ func _ready() -> void:
 func _on_body_entered(body: Node2D) -> void:
 	#print("[AttackArea] Entered body")
 	if body is DamageArea:
+		print(damage.damage)
 		body.take_damage(damage, global_position)
 
 func activate(duration: float = 0.1) -> void:
