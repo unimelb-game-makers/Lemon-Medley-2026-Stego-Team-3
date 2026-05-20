@@ -16,9 +16,12 @@ size = Vector2(64, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4avxh"]
 size = Vector2(64, 16)
 
-[node name="RangeEnemyBullet" type="Node2D" unique_id=1341823178 node_paths=PackedStringArray("attack_area")]
+[node name="RangeEnemyBullet" type="Area2D" unique_id=593241117 node_paths=PackedStringArray("attack_area")]
+collision_layer = 0
+collision_mask = 16
+priority = -1
 script = ExtResource("1_4avxh")
-speed = 100.0
+speed = 400.0
 attack_area = NodePath("HurtBox")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=27326769]
@@ -33,12 +36,8 @@ metadata/_custom_type_script = "uid://c3atp4e4h86rb"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=1305203477]
 shape = SubResource("RectangleShape2D_c0oj5")
 
-[node name="CollisionBox" type="Area2D" parent="." unique_id=998804438]
-collision_layer = 0
-collision_mask = 17
-priority = -1
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="CollisionBox" unique_id=1319445382]
+[node name="Shape" type="CollisionShape2D" parent="." unique_id=1319445382]
 shape = SubResource("RectangleShape2D_4avxh")
 
-[connection signal="area_entered" from="CollisionBox" to="." method="_on_collision_box_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="finished_attack" from="HurtBox" to="." method="_on_hurt_box_finished_attack"]
