@@ -97,6 +97,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_5anwu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1155168431]
+texture_filter = 1
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_8bwqk")
 animation = &"waddle"

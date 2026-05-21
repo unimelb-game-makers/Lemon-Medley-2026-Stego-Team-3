@@ -6,6 +6,7 @@ class_name Player extends Character
 @onready var ability_manager: AbilityManager = $ability_manager
 @onready var audio_manager: PlayerAudioManager = $player_audio_manager
 @onready var dash_ability = $ability_manager/dash
+@onready var sprite: Sprite2D = $icon
 
 func _ready() -> void:
 	PlayerManager.player = self

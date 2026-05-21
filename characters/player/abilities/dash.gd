@@ -1,8 +1,10 @@
 extends Ability
 
 @export var SPEEDMULTIPLIER : float = 2.0
+@export var ghost_sprite: PackedScene
 
 @onready var dash_timer : Timer = $dash_timer
+@onready var ghost_spawn_timer: Timer = $ghost_spawn_timer
 
 var dash_vector : Vector2
 
@@ -15,16 +17,30 @@ func activate():
 		dash_timer.start()
 		dash_vector = controller.last_direction
 		controller.audio_manager.dash_emitter.play() 
+		var tw1: Tween = get_tree().create_tween()
+		tw1.tween_property(controller.sprite, "scale:y", 0.03, 0.1)
 
 func run():
 	controller.velocity = dash_vector * controller.stats.speed * SPEEDMULTIPLIER
 	controller.velocity += controller.direction * controller.stats.speed
+	if ghost_spawn_timer.is_stopped():
+		ghost_spawn_timer.start()
 	print("dash")
 
 func stop_dash():
 	activated = false
 	cooldown_timer.start(cooldown)
 	controller.audio_manager.dash_emitter.stop()
+	var tw1: Tween = get_tree().create_tween()
+	tw1.tween_property(controller.sprite, "scale:y", 0.1, 0.1)
 
 func is_dashing() -> bool:
 	return activated
+
+func _on_ghost_spawn_timer_timeout() -> void:
+	var ghost: Sprite2D = ghost_sprite.instantiate()
+	get_parent().get_parent().get_parent().add_child(ghost)
+	ghost.global_position = controller.sprite.global_position
+	ghost.texture = controller.sprite.texture
+	ghost.global_transform = controller.sprite.global_transform
+	ghost.offset = controller.sprite.offset
