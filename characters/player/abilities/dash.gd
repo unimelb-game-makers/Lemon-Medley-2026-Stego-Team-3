@@ -1,6 +1,7 @@
 extends Ability
 
-@export var SPEEDMULTIPLIER : float = 2.0
+@export var dash_duration: float = 0.5
+@export var SPEEDMULTIPLIER : float = 5
 @export var ghost_sprite: PackedScene
 
 @onready var dash_timer : Timer = $dash_timer
@@ -8,17 +9,21 @@ extends Ability
 
 var dash_vector : Vector2
 
+signal dash_started
+signal dash_ended
+
 func _ready() -> void:
 	dash_timer.timeout.connect(stop_dash)
 
 func activate():
 	if dash_timer.is_stopped() and cooldown_timer.is_stopped():
 		activated = true
-		dash_timer.start()
+		dash_started.emit()
+		dash_timer.start(dash_duration)
 		dash_vector = controller.last_direction
 		controller.audio_manager.dash_emitter.play() 
 		var tw1: Tween = get_tree().create_tween()
-		tw1.tween_property(controller.sprite, "scale:y", 0.03, 0.1)
+		tw1.tween_property(controller.sprite, "scale:y", 0.05, 0.1)
 
 func run():
 	controller.velocity = dash_vector * controller.stats.speed * SPEEDMULTIPLIER
@@ -33,6 +38,7 @@ func stop_dash():
 	controller.audio_manager.dash_emitter.stop()
 	var tw1: Tween = get_tree().create_tween()
 	tw1.tween_property(controller.sprite, "scale:y", 0.1, 0.1)
+	dash_ended.emit()
 
 func is_dashing() -> bool:
 	return activated

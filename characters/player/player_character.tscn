@@ -103,6 +103,7 @@ shape = SubResource("CircleShape2D_lvh8y")
 
 [node name="dash" type="Node2D" parent="ability_manager" unique_id=286998789]
 script = ExtResource("19_scicj")
+dash_duration = 0.45
 ghost_sprite = ExtResource("14_y38xb")
 input = "Dash"
 cooldown = 1.5
@@ -172,4 +173,6 @@ event_name = "event:/dash"
 event_guid = "{78447126-6406-451e-8c99-01a480de9518}"
 scale = Vector2(0.3, 0.3)
 
+[connection signal="dash_ended" from="ability_manager/dash" to="statemachine/walk_state" method="dash_ended"]
+[connection signal="dash_started" from="ability_manager/dash" to="statemachine/walk_state" method="dash_started"]
 [connection signal="timeout" from="ability_manager/dash/ghost_spawn_timer" to="ability_manager/dash" method="_on_ghost_spawn_timer_timeout"]

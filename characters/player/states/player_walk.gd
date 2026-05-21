@@ -29,9 +29,15 @@ func input_handle_state(event : InputEvent):
 func process_state(delta : float):
 	if controlled_character.direction == Vector2.ZERO:
 		return "idle"
-	if pop_timer.is_stopped():
+	if pop_timer.is_stopped() and can_pop:
 		pop_timer.start(walk_pop_duration)
 		var tw1: Tween = get_tree().create_tween()
 		tw1.tween_property(controlled_character.sprite, "scale:y", 0.08, walk_pop_duration/2)
 		tw1.tween_property(controlled_character.sprite, "scale:y", 0.1, walk_pop_duration/2)
 	return state_name
+
+func dash_started():
+	can_pop = false
+
+func dash_ended():
+	can_pop = true
