@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://c3atp4e4h86rb" path="res://base_physics_components/attack_area.gd" id="9_lelq3"]
 [ext_resource type="Script" uid="uid://m755ncu3yqha" path="res://characters/player/states/player_stun.gd" id="11_nmpe6"]
 [ext_resource type="Script" uid="uid://c0yx2l6bgusa0" path="res://characters/player/states/player_talking.gd" id="12_bblrc"]
+[ext_resource type="Texture2D" uid="uid://bsvjv68vrylaq" path="res://assets/pixel claymore final ver.0.2.png" id="13_y38xb"]
 [ext_resource type="Script" uid="uid://u8nseulu3yoo" path="res://characters/player/ability_manager.gd" id="14_qdqua"]
 [ext_resource type="PackedScene" uid="uid://dx56430ptq5d3" path="res://characters/player/player_ghost_sprite.tscn" id="14_y38xb"]
 [ext_resource type="PackedScene" uid="uid://bbu7t7v4emrna" path="res://characters/player/abilities/drain_radius.tscn" id="14_yrhyy"]
@@ -30,8 +31,8 @@ metadata/_custom_type_script = "uid://c1gagfk36axyn"
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gnfn5"]
 size = Vector2(217, 324)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_lvh8y"]
-radius = 150.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y38xb"]
+size = Vector2(383.3333, 100)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o5qli"]
 size = Vector2(59, 213)
@@ -98,8 +99,14 @@ collision_mask = 4278190114
 script = ExtResource("9_lelq3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ability_manager/melee/claymore_attack_area" unique_id=631539804]
-position = Vector2(152, 0)
-shape = SubResource("CircleShape2D_lvh8y")
+position = Vector2(341.66666, 0)
+shape = SubResource("RectangleShape2D_y38xb")
+
+[node name="Sprite2D" type="Sprite2D" parent="ability_manager/melee/claymore_attack_area/CollisionShape2D" unique_id=380423584]
+position = Vector2(-39.666656, 0)
+rotation = 0.7853982
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("13_y38xb")
 
 [node name="dash" type="Node2D" parent="ability_manager" unique_id=286998789]
 script = ExtResource("19_scicj")
