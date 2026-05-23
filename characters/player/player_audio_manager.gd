@@ -49,11 +49,6 @@ func trigger_footstep() -> void:
 
 func get_surface_type() -> float:
 	if tile_map == null:
-<<<<<<< HEAD
-		print("TileMap is null!")
-=======
-		#print("TileMap is null!")
->>>>>>> 5a11cf44b342945f4b847a44429d13fd85e98a65
 		return 0.0
 	var tile_pos = tile_map.local_to_map(tile_map.to_local(player.global_position))
 	var tile_data = tile_map.get_cell_tile_data(tile_pos)

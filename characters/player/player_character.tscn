@@ -11,12 +11,8 @@
 [ext_resource type="Script" uid="uid://c3atp4e4h86rb" path="res://base_physics_components/attack_area.gd" id="9_lelq3"]
 [ext_resource type="Script" uid="uid://m755ncu3yqha" path="res://characters/player/states/player_stun.gd" id="11_nmpe6"]
 [ext_resource type="Script" uid="uid://c0yx2l6bgusa0" path="res://characters/player/states/player_talking.gd" id="12_bblrc"]
-<<<<<<< HEAD
-[ext_resource type="Script" path="res://characters/player/ability_manager.gd" id="14_qdqua"]
-=======
 [ext_resource type="Script" uid="uid://u8nseulu3yoo" path="res://characters/player/ability_manager.gd" id="14_qdqua"]
 [ext_resource type="PackedScene" uid="uid://bbu7t7v4emrna" path="res://characters/player/abilities/drain_radius.tscn" id="14_yrhyy"]
->>>>>>> 5a11cf44b342945f4b847a44429d13fd85e98a65
 [ext_resource type="Script" uid="uid://bbcf8d7cavo6f" path="res://characters/player/player_audio_manager.gd" id="15_gnfn5"]
 [ext_resource type="Script" uid="uid://mdqdv4s3cq5f" path="res://characters/player/abilities/dash.gd" id="19_scicj"]
 [ext_resource type="Script" uid="uid://bvan8anr6wkia" path="res://characters/player/abilities/melee.gd" id="20_br0vv"]
