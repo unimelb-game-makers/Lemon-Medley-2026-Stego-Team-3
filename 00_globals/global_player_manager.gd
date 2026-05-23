@@ -23,7 +23,7 @@ func add_player_instance() -> void:
 
 func set_player_position( _new_pos : Vector2 ) -> void:
 	while player == null:
-		await get_tree().process_fram
+		await get_tree().process_frame
 	player.global_position = _new_pos
 	pass
 
