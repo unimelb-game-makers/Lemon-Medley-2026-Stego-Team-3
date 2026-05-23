@@ -22,12 +22,12 @@ func add_player_instance() -> void:
 	add_child( player )
 
 func set_player_position( _new_pos : Vector2 ) -> void:
+	while player == null:
+		await get_tree().process_fram
 	player.global_position = _new_pos
 	pass
 
 func set_as_parent( _p : Node2D ) -> void:
-	while player == null:
-		await get_tree().process_frame
 	if player.get_parent():
 		player.get_parent().remove_child( player )
 	_p.add_child( player )
