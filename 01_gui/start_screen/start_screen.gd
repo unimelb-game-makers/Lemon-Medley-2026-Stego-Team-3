@@ -1,6 +1,7 @@
 extends PanelContainer
 
 var save_state : SaveState
+var menu_music: FmodEvent = null
 @onready var continue_button = $VBoxContainer/ContinueButton
 @onready var start_button = $VBoxContainer/StartButton
 
@@ -9,6 +10,8 @@ var save_state : SaveState
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	save_state = SaveState.load_game()
+	menu_music = FmodServer.create_event_instance("event:/title_screen")
+	menu_music.start()
 	
 	if save_state == null:
 		continue_button.disabled = true
@@ -21,13 +24,22 @@ func _ready() -> void:
 	PlayerManager.hide_player()
 
 func new_game():
+	play_button_sfx()
+	menu_music.stop(FmodServer.FMOD_STUDIO_STOP_ALLOWFADEOUT) 
 	save_state = SaveState.new()
 	LevelManager.save_state = save_state
 	LevelManager.load_new_level(start_level, "Enter", Vector2.ZERO)
 
 func continue_game():
+	play_button_sfx()
+	menu_music.stop(FmodServer.FMOD_STUDIO_STOP_ALLOWFADEOUT) 
 	PlayerManager.player.stats.load(save_state.player_stats)
 	LevelManager.save_state = save_state
 	LevelManager.load_new_level(save_state.level_path, 
 								save_state.target_transition, 
 								save_state.position_offset)
+
+func play_button_sfx() -> void:
+	var event = FmodServer.create_event_instance("event:/UI_sfx_2")
+	event.start()
+	event.release()

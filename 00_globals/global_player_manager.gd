@@ -8,8 +8,10 @@ signal camera_shook( trauma : float )
 signal interact_pressed
 
 func _ready() -> void:
-	while not FmodManager.banks_loaded:
-		await get_tree().process_frame
+	# I'll leave this here in case it doesn't load in time for other devices
+	# but the fmod banks need to load first before everything
+	#while not FmodManager.banks_loaded:
+		#await get_tree().process_frame
 	add_player_instance()
 	await get_tree().create_timer(0.2).timeout
 	player_spawned = true
@@ -20,12 +22,12 @@ func add_player_instance() -> void:
 	add_child( player )
 
 func set_player_position( _new_pos : Vector2 ) -> void:
-	while player == null:
-		await get_tree().process_frame
 	player.global_position = _new_pos
 	pass
 
 func set_as_parent( _p : Node2D ) -> void:
+	while player == null:
+		await get_tree().process_frame
 	if player.get_parent():
 		player.get_parent().remove_child( player )
 	_p.add_child( player )

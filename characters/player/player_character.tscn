@@ -110,6 +110,14 @@ wait_time = 0.5
 one_shot = true
 
 [node name="drain_radius" parent="ability_manager" unique_id=55580869 instance=ExtResource("14_yrhyy")]
+damage = null
+total_time = null
+damage_tick = null
+input = null
+
+[node name="DrainEmitter" type="FmodEventEmitter2D" parent="ability_manager/drain_radius" unique_id=826198891]
+event_name = "event:/curse_drain"
+event_guid = "{b5a84ef0-bd70-4550-ae3b-69063b6635b0}"
 
 [node name="damage_area" type="Area2D" parent="." unique_id=1136224295]
 collision_mask = 0

@@ -29,11 +29,11 @@ buses/default_bus_layout="uid://ddvp3ee1ya0qb"
 
 [autoload]
 
+FmodManager="*uid://cds10pm7hwn3p"
 LevelManager="*uid://d3fmr34okgu6d"
 PlayerManager="*uid://dnhe3w8ws1fth"
 SceneTransition="*uid://cgu22qyl3irkq"
 DialogueManager="*uid://dhcvf1nonpv3b"
-FmodManager="*uid://cds10pm7hwn3p"
 
 [debug]
 

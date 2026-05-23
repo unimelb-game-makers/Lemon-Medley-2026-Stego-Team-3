@@ -28,3 +28,8 @@ func shoot(direction: Vector2) -> void:
 		get_tree().current_scene.add_child(bullet)
 
 	bullet.global_position = global_position
+	
+	var event = FmodServer.create_event_instance("event:/enemy_shooting")
+	event.set_2d_attributes(global_transform)
+	event.start()
+	event.release()
