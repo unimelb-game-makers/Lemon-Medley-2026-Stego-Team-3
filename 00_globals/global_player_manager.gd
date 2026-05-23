@@ -33,6 +33,17 @@ func set_as_parent( _p : Node2D ) -> void:
 func unparent_player( _p : Node2D ) -> void:
 	_p.remove_child( player )
 
+func hide_player() -> void:
+	PlayerManager.player.visible = false
+	PlayerManager.player.set_process_unhandled_input(false)
+	PlayerManager.player.set_process(false)
+	PlayerManager.player.stop_abilities()
+
+func show_player() -> void:
+	PlayerManager.player.visible = true
+	PlayerManager.player.set_process_unhandled_input(true)
+	PlayerManager.player.set_process(true)
+	PlayerManager.player.continue_abilities()
 #endregion
 
 #region Camera

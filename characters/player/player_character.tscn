@@ -11,18 +11,22 @@
 [ext_resource type="Script" uid="uid://c3atp4e4h86rb" path="res://base_physics_components/attack_area.gd" id="9_lelq3"]
 [ext_resource type="Script" uid="uid://m755ncu3yqha" path="res://characters/player/states/player_stun.gd" id="11_nmpe6"]
 [ext_resource type="Script" uid="uid://c0yx2l6bgusa0" path="res://characters/player/states/player_talking.gd" id="12_bblrc"]
+<<<<<<< HEAD
 [ext_resource type="Script" path="res://characters/player/ability_manager.gd" id="14_qdqua"]
+=======
+[ext_resource type="Script" uid="uid://u8nseulu3yoo" path="res://characters/player/ability_manager.gd" id="14_qdqua"]
+[ext_resource type="PackedScene" uid="uid://bbu7t7v4emrna" path="res://characters/player/abilities/drain_radius.tscn" id="14_yrhyy"]
+>>>>>>> 5a11cf44b342945f4b847a44429d13fd85e98a65
 [ext_resource type="Script" uid="uid://bbcf8d7cavo6f" path="res://characters/player/player_audio_manager.gd" id="15_gnfn5"]
 [ext_resource type="Script" uid="uid://mdqdv4s3cq5f" path="res://characters/player/abilities/dash.gd" id="19_scicj"]
 [ext_resource type="Script" uid="uid://bvan8anr6wkia" path="res://characters/player/abilities/melee.gd" id="20_br0vv"]
 
 [sub_resource type="Resource" id="Resource_o6xl0"]
 script = ExtResource("2_lvh8y")
-base_health = 10
+base_health = 15
 base_defense = 2
 base_attack = 10
 base_speed = 300
-speed = 300
 knockback_speed = 600.0
 metadata/_custom_type_script = "uid://c1gagfk36axyn"
 
@@ -61,6 +65,7 @@ offset = Vector2(-1460, 0)
 [node name="shape" type="CollisionShape2D" parent="." unique_id=708662803]
 position = Vector2(1.5, -16)
 shape = SubResource("RectangleShape2D_gnfn5")
+debug_color = Color(0.4, 0.6039216, 0.20784314, 0.1764706)
 
 [node name="statemachine" type="Node" parent="." unique_id=614204903]
 script = ExtResource("4_dwfcf")
@@ -77,19 +82,28 @@ script = ExtResource("12_bblrc")
 [node name="stun_state" type="Node" parent="statemachine" unique_id=179513618]
 script = ExtResource("11_nmpe6")
 
-[node name="ability_manager" type="Node" parent="." unique_id=2141213762 node_paths=PackedStringArray("player_statemachine")]
+[node name="ability_manager" type="Node2D" parent="." unique_id=509608827 node_paths=PackedStringArray("player_statemachine")]
 script = ExtResource("14_qdqua")
 player_statemachine = NodePath("../statemachine")
 
-[node name="melee" type="Node" parent="ability_manager" unique_id=1290752711 node_paths=PackedStringArray("attack_area")]
+[node name="melee" type="Node2D" parent="ability_manager" unique_id=386084306 node_paths=PackedStringArray("attack_area")]
 script = ExtResource("20_br0vv")
-attack_area = NodePath("../../claymore_attack_area")
+attack_area = NodePath("claymore_attack_area")
 input = "Melee"
 
-[node name="dash" type="Node" parent="ability_manager" unique_id=811919256]
+[node name="claymore_attack_area" type="Area2D" parent="ability_manager/melee" unique_id=290821557]
+collision_layer = 4278190080
+collision_mask = 4278190114
+script = ExtResource("9_lelq3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ability_manager/melee/claymore_attack_area" unique_id=631539804]
+position = Vector2(152, 0)
+shape = SubResource("CircleShape2D_lvh8y")
+
+[node name="dash" type="Node2D" parent="ability_manager" unique_id=286998789]
 script = ExtResource("19_scicj")
 input = "Dash"
-cooldown = 3.0
+cooldown = 1.5
 
 [node name="cooldown_timer" type="Timer" parent="ability_manager/dash" unique_id=892717750]
 wait_time = 5.0
@@ -99,20 +113,15 @@ one_shot = true
 wait_time = 0.5
 one_shot = true
 
-[node name="claymore_attack_area" type="Area2D" parent="." unique_id=290821557]
-collision_layer = 4278190082
-collision_mask = 4278190082
-script = ExtResource("9_lelq3")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="claymore_attack_area" unique_id=631539804]
-position = Vector2(152, 0)
-shape = SubResource("CircleShape2D_lvh8y")
+[node name="drain_radius" parent="ability_manager" unique_id=55580869 instance=ExtResource("14_yrhyy")]
 
 [node name="damage_area" type="Area2D" parent="." unique_id=1136224295]
+collision_mask = 0
 script = ExtResource("4_lvh8y")
 
 [node name="hurt_box" type="CollisionShape2D" parent="damage_area" unique_id=1971043748]
 shape = SubResource("RectangleShape2D_o5qli")
+debug_color = Color(0.7661011, 0.4438372, 0.1749435, 0.41960785)
 
 [node name="player_dialogue_area" type="Area2D" parent="." unique_id=1333761043]
 collision_layer = 4
@@ -120,6 +129,7 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_dialogue_area" unique_id=378642367]
 shape = SubResource("CircleShape2D_nmpe6")
+debug_color = Color(3.970787e-07, 0.23839179, 0.2826319, 0.12156863)
 metadata/_edit_lock_ = true
 
 [node name="debug_state_label" type="Label" parent="." unique_id=2016844207]

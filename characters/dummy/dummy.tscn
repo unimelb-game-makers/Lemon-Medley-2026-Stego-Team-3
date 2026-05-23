@@ -47,7 +47,7 @@ metadata/_edit_lock_ = true
 
 [node name="enemy_damage_area" type="Area2D" parent="." unique_id=305993922]
 collision_layer = 2
-collision_mask = 2
+collision_mask = 0
 script = ExtResource("3_g4clm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_damage_area" unique_id=1545900050]
@@ -60,3 +60,5 @@ script = ExtResource("6_8lw54")
 
 [node name="dummy_idle" type="Node" parent="state_machine" unique_id=38410859]
 script = ExtResource("7_2t8u6")
+
+[connection signal="damage_taken" from="enemy_damage_area" to="." method="take_damage"]

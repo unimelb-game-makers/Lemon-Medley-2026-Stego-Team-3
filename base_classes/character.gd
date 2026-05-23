@@ -23,15 +23,27 @@ var last_hit : Damage
 var last_hit_direction : Vector2
 
 func _ready() -> void:
+<<<<<<< HEAD
 	stats.reset()
 	hurt_box.stats = stats
 	
+=======
+	_initialize_hitboxes()
+	stats.reset()
+
+## Seperate responsibility of hitbox setup from ready().
+## I noticed we like to ovverride a lot, keeping it seperate makes rewriting code easier.
+func _initialize_hitboxes() -> void:
+>>>>>>> 5a11cf44b342945f4b847a44429d13fd85e98a65
 	if touch_damage_box:
 		touch_damage_box.set_active(true)
 		touch_damage_box.damage = Damage.new(stats.attack)
 	
 	hurt_box.damage_taken.connect(take_damage)
+<<<<<<< HEAD
 	#stats.reset()
+=======
+>>>>>>> 5a11cf44b342945f4b847a44429d13fd85e98a65
 
 ## Runs when this character is damaged
 @abstract func take_damage(damage : Damage, attack_position : Vector2)

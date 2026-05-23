@@ -1,0 +1,134 @@
+[gd_scene format=3 uid="uid://0oxwaqqk4b1i"]
+
+[ext_resource type="Script" uid="uid://bd6do1ejuc268" path="res://characters/m_range_enemy/range_enemy.gd" id="1_kmmmt"]
+[ext_resource type="Script" uid="uid://c1gagfk36axyn" path="res://base_classes/statsheet.gd" id="2_u7c71"]
+[ext_resource type="Script" uid="uid://fmtas1ns83no" path="res://base_physics_components/projectile_emitter.gd" id="3_280m2"]
+[ext_resource type="Script" uid="uid://bd1qrnr8tcmdc" path="res://base_classes/state_machine.gd" id="3_j82x6"]
+[ext_resource type="Script" uid="uid://ddq8nkdp4gpaa" path="res://base_physics_components/damage_area.gd" id="4_1751t"]
+[ext_resource type="PackedScene" uid="uid://3xcw58onnoam" path="res://characters/m_range_enemy/range_enemy_bullet.tscn" id="4_mq453"]
+[ext_resource type="Script" uid="uid://c3atp4e4h86rb" path="res://base_physics_components/attack_area.gd" id="5_280m2"]
+[ext_resource type="Script" uid="uid://cuaw7uqkmdwl1" path="res://characters/m_range_enemy/range_enemy_states/range_enemy_idle.gd" id="6_u7c71"]
+[ext_resource type="Script" uid="uid://da4udhi52hxri" path="res://characters/m_range_enemy/range_enemy_states/range_enemy_shooting.gd" id="7_j82x6"]
+[ext_resource type="Script" uid="uid://bi0vhn1beo38r" path="res://base_classes/vision_area.gd" id="8_1751t"]
+
+[sub_resource type="Resource" id="Resource_p7mku"]
+script = ExtResource("2_u7c71")
+base_health = 20
+base_defense = 2
+base_attack = 5
+base_speed = 100
+metadata/_custom_type_script = "uid://c1gagfk36axyn"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tis73"]
+size = Vector2(48, 48)
+
+[sub_resource type="Gradient" id="Gradient_w57m4"]
+offsets = PackedFloat32Array(0, 0.34791666, 0.75074625, 0.8373134, 0.87014925)
+colors = PackedColorArray(0, 0, 0, 1, 0.8156863, 0.4117647, 0.39607844, 1, 0.5826596, 0.44729602, 0.34603223, 1, 0.6171846, 0.35726088, 0.67805856, 1, 0.47843137, 0.47843137, 0.47843137, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_n0k81"]
+gradient = SubResource("Gradient_w57m4")
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_7v5n0"]
+offsets = PackedFloat32Array(0, 0.34791666, 0.6020833, 0.68125)
+colors = PackedColorArray(0, 0, 0, 1, 0.7490196, 0.827451, 0.09411765, 1, 0.5826596, 0.44729602, 0.34603223, 1, 0.47843137, 0.47843137, 0.47843137, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_w57m4"]
+gradient = SubResource("Gradient_7v5n0")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gvvri"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kcvot"]
+size = Vector2(32, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1751t"]
+radius = 600.0
+
+[node name="RangeEnemy" type="CharacterBody2D" unique_id=282997317 node_paths=PackedStringArray("state_machine", "hurt_box", "touch_damage_box")]
+collision_layer = 0
+collision_mask = 17
+script = ExtResource("1_kmmmt")
+stats = SubResource("Resource_p7mku")
+state_machine = NodePath("StateMachine")
+hurt_box = NodePath("HurtBox")
+touch_damage_box = NodePath("TouchDamageBox")
+
+[node name="DebugStateLabel" type="Label" parent="." unique_id=608857031]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -48.0
+offset_right = 24.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+horizontal_alignment = 1
+
+[node name="MapBasedShape" type="CollisionShape2D" parent="." unique_id=674678955]
+shape = SubResource("RectangleShape2D_tis73")
+debug_color = Color(0, 0.6488342, 0.17783692, 0.41960785)
+
+[node name="ProjectileEmitter" type="Node2D" parent="." unique_id=338638239]
+script = ExtResource("3_280m2")
+projectile_scene = ExtResource("4_mq453")
+
+[node name="RangeGenericSprite" type="Sprite2D" parent="." unique_id=848765339]
+texture = SubResource("GradientTexture2D_n0k81")
+
+[node name="RangeEye" type="Sprite2D" parent="RangeGenericSprite" unique_id=861736961]
+position = Vector2(8, -16)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("GradientTexture2D_w57m4")
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=188151543]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("4_1751t")
+metadata/_custom_type_script = "uid://ddq8nkdp4gpaa"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=1848968845]
+shape = SubResource("RectangleShape2D_gvvri")
+
+[node name="TouchDamageBox" type="Area2D" parent="." unique_id=1778221950]
+collision_layer = 0
+script = ExtResource("5_280m2")
+metadata/_custom_type_script = "uid://c3atp4e4h86rb"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TouchDamageBox" unique_id=225183489]
+shape = SubResource("RectangleShape2D_kcvot")
+debug_color = Color(0.9937708, 0, 0.23951992, 0.41960785)
+
+[node name="StateMachine" type="Node" parent="." unique_id=965223300]
+script = ExtResource("3_j82x6")
+metadata/_custom_type_script = "uid://bd1qrnr8tcmdc"
+
+[node name="IdleState" type="Node" parent="StateMachine" unique_id=31033077]
+script = ExtResource("6_u7c71")
+
+[node name="ShootingState" type="Node" parent="StateMachine" unique_id=37837451 node_paths=PackedStringArray("detection_area", "target_escaped_state", "projectile_emitter")]
+script = ExtResource("7_j82x6")
+detection_area = NodePath("../../VisionArea")
+target_escaped_state = NodePath("../IdleState")
+projectile_emitter = NodePath("../../ProjectileEmitter")
+kite_variance = 1.5
+direction_change_rate = 0.5
+
+[node name="VisionArea" type="Area2D" parent="." unique_id=567746832]
+collision_layer = 0
+collision_mask = 9
+script = ExtResource("8_1751t")
+metadata/_custom_type_script = "uid://bi0vhn1beo38r"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VisionArea" unique_id=1132563675]
+shape = SubResource("CircleShape2D_1751t")
+debug_color = Color(0.5647059, 0.56078434, 0, 0.07058824)
