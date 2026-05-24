@@ -33,13 +33,13 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gvvri"]
-size = Vector2(140, 214)
+size = Vector2(140, 128)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kcvot"]
 size = Vector2(32, 32)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1751t"]
-radius = 600.0
+radius = 1271.0035
 
 [node name="RangeEnemy" type="CharacterBody2D" unique_id=282997317 node_paths=PackedStringArray("state_machine", "hurt_box", "touch_damage_box")]
 collision_layer = 0
@@ -51,6 +51,7 @@ hurt_box = NodePath("HurtBox")
 touch_damage_box = NodePath("TouchDamageBox")
 
 [node name="DebugStateLabel" type="Label" parent="." unique_id=608857031]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -91,7 +92,7 @@ script = ExtResource("4_1751t")
 metadata/_custom_type_script = "uid://ddq8nkdp4gpaa"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=1848968845]
-position = Vector2(-8, 11)
+position = Vector2(-8, 54)
 shape = SubResource("RectangleShape2D_gvvri")
 
 [node name="TouchDamageBox" type="Area2D" parent="." unique_id=1778221950]
@@ -125,5 +126,6 @@ script = ExtResource("8_1751t")
 metadata/_custom_type_script = "uid://bi0vhn1beo38r"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VisionArea" unique_id=1132563675]
+position = Vector2(9, -33)
 shape = SubResource("CircleShape2D_1751t")
 debug_color = Color(0.5647059, 0.56078434, 0, 0.07058824)

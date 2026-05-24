@@ -11,10 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://sikff7uadwk5" path="res://characters/player/abilities/melee.tscn" id="11_gnfn5"]
 [ext_resource type="Script" uid="uid://m755ncu3yqha" path="res://characters/player/states/player_stun.gd" id="11_nmpe6"]
 [ext_resource type="Script" uid="uid://c0yx2l6bgusa0" path="res://characters/player/states/player_talking.gd" id="12_bblrc"]
-[ext_resource type="Script" path="res://characters/player/ability_detector.gd" id="13_gnfn5"]
+[ext_resource type="Script" uid="uid://cee4shmh444wc" path="res://characters/player/ability_detector.gd" id="13_gnfn5"]
 [ext_resource type="PackedScene" uid="uid://cgm7oaei5bg0c" path="res://characters/player/abilities/dash.tscn" id="13_qdqua"]
 [ext_resource type="Script" uid="uid://u8nseulu3yoo" path="res://characters/player/ability_manager.gd" id="14_qdqua"]
-[ext_resource type="PackedScene" uid="uid://dx56430ptq5d3" path="res://characters/player/player_ghost_sprite.tscn" id="14_y38xb"]
 [ext_resource type="Script" uid="uid://bbcf8d7cavo6f" path="res://characters/player/player_audio_manager.gd" id="15_gnfn5"]
 
 [sub_resource type="Resource" id="Resource_o6xl0"]
@@ -40,7 +39,7 @@ radius = 350.0
 
 [node name="PlayerCharacter" type="CharacterBody2D" unique_id=1978286765 node_paths=PackedStringArray("debug_state_label", "debug_dash_label", "state_machine", "hurt_box")]
 scale = Vector2(0.3, 0.3)
-collision_layer = 129
+collision_layer = 145
 collision_mask = 145
 script = ExtResource("1_3kw6f")
 debug_state_label = NodePath("debug_state_label")
@@ -92,7 +91,6 @@ player_statemachine = NodePath("../statemachine")
 [node name="melee" parent="ability_manager" unique_id=1855612360 instance=ExtResource("11_gnfn5")]
 
 [node name="dash" parent="ability_manager" unique_id=238176876 instance=ExtResource("13_qdqua")]
-ghost_sprite = ExtResource("14_y38xb")
 
 [node name="ability_detector" type="Area2D" parent="." unique_id=1660000536 node_paths=PackedStringArray("ability_manager")]
 script = ExtResource("13_gnfn5")
@@ -156,6 +154,5 @@ scale = Vector2(0.3, 0.3)
 
 [connection signal="dash_ended" from="ability_manager/dash" to="statemachine/walk_state" method="dash_ended"]
 [connection signal="dash_started" from="ability_manager/dash" to="statemachine/walk_state" method="dash_started"]
-[connection signal="timeout" from="ability_manager/dash/ghost_spawn_timer" to="ability_manager/dash" method="_on_ghost_spawn_timer_timeout"]
 [connection signal="area_entered" from="ability_detector" to="ability_detector" method="_on_area_entered"]
 [connection signal="area_exited" from="ability_detector" to="ability_detector" method="_on_area_exited"]

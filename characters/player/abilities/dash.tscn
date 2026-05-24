@@ -10,7 +10,6 @@ input = "Dash"
 cooldown = 1.5
 
 [node name="cooldown_timer" type="Timer" parent="." unique_id=1735296429]
-wait_time = 5.0
 one_shot = true
 
 [node name="dash_timer" type="Timer" parent="." unique_id=1581917890]
@@ -20,3 +19,5 @@ one_shot = true
 [node name="ghost_spawn_timer" type="Timer" parent="." unique_id=14189677]
 wait_time = 0.02
 one_shot = true
+
+[connection signal="timeout" from="ghost_spawn_timer" to="." method="_on_ghost_spawn_timer_timeout"]

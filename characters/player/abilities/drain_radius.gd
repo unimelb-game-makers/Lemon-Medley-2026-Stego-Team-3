@@ -29,7 +29,7 @@ func run():
 
 func _draw() -> void:
 	if activated and cooldown_timer.is_stopped():
-		draw_circle(Vector2.ZERO, 750, Color.CRIMSON, false, -2)
+		draw_circle(Vector2.ZERO, 800, Color.CRIMSON, false, -2)
 
 ## When the damage_ticker timer finishes, deal damage
 func tick_damage():

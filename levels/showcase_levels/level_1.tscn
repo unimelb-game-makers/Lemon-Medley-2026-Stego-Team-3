@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://dsjxqtwkdb1d1" path="res://02_tiles/level_tile_map_layer.gd" id="3_22tr2"]
 [ext_resource type="PackedScene" uid="uid://vlpiuopcomwi" path="res://levels/level_transition.tscn" id="5_4ef04"]
 [ext_resource type="Script" uid="uid://c1gagfk36axyn" path="res://base_classes/statsheet.gd" id="6_erpp7"]
+[ext_resource type="PackedScene" uid="uid://okl6wlx1osma" path="res://pickups/drain_radius_pickup.tscn" id="7_4nh8x"]
 [ext_resource type="PackedScene" uid="uid://cnkg66hk5nciw" path="res://characters/chaser_small/chaser_small.tscn" id="8_57oft"]
 
 [sub_resource type="Resource" id="Resource_erpp7"]
@@ -32,6 +33,140 @@ base_speed = 200
 metadata/_custom_type_script = "uid://c1gagfk36axyn"
 
 [sub_resource type="Resource" id="Resource_22tr2"]
+script = ExtResource("6_erpp7")
+base_health = 1
+base_defense = 2
+base_attack = 5
+base_speed = 200
+metadata/_custom_type_script = "uid://c1gagfk36axyn"
+
+[sub_resource type="Resource" id="Resource_wfihs"]
+script = ExtResource("6_erpp7")
+base_health = 1
+base_defense = 2
+base_attack = 5
+base_speed = 200
+metadata/_custom_type_script = "uid://c1gagfk36axyn"
+
+[sub_resource type="Resource" id="Resource_4ef04"]
+resource_local_to_scene = true
+script = ExtResource("6_erpp7")
+base_health = 1
+base_defense = 2
+base_attack = 5
+base_speed = 200
+metadata/_custom_type_script = "uid://c1gagfk36axyn"
+
+[sub_resource type="Resource" id="Resource_c86d8"]
+resource_local_to_scene = true
+script = ExtResource("6_erpp7")
+base_health = 1
+base_defense = 2
+base_attack = 5
+base_speed = 200
+metadata/_custom_type_script = "uid://c1gagfk36axyn"
+
+[sub_resource type="Resource" id="Resource_qr3sb"]
+resource_local_to_scene = true
+script = ExtResource("6_erpp7")
+base_health = 1
+base_defense = 2
+base_attack = 5
+base_speed = 200
+metadata/_custom_type_script = "uid://c1gagfk36axyn"
+
+[sub_resource type="Resource" id="Resource_e63uw"]
+resource_local_to_scene = true
+script = ExtResource("6_erpp7")
+base_health = 1
+base_defense = 2
+base_attack = 5
+base_speed = 200
+metadata/_custom_type_script = "uid://c1gagfk36axyn"
+
+[sub_resource type="Resource" id="Resource_o17rj"]
+resource_local_to_scene = true
+script = ExtResource("6_erpp7")
+base_health = 1
+base_defense = 2
+base_attack = 5
+base_speed = 200
+metadata/_custom_type_script = "uid://c1gagfk36axyn"
+
+[sub_resource type="Resource" id="Resource_vdfi7"]
+resource_local_to_scene = true
+script = ExtResource("6_erpp7")
+base_health = 1
+base_defense = 2
+base_attack = 5
+base_speed = 200
+metadata/_custom_type_script = "uid://c1gagfk36axyn"
+
+[sub_resource type="Resource" id="Resource_yra06"]
+resource_local_to_scene = true
+script = ExtResource("6_erpp7")
+base_health = 1
+base_defense = 2
+base_attack = 5
+base_speed = 200
+metadata/_custom_type_script = "uid://c1gagfk36axyn"
+
+[sub_resource type="Resource" id="Resource_4k1ur"]
+resource_local_to_scene = true
+script = ExtResource("6_erpp7")
+base_health = 1
+base_defense = 2
+base_attack = 5
+base_speed = 200
+metadata/_custom_type_script = "uid://c1gagfk36axyn"
+
+[sub_resource type="Resource" id="Resource_hb2pd"]
+resource_local_to_scene = true
+script = ExtResource("6_erpp7")
+base_health = 1
+base_defense = 2
+base_attack = 5
+base_speed = 200
+metadata/_custom_type_script = "uid://c1gagfk36axyn"
+
+[sub_resource type="Resource" id="Resource_fwkg4"]
+resource_local_to_scene = true
+script = ExtResource("6_erpp7")
+base_health = 1
+base_defense = 2
+base_attack = 5
+base_speed = 200
+metadata/_custom_type_script = "uid://c1gagfk36axyn"
+
+[sub_resource type="Resource" id="Resource_7hsh5"]
+resource_local_to_scene = true
+script = ExtResource("6_erpp7")
+base_health = 1
+base_defense = 2
+base_attack = 5
+base_speed = 200
+metadata/_custom_type_script = "uid://c1gagfk36axyn"
+
+[sub_resource type="Resource" id="Resource_lsg2y"]
+resource_local_to_scene = true
+script = ExtResource("6_erpp7")
+base_health = 1
+base_defense = 2
+base_attack = 5
+base_speed = 200
+metadata/_custom_type_script = "uid://c1gagfk36axyn"
+
+[sub_resource type="Resource" id="Resource_a41n1"]
+resource_local_to_scene = true
+script = ExtResource("6_erpp7")
+base_health = 1
+base_defense = 2
+base_attack = 5
+base_speed = 200
+metadata/_custom_type_script = "uid://c1gagfk36axyn"
+
+[sub_resource type="Resource" id="Resource_sxy6l"]
+resource_local_to_scene = true
 script = ExtResource("6_erpp7")
 base_health = 1
 base_defense = 2
@@ -75,18 +210,83 @@ one_way = false
 size = 8
 side = 1
 
-[node name="ChaserSmall" parent="." unique_id=1878560309 instance=ExtResource("8_57oft")]
-position = Vector2(1262, 754)
+[node name="enemies" type="Node" parent="." unique_id=1922692592]
+
+[node name="ChaserSmall" parent="enemies" unique_id=1878560309 instance=ExtResource("8_57oft")]
+position = Vector2(1387, 257)
 stats = SubResource("Resource_erpp7")
 
-[node name="ChaserSmall2" parent="." unique_id=1776277743 instance=ExtResource("8_57oft")]
-position = Vector2(396, -587)
+[node name="ChaserSmall2" parent="enemies" unique_id=1776277743 instance=ExtResource("8_57oft")]
+position = Vector2(679, -27)
 stats = SubResource("Resource_4nh8x")
 
-[node name="ChaserSmall3" parent="." unique_id=1337222402 instance=ExtResource("8_57oft")]
-position = Vector2(1486, -74)
+[node name="ChaserSmall3" parent="enemies" unique_id=1337222402 instance=ExtResource("8_57oft")]
+position = Vector2(1791, -546)
 stats = SubResource("Resource_57oft")
 
-[node name="ChaserSmall4" parent="." unique_id=1996942858 instance=ExtResource("8_57oft")]
+[node name="ChaserSmall4" parent="enemies" unique_id=1996942858 instance=ExtResource("8_57oft")]
 position = Vector2(172, 594)
 stats = SubResource("Resource_22tr2")
+
+[node name="ChaserSmall5" parent="enemies" unique_id=1936012464 instance=ExtResource("8_57oft")]
+position = Vector2(1188, 12)
+stats = SubResource("Resource_wfihs")
+
+[node name="ChaserSmall6" parent="enemies" unique_id=643059921 instance=ExtResource("8_57oft")]
+position = Vector2(1305, -33)
+stats = SubResource("Resource_4ef04")
+
+[node name="ChaserSmall7" parent="enemies" unique_id=65252373 instance=ExtResource("8_57oft")]
+position = Vector2(109, 526)
+stats = SubResource("Resource_c86d8")
+
+[node name="ChaserSmall8" parent="enemies" unique_id=537375607 instance=ExtResource("8_57oft")]
+position = Vector2(236, 505)
+stats = SubResource("Resource_qr3sb")
+
+[node name="ChaserSmall9" parent="enemies" unique_id=1609243047 instance=ExtResource("8_57oft")]
+position = Vector2(158, 443)
+stats = SubResource("Resource_e63uw")
+
+[node name="ChaserSmall10" parent="enemies" unique_id=1176766732 instance=ExtResource("8_57oft")]
+position = Vector2(1295, 73)
+stats = SubResource("Resource_o17rj")
+
+[node name="ChaserSmall11" parent="enemies" unique_id=2032410439 instance=ExtResource("8_57oft")]
+position = Vector2(1399, 107)
+stats = SubResource("Resource_vdfi7")
+
+[node name="ChaserSmall12" parent="enemies" unique_id=841547733 instance=ExtResource("8_57oft")]
+position = Vector2(1313, 188)
+stats = SubResource("Resource_yra06")
+
+[node name="ChaserSmall13" parent="enemies" unique_id=699393231 instance=ExtResource("8_57oft")]
+position = Vector2(759, 57)
+stats = SubResource("Resource_4k1ur")
+
+[node name="ChaserSmall14" parent="enemies" unique_id=966895305 instance=ExtResource("8_57oft")]
+position = Vector2(650, 57)
+stats = SubResource("Resource_hb2pd")
+
+[node name="ChaserSmall15" parent="enemies" unique_id=995094701 instance=ExtResource("8_57oft")]
+position = Vector2(712, 134)
+stats = SubResource("Resource_fwkg4")
+
+[node name="ChaserSmall16" parent="enemies" unique_id=912381056 instance=ExtResource("8_57oft")]
+position = Vector2(1860, -501)
+stats = SubResource("Resource_7hsh5")
+
+[node name="ChaserSmall17" parent="enemies" unique_id=413947495 instance=ExtResource("8_57oft")]
+position = Vector2(1761, -465)
+stats = SubResource("Resource_lsg2y")
+
+[node name="ChaserSmall18" parent="enemies" unique_id=720450594 instance=ExtResource("8_57oft")]
+position = Vector2(1857, -413)
+stats = SubResource("Resource_a41n1")
+
+[node name="ChaserSmall19" parent="enemies" unique_id=1732643324 instance=ExtResource("8_57oft")]
+position = Vector2(1751, -384)
+stats = SubResource("Resource_sxy6l")
+
+[node name="drain_radius_pickup" parent="." unique_id=1873902903 instance=ExtResource("7_4nh8x")]
+position = Vector2(1014, -13)
