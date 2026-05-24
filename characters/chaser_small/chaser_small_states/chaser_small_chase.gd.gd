@@ -14,6 +14,7 @@ func on_enter() -> void:
 	is_chasing = true
 	controlled_character.chase_radius.player_exited.connect(start_forget_timer)
 	forget_timer.timeout.connect(stop_chase)
+	controlled_character.anim.play("waddle")
 
 func on_exit() -> void:
 	is_chasing = false

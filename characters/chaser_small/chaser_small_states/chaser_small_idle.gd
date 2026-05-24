@@ -10,6 +10,7 @@ func on_enter() -> void:
 	controlled_character.velocity = Vector2.ZERO
 	chase = false
 	controlled_character.chase_radius.player_entered.connect(enter_chase)
+	controlled_character.anim.play("idle")
 
 func on_exit() -> void:
 	chase = false

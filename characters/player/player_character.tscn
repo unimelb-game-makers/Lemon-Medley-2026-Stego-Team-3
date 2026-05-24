@@ -12,8 +12,11 @@
 [ext_resource type="Script" uid="uid://m755ncu3yqha" path="res://characters/player/states/player_stun.gd" id="11_nmpe6"]
 [ext_resource type="Script" uid="uid://c0yx2l6bgusa0" path="res://characters/player/states/player_talking.gd" id="12_bblrc"]
 [ext_resource type="PackedScene" uid="uid://cgm7oaei5bg0c" path="res://characters/player/abilities/dash.tscn" id="13_qdqua"]
-[ext_resource type="Script" uid="uid://u8nseulu3yoo" path="res://characters/player/ability_manager.gd" id="14_qdqua"]
 [ext_resource type="Script" uid="uid://cee4shmh444wc" path="res://characters/player/ability_detector.gd" id="14_y38xb"]
+[ext_resource type="Texture2D" uid="uid://bsvjv68vrylaq" path="res://assets/pixel claymore final ver.0.2.png" id="13_y38xb"]
+[ext_resource type="Script" uid="uid://u8nseulu3yoo" path="res://characters/player/ability_manager.gd" id="14_qdqua"]
+[ext_resource type="PackedScene" uid="uid://dx56430ptq5d3" path="res://characters/player/player_ghost_sprite.tscn" id="14_y38xb"]
+[ext_resource type="PackedScene" uid="uid://bbu7t7v4emrna" path="res://characters/player/abilities/drain_radius.tscn" id="14_yrhyy"]
 [ext_resource type="Script" uid="uid://bbcf8d7cavo6f" path="res://characters/player/player_audio_manager.gd" id="15_gnfn5"]
 
 [sub_resource type="Resource" id="Resource_o6xl0"]
@@ -27,6 +30,9 @@ metadata/_custom_type_script = "uid://c1gagfk36axyn"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gnfn5"]
 size = Vector2(217, 324)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y38xb"]
+size = Vector2(383.3333, 100)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o5qli"]
 size = Vector2(59, 213)
@@ -52,6 +58,7 @@ script = ExtResource("3_gnfn5")
 
 [node name="icon" type="Sprite2D" parent="." unique_id=920935392]
 modulate = Color(0.627451, 1, 0, 1)
+texture_filter = 1
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("4_gnfn5")
 offset = Vector2(-1460, 0)
@@ -66,6 +73,9 @@ script = ExtResource("4_dwfcf")
 
 [node name="walk_state" type="Node" parent="statemachine" unique_id=959702867]
 script = ExtResource("5_y3qm2")
+
+[node name="walk_timer" type="Timer" parent="statemachine/walk_state" unique_id=1623676844]
+one_shot = true
 
 [node name="idle_state" type="Node" parent="statemachine" unique_id=2047713969]
 script = ExtResource("7_nmpe6")
@@ -92,6 +102,36 @@ ability_manager = NodePath("../ability_manager")
 position = Vector2(1.5, -16)
 shape = SubResource("RectangleShape2D_gnfn5")
 debug_color = Color(0.4, 0.6039216, 0.20784314, 0.1764706)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ability_manager/melee/claymore_attack_area" unique_id=631539804]
+position = Vector2(341.66666, 0)
+shape = SubResource("RectangleShape2D_y38xb")
+
+[node name="Sprite2D" type="Sprite2D" parent="ability_manager/melee/claymore_attack_area/CollisionShape2D" unique_id=380423584]
+position = Vector2(-39.666656, 0)
+rotation = 0.7853982
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("13_y38xb")
+
+[node name="dash" type="Node2D" parent="ability_manager" unique_id=286998789]
+script = ExtResource("19_scicj")
+dash_duration = 0.45
+ghost_sprite = ExtResource("14_y38xb")
+input = "Dash"
+cooldown = 1.5
+
+[node name="cooldown_timer" type="Timer" parent="ability_manager/dash" unique_id=892717750]
+wait_time = 5.0
+one_shot = true
+
+[node name="dash_timer" type="Timer" parent="ability_manager/dash" unique_id=114230950]
+wait_time = 0.5
+one_shot = true
+
+[node name="ghost_spawn_timer" type="Timer" parent="ability_manager/dash" unique_id=538598681]
+wait_time = 0.02
+one_shot = true
+
+[node name="drain_radius" parent="ability_manager" unique_id=55580869 instance=ExtResource("14_yrhyy")]
 
 [node name="damage_area" type="Area2D" parent="." unique_id=1136224295]
 collision_mask = 0
@@ -126,16 +166,6 @@ offset_bottom = -105.0
 text = "Text"
 metadata/_edit_use_anchors_ = true
 
-[node name="timers" type="Node" parent="." unique_id=1465195983]
-
-[node name="dash_timer" type="Timer" parent="timers" unique_id=2088787934]
-wait_time = 0.5
-one_shot = true
-
-[node name="dash_cooldown" type="Timer" parent="timers" unique_id=290738606]
-wait_time = 5.0
-one_shot = true
-
 [node name="FmodListener2D" type="FmodListener2D" parent="." unique_id=1200297123]
 
 [node name="player_audio_manager" type="Node" parent="." unique_id=295630346]
@@ -156,3 +186,6 @@ scale = Vector2(0.3, 0.3)
 
 [connection signal="area_entered" from="ability_detector" to="ability_detector" method="_on_area_entered"]
 [connection signal="area_exited" from="ability_detector" to="ability_detector" method="_on_area_exited"]
+[connection signal="dash_ended" from="ability_manager/dash" to="statemachine/walk_state" method="dash_ended"]
+[connection signal="dash_started" from="ability_manager/dash" to="statemachine/walk_state" method="dash_started"]
+[connection signal="timeout" from="ability_manager/dash/ghost_spawn_timer" to="ability_manager/dash" method="_on_ghost_spawn_timer_timeout"]

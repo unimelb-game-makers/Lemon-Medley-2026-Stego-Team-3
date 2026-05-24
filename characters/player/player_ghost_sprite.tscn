@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dx56430ptq5d3"]
+
+[ext_resource type="Script" uid="uid://cbqlgqrybcg3a" path="res://characters/player/player_ghost_sprite.gd" id="1_e32en"]
+
+[node name="Sprite2D" type="Sprite2D" unique_id=1241184190]
+z_index = -1
+script = ExtResource("1_e32en")
+
+[node name="Timer" type="Timer" parent="." unique_id=1597847645]
+wait_time = 0.7
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://ddq8nkdp4gpaa" path="res://base_physics_components/damage_area.gd" id="4_1751t"]
 [ext_resource type="PackedScene" uid="uid://3xcw58onnoam" path="res://characters/m_range_enemy/range_enemy_bullet.tscn" id="4_mq453"]
 [ext_resource type="Script" uid="uid://c3atp4e4h86rb" path="res://base_physics_components/attack_area.gd" id="5_280m2"]
+[ext_resource type="Texture2D" uid="uid://d1yomesg68knx" path="res://assets/enemies/RangedEnemy.png" id="5_tsddu"]
 [ext_resource type="Script" uid="uid://cuaw7uqkmdwl1" path="res://characters/m_range_enemy/range_enemy_states/range_enemy_idle.gd" id="6_u7c71"]
 [ext_resource type="Script" uid="uid://da4udhi52hxri" path="res://characters/m_range_enemy/range_enemy_states/range_enemy_shooting.gd" id="7_j82x6"]
 [ext_resource type="Script" uid="uid://bi0vhn1beo38r" path="res://base_classes/vision_area.gd" id="8_1751t"]
@@ -22,15 +23,6 @@ metadata/_custom_type_script = "uid://c1gagfk36axyn"
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tis73"]
 size = Vector2(48, 48)
 
-[sub_resource type="Gradient" id="Gradient_w57m4"]
-offsets = PackedFloat32Array(0, 0.34791666, 0.75074625, 0.8373134, 0.87014925)
-colors = PackedColorArray(0, 0, 0, 1, 0.8156863, 0.4117647, 0.39607844, 1, 0.5826596, 0.44729602, 0.34603223, 1, 0.6171846, 0.35726088, 0.67805856, 1, 0.47843137, 0.47843137, 0.47843137, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_n0k81"]
-gradient = SubResource("Gradient_w57m4")
-fill = 2
-fill_from = Vector2(0.5, 0.5)
-
 [sub_resource type="Gradient" id="Gradient_7v5n0"]
 offsets = PackedFloat32Array(0, 0.34791666, 0.6020833, 0.68125)
 colors = PackedColorArray(0, 0, 0, 1, 0.7490196, 0.827451, 0.09411765, 1, 0.5826596, 0.44729602, 0.34603223, 1, 0.47843137, 0.47843137, 0.47843137, 0)
@@ -41,7 +33,7 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gvvri"]
-size = Vector2(64, 64)
+size = Vector2(140, 214)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kcvot"]
 size = Vector2(32, 32)
@@ -83,7 +75,9 @@ script = ExtResource("3_280m2")
 projectile_scene = ExtResource("4_mq453")
 
 [node name="RangeGenericSprite" type="Sprite2D" parent="." unique_id=848765339]
-texture = SubResource("GradientTexture2D_n0k81")
+texture_filter = 1
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("5_tsddu")
 
 [node name="RangeEye" type="Sprite2D" parent="RangeGenericSprite" unique_id=861736961]
 position = Vector2(8, -16)
@@ -97,6 +91,7 @@ script = ExtResource("4_1751t")
 metadata/_custom_type_script = "uid://ddq8nkdp4gpaa"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=1848968845]
+position = Vector2(-8, 11)
 shape = SubResource("RectangleShape2D_gvvri")
 
 [node name="TouchDamageBox" type="Area2D" parent="." unique_id=1778221950]
