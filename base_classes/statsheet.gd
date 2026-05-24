@@ -13,7 +13,7 @@ extends Resource
 @export var speed: int
 
 signal death()
-
+signal damage_taken()
 
 func load(_statsheet : StatSheet) -> void:
 	base_health = _statsheet.base_health
@@ -46,6 +46,7 @@ func damage_calculation(incoming_attack_val: int) -> int:
 func take_damage(incoming_attack_val: int) -> void:
 	var final_damage: int = damage_calculation(incoming_attack_val)
 	#print("Taking damage: %s" % final_damage)
+	damage_taken.emit()
 
 	health = clamp(health - final_damage, 0, INF)
 

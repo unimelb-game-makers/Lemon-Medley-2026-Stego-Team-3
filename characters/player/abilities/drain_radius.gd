@@ -10,6 +10,9 @@ extends Ability
 
 var damage_areas: Array[DamageArea]
 
+func _ready() -> void:
+	cooldown_timer.wait_time += runtime_timer.wait_time
+
 ## Once activated, it will RUN for ten seconds, with each half second dealing damage
 func activate():
 	if not activated and cooldown_timer.is_stopped():
@@ -17,6 +20,7 @@ func activate():
 		damage_ticker.start(damage_tick)
 		runtime_timer.start(total_time)
 		drain_emitter.play()
+		#cooldown_timer.start()
 
 func run():
 	if not runtime_timer.is_stopped() and damage_ticker.is_stopped():
@@ -34,9 +38,9 @@ func tick_damage():
 
 func runtime_finished():
 	activated = false
-	cooldown_timer.start(cooldown)
 	queue_redraw()
 	drain_emitter.stop()
+	cooldown_timer.start()
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area is DamageArea and area not in damage_areas:

@@ -13,6 +13,7 @@ signal dash_started
 signal dash_ended
 
 func _ready() -> void:
+	cooldown_timer.wait_time = dash_timer.wait_time + cooldown_timer.wait_time
 	dash_timer.timeout.connect(stop_dash)
 
 func activate():
@@ -34,7 +35,6 @@ func run():
 
 func stop_dash():
 	activated = false
-	cooldown_timer.start(cooldown)
 	controller.audio_manager.dash_emitter.stop()
 	var tw1: Tween = get_tree().create_tween()
 	tw1.tween_property(controller.sprite, "scale:y", 0.1, 0.1)

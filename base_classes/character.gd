@@ -26,8 +26,8 @@ var last_hit : Damage
 var last_hit_direction : Vector2
 
 func _ready() -> void:
-	_initialize_hitboxes()
 	stats.reset()
+	_initialize_hitboxes()
 
 ## Seperate responsibility of hitbox setup from ready().
 ## I noticed we like to ovverride a lot, keeping it seperate makes rewriting code easier.

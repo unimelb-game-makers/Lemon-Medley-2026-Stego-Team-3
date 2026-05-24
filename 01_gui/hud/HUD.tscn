@@ -1,0 +1,135 @@
+[gd_scene format=3 uid="uid://bpg7l15lvq4lw"]
+
+[ext_resource type="Script" uid="uid://cdjcw4fqvb0h1" path="res://01_gui/hud/HUD.gd" id="1_ieftq"]
+[ext_resource type="Script" uid="uid://cqml2j8yu14ha" path="res://01_gui/hud/health_bar/health_bar.gd" id="1_pd0xw"]
+[ext_resource type="Texture2D" uid="uid://d1toutmmep30" path="res://01_gui/hud/health_bar/Bar.png" id="2_mxofg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_05jt3"]
+atlas = ExtResource("2_mxofg")
+region = Rect2(4, 4, 78, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_awnhe"]
+atlas = ExtResource("2_mxofg")
+region = Rect2(4, 20, 78, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aec6l"]
+atlas = ExtResource("2_mxofg")
+region = Rect2(4, 36, 78, 10)
+
+[node name="HUD" type="CanvasLayer" unique_id=885035255]
+process_mode = 3
+script = ExtResource("1_ieftq")
+
+[node name="HealthBar" type="Control" parent="." unique_id=1167987464]
+process_mode = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 10.0
+offset_bottom = 10.0
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_pd0xw")
+
+[node name="Regular" type="TextureProgressBar" parent="HealthBar" unique_id=1198253970]
+layout_mode = 1
+offset_right = 78.0
+offset_bottom = 10.0
+scale = Vector2(4, 4)
+value = 50.0
+texture_over = SubResource("AtlasTexture_05jt3")
+texture_progress = SubResource("AtlasTexture_awnhe")
+tint_progress = Color(0.7411765, 0, 0.14901961, 1)
+
+[node name="Burst" type="TextureProgressBar" parent="HealthBar" unique_id=684659370]
+z_index = -1
+layout_mode = 0
+offset_right = 78.0
+offset_bottom = 10.0
+scale = Vector2(4, 4)
+step = 0.0
+value = 80.0
+texture_under = SubResource("AtlasTexture_aec6l")
+texture_over = SubResource("AtlasTexture_05jt3")
+texture_progress = SubResource("AtlasTexture_awnhe")
+
+[node name="CooldownTimers" type="HBoxContainer" parent="." unique_id=2014570287]
+offset_left = 10.0
+offset_top = 35.0
+offset_right = 114.0
+offset_bottom = 85.0
+
+[node name="PauseScreen" type="Panel" parent="." unique_id=758087635]
+visible = false
+z_index = 9
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseScreen" unique_id=714887483]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PauseScreen/VBoxContainer" unique_id=1555447935]
+custom_minimum_size = Vector2(140, 50)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 32
+text = "Paused"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ResumeButton" type="Button" parent="PauseScreen/VBoxContainer" unique_id=2136898066]
+layout_mode = 2
+size_flags_vertical = 4
+text = "Resume"
+
+[node name="GameOverScreen" type="Panel" parent="." unique_id=1822720014]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOverScreen" unique_id=2065219469]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GameOverScreen/VBoxContainer" unique_id=1855909735]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 32
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ResumeButton" type="Button" parent="GameOverScreen/VBoxContainer" unique_id=611177530]
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Retry"
+
+[connection signal="button_down" from="PauseScreen/VBoxContainer/ResumeButton" to="." method="toggle_pause"]
+[connection signal="button_down" from="GameOverScreen/VBoxContainer/ResumeButton" to="." method="retry"]

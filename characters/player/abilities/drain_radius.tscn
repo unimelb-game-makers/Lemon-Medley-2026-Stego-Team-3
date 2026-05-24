@@ -11,12 +11,14 @@ key = 49
 cooldown = 10.0
 
 [node name="cooldown_timer" type="Timer" parent="." unique_id=68663907]
+wait_time = 10.0
 one_shot = true
 
 [node name="damage_ticker" type="Timer" parent="." unique_id=1288375238]
 one_shot = true
 
 [node name="runtime_timer" type="Timer" parent="." unique_id=1247317108]
+wait_time = 10.0
 one_shot = true
 
 [node name="Area2D" type="Area2D" parent="." unique_id=308060197]

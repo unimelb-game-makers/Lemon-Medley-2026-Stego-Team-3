@@ -50,3 +50,6 @@ position = Vector2(976, 680)
 
 [node name="drain_radius_pickup" parent="." unique_id=1873902903 instance=ExtResource("7_um76v")]
 position = Vector2(512, 867)
+
+[node name="ChaserSmall2" parent="." unique_id=542821505 instance=ExtResource("6_5584w")]
+position = Vector2(149, 842)
