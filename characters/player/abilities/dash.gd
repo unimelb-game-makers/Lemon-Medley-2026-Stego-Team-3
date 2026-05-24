@@ -7,11 +7,13 @@ extends Ability
 var dash_vector : Vector2
 
 func _ready() -> void:
+	cooldown_timer.wait_time = dash_timer.wait_time + cooldown_timer.wait_time
 	dash_timer.timeout.connect(stop_dash)
 
 func activate():
 	if dash_timer.is_stopped() and cooldown_timer.is_stopped():
 		activated = true
+		cooldown_timer.start()
 		dash_timer.start()
 		dash_vector = controller.last_direction
 		controller.audio_manager.dash_emitter.play() 
@@ -23,7 +25,6 @@ func run():
 
 func stop_dash():
 	activated = false
-	cooldown_timer.start(cooldown)
 	controller.audio_manager.dash_emitter.stop()
 
 func is_dashing() -> bool:

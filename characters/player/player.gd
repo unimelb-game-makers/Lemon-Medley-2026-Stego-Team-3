@@ -7,10 +7,13 @@ class_name Player extends Character
 @onready var audio_manager: PlayerAudioManager = $player_audio_manager
 @onready var dash_ability = $ability_manager/dash
 
+var damage_area_disabled : bool = false
+
 func _ready() -> void:
 	PlayerManager.player = self
 	hurt_box.damage_taken.connect(take_damage)
 	stats.reset()
+	stats.death.connect(HUD.on_death)
 	ability_manager.set_controller(self)
 	audio_manager.set_controller(self)
 

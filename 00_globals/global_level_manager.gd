@@ -20,6 +20,12 @@ func change_tilemap_bounds( bounds : Array[ Vector2 ] ) -> void:
 	current_tilemap_bounds = bounds
 	tilemap_bounds_changed.emit( bounds )
 
+func retry_level():
+	PlayerManager.player.stats.load(save_state.player_stats)
+	load_new_level(save_state.level_path,
+				   save_state.target_transition,
+				   save_state.position_offset)
+
 func load_new_level(
 		level_path : String,
 		_target_transition : String,
@@ -30,7 +36,6 @@ func load_new_level(
 	
 	if(save_state == null):
 		push_error("Save is null, making new save")
-		PlayerManager.player.stats.load(save_state.player_stats)
 		save_state = SaveState.new()
 	
 	save_state.player_stats = PlayerManager.player.stats.duplicate(true)
