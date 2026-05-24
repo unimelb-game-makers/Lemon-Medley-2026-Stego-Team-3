@@ -39,7 +39,7 @@ Press \"Space\" Near the Upside-Down Godot to interact with it."
 position = Vector2(568, 29)
 
 [node name="LevelTransition" parent="." unique_id=1072105267 instance=ExtResource("5_to4wo")]
-position = Vector2(1539, 392)
+position = Vector2(1536, 400)
 level = "uid://ceesima423p7y"
 size = 8
 side = 1
