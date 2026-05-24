@@ -30,8 +30,8 @@ func load_new_level(
 	
 	if(save_state == null):
 		push_error("Save is null, making new save")
-		PlayerManager.player.stats.load(save_state.player_stats)
 		save_state = SaveState.new()
+		PlayerManager.player.stats.load(save_state.player_stats)
 		
 	save_state.player_stats = PlayerManager.player.stats.duplicate(true)
 	save_state.level_path = level_path

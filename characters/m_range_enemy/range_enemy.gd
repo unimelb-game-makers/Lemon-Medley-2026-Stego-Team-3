@@ -2,6 +2,7 @@
 class_name RangeEnemy
 extends Character
 
+var monster_sound_timer: Timer
 @onready var debug_state_label: Label = $DebugStateLabel
 @onready var projectile_emitter: ProjectileEmitter = $ProjectileEmitter
 
@@ -12,7 +13,21 @@ func _ready() -> void:
 	super._ready()
 	setup_projectile_emitter()
 	stats.death.connect(_on_death)
-
+	setup_monster_sounds()
+	
+func setup_monster_sounds() -> void:
+	monster_sound_timer = Timer.new()
+	add_child(monster_sound_timer)
+	monster_sound_timer.timeout.connect(_on_monster_sound_timer)
+	monster_sound_timer.start(randf_range(3.0, 8.0))
+	
+func _on_monster_sound_timer() -> void:
+	var event = FmodServer.create_event_instance("event:/monster_sound")
+	event.set_2d_attributes(global_transform)
+	event.start()
+	event.release()
+	monster_sound_timer.start(randf_range(3.0, 8.0))
+		
 func _process(delta: float) -> void:
 	state_machine.process_state(delta)
 

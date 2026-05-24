@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://sikff7uadwk5" path="res://characters/player/abilities/melee.tscn" id="11_gnfn5"]
 [ext_resource type="Script" uid="uid://m755ncu3yqha" path="res://characters/player/states/player_stun.gd" id="11_nmpe6"]
 [ext_resource type="Script" uid="uid://c0yx2l6bgusa0" path="res://characters/player/states/player_talking.gd" id="12_bblrc"]
-[ext_resource type="Script" uid="uid://cee4shmh444wc" path="res://characters/player/ability_detector.gd" id="13_gnfn5"]
+[ext_resource type="Script" path="res://characters/player/ability_detector.gd" id="13_gnfn5"]
 [ext_resource type="PackedScene" uid="uid://cgm7oaei5bg0c" path="res://characters/player/abilities/dash.tscn" id="13_qdqua"]
 [ext_resource type="Script" uid="uid://u8nseulu3yoo" path="res://characters/player/ability_manager.gd" id="14_qdqua"]
 [ext_resource type="PackedScene" uid="uid://dx56430ptq5d3" path="res://characters/player/player_ghost_sprite.tscn" id="14_y38xb"]
@@ -26,6 +26,9 @@ base_speed = 300
 knockback_speed = 600.0
 metadata/_custom_type_script = "uid://c1gagfk36axyn"
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qdqua"]
+size = Vector2(60, 56)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gnfn5"]
 size = Vector2(217, 324)
 
@@ -37,7 +40,8 @@ radius = 350.0
 
 [node name="PlayerCharacter" type="CharacterBody2D" unique_id=1978286765 node_paths=PackedStringArray("debug_state_label", "debug_dash_label", "state_machine", "hurt_box")]
 scale = Vector2(0.3, 0.3)
-collision_mask = 17
+collision_layer = 129
+collision_mask = 145
 script = ExtResource("1_3kw6f")
 debug_state_label = NodePath("debug_state_label")
 debug_dash_label = NodePath("debug_dash_label")
@@ -59,8 +63,8 @@ texture = ExtResource("4_gnfn5")
 offset = Vector2(-1460, 0)
 
 [node name="shape" type="CollisionShape2D" parent="." unique_id=708662803]
-position = Vector2(1.5, -16)
-shape = SubResource("RectangleShape2D_gnfn5")
+position = Vector2(0, 118)
+shape = SubResource("RectangleShape2D_qdqua")
 debug_color = Color(0.4, 0.6039216, 0.20784314, 0.1764706)
 
 [node name="statemachine" type="Node" parent="." unique_id=614204903]

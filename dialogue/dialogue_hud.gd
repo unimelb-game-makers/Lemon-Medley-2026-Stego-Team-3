@@ -6,6 +6,7 @@ class_name DialogueHUD extends CanvasLayer
 @export var is_active : bool = false
 @export var choice_container : VBoxContainer
 @export var choice_panel_container : Control
+var dialogue_started: bool = false
 var dialogue_finished : bool = false
 var current_dialogue : Dialogue = null
 var semaphore : int = 0
@@ -24,6 +25,12 @@ func start_dialogue(dialogue : Dialogue) -> void:
 	print("Starting Start Dialogue")
 	PlayerManager.player.state_machine.switch_state("dialogue")
 	show_dialogue(dialogue)
+	
+	if not dialogue_started:
+		dialogue_started = true
+		var event = FmodServer.create_event_instance("event:/interactive_harp")
+		event.start()
+		event.release()
 
 ## Used to show simple dialogues with no branches, checks, etc.
 func show_simple_dialogue(dialogue : Dialogue) -> void:
@@ -62,7 +69,11 @@ func show_dialogue_choice(dialogue : Dialogue) -> void:
 	for i in range(dialogue.dialogue_options.size()):
 		var button = Button.new()
 		button.text = dialogue.dialogue_options[i]
-		button.pressed.connect(start_dialogue.bind(dialogue.possible_next_dialogues[i]))
+		button.pressed.connect(func():
+				var sfx = FmodServer.create_event_instance("event:/UI_sfx_1")
+				sfx.start()
+				sfx.release()
+				start_dialogue(dialogue.possible_next_dialogues[i]))
 		choice_container.add_child(button)
 	
 	choice_panel_container.visible = true
@@ -78,6 +89,7 @@ func end_dialogue() -> void:
 	semaphore -= 1
 	is_active = false
 	visible = false
+	dialogue_started = false
 	
 	dialogue_text.text = ""
 	name_text.text = ""
@@ -97,6 +109,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 	
 	if Input.is_action_pressed("Interact"):
+		
+		var sfx = FmodServer.create_event_instance("event:/UI_sfx_1")
+		sfx.start()
+		sfx.release()
 		
 		if current_dialogue.terminate:
 			print("Terminating")

@@ -6,6 +6,7 @@ extends Ability
 
 @onready var damage_ticker: Timer = $damage_ticker ## Deals damage each time it finishes
 @onready var runtime_timer: Timer = $runtime_timer ## Times the total ten seconds for which ticks of damage will be dealt
+@onready var drain_emitter: FmodEventEmitter2D = $DrainEmitter
 
 var damage_areas: Array[DamageArea]
 
@@ -15,6 +16,7 @@ func activate():
 		activated = true
 		damage_ticker.start(damage_tick)
 		runtime_timer.start(total_time)
+		drain_emitter.play()
 
 func run():
 	if not runtime_timer.is_stopped() and damage_ticker.is_stopped():
@@ -34,6 +36,7 @@ func runtime_finished():
 	activated = false
 	cooldown_timer.start(cooldown)
 	queue_redraw()
+	drain_emitter.stop()
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area is DamageArea and area not in damage_areas:

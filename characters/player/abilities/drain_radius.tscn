@@ -26,6 +26,9 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=731782016]
 shape = SubResource("CircleShape2D_wus6i")
 
+[node name="DrainEmitter" type="FmodEventEmitter2D" parent="." unique_id=1022590158]
+event_guid = "{0000005f-006e-0000-6f00-000064000000}"
+
 [connection signal="timeout" from="damage_ticker" to="." method="tick_damage"]
 [connection signal="timeout" from="runtime_timer" to="." method="runtime_finished"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
