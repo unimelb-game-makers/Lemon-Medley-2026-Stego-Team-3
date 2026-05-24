@@ -6,10 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://yek2dtlgvysa" path="res://characters/npc/conversable_npc.tscn" id="4_l3q8i"]
 [ext_resource type="PackedScene" uid="uid://vlpiuopcomwi" path="res://levels/level_transition.tscn" id="5_to4wo"]
 [ext_resource type="PackedScene" uid="uid://cnkg66hk5nciw" path="res://characters/chaser_small/chaser_small.tscn" id="6_5584w"]
-[ext_resource type="Script" uid="uid://bukaqvt4pao3a" path="res://levels/00_scripts/level_transition.gd" id="6_um76v"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5584w"]
-size = Vector2(32, 64)
+[ext_resource type="PackedScene" uid="uid://okl6wlx1osma" path="res://pickups/drain_radius_pickup.tscn" id="7_um76v"]
 
 [node name="PrototypeLevel" type="Node2D" unique_id=1287366284]
 script = ExtResource("1_um76v")
@@ -51,15 +48,5 @@ side = 1
 [node name="ChaserSmall" parent="." unique_id=1878560309 instance=ExtResource("6_5584w")]
 position = Vector2(976, 680)
 
-[node name="Enter" type="Area2D" parent="." unique_id=1948344925]
-position = Vector2(57, 448)
-script = ExtResource("6_um76v")
-level = "<null>"
-target_transition_area = "Enter"
-center_player = true
-one_way = true
-metadata/_custom_type_script = "uid://bukaqvt4pao3a"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enter" unique_id=1307176950]
-position = Vector2(-16, 0)
-shape = SubResource("RectangleShape2D_5584w")
+[node name="drain_radius_pickup" parent="." unique_id=1873902903 instance=ExtResource("7_um76v")]
+position = Vector2(512, 867)

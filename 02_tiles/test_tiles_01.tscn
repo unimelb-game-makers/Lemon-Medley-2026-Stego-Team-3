@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://ctqf2vj4ik6k"]
 
-[ext_resource type="Texture2D" uid="uid://dkstnrfcol12w" path="res://02_tiles/sprites/test_tile_dirt.png" id="1_ri56y"]
+[ext_resource type="Texture2D" uid="uid://dkstnrfcol12w" path="res://02_tiles/temp_art/test_tile_dirt.png" id="1_ri56y"]
 [ext_resource type="Script" uid="uid://dsjxqtwkdb1d1" path="res://02_tiles/level_tile_map_layer.gd" id="1_x0sox"]
-[ext_resource type="Texture2D" uid="uid://brg770mti8mee" path="res://02_tiles/sprites/test_wooden_house.png" id="2_dwrxp"]
+[ext_resource type="Texture2D" uid="uid://brg770mti8mee" path="res://02_tiles/temp_art/Wooden House.png" id="2_dwrxp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vfn3n"]
 texture = ExtResource("1_ri56y")

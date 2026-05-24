@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cgm7oaei5bg0c"]
+
+[ext_resource type="Script" uid="uid://mdqdv4s3cq5f" path="res://characters/player/abilities/dash.gd" id="1_lxwem"]
+
+[node name="dash" type="Node2D" unique_id=238176876]
+script = ExtResource("1_lxwem")
+input = "Dash"
+cooldown = 1.5
+
+[node name="cooldown_timer" type="Timer" parent="." unique_id=1735296429]
+wait_time = 5.0
+one_shot = true
+
+[node name="dash_timer" type="Timer" parent="." unique_id=1581917890]
+wait_time = 0.5
+one_shot = true

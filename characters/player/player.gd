@@ -6,6 +6,7 @@ class_name Player extends Character
 @onready var ability_manager: AbilityManager = $ability_manager
 @onready var audio_manager: PlayerAudioManager = $player_audio_manager
 @onready var dash_ability = $ability_manager/dash
+@onready var ability_detector: AbilityDetector = $ability_detector
 
 func _ready() -> void:
 	PlayerManager.player = self
@@ -57,3 +58,4 @@ func _unhandled_input(event : InputEvent) -> void:
 		return
 	
 	state_machine.input_handle_state(event)
+	ability_detector.input_handling(event) # handle when the player meets a new ability pickup
