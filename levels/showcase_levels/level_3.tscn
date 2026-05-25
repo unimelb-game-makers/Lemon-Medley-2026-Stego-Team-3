@@ -1016,6 +1016,62 @@ base_attack = 5
 base_speed = 200
 metadata/_custom_type_script = "uid://c1gagfk36axyn"
 
+[sub_resource type="Resource" id="Resource_gbp4h"]
+script = ExtResource("6_wk54y")
+base_health = 20
+base_defense = 2
+base_attack = 5
+base_speed = 100
+metadata/_custom_type_script = "uid://c1gagfk36axyn"
+
+[sub_resource type="Resource" id="Resource_ev6s1"]
+script = ExtResource("6_wk54y")
+base_health = 20
+base_defense = 2
+base_attack = 5
+base_speed = 100
+metadata/_custom_type_script = "uid://c1gagfk36axyn"
+
+[sub_resource type="Resource" id="Resource_we8ar"]
+script = ExtResource("6_wk54y")
+base_health = 20
+base_defense = 2
+base_attack = 5
+base_speed = 100
+metadata/_custom_type_script = "uid://c1gagfk36axyn"
+
+[sub_resource type="Resource" id="Resource_78i05"]
+script = ExtResource("6_wk54y")
+base_health = 20
+base_defense = 2
+base_attack = 5
+base_speed = 100
+metadata/_custom_type_script = "uid://c1gagfk36axyn"
+
+[sub_resource type="Resource" id="Resource_j4ihp"]
+script = ExtResource("6_wk54y")
+base_health = 20
+base_defense = 2
+base_attack = 5
+base_speed = 100
+metadata/_custom_type_script = "uid://c1gagfk36axyn"
+
+[sub_resource type="Resource" id="Resource_yx47j"]
+script = ExtResource("6_wk54y")
+base_health = 20
+base_defense = 2
+base_attack = 5
+base_speed = 100
+metadata/_custom_type_script = "uid://c1gagfk36axyn"
+
+[sub_resource type="Resource" id="Resource_mgyrt"]
+script = ExtResource("6_wk54y")
+base_health = 20
+base_defense = 2
+base_attack = 5
+base_speed = 100
+metadata/_custom_type_script = "uid://c1gagfk36axyn"
+
 [node name="level_1" type="Node2D" unique_id=424394711]
 script = ExtResource("1_cx20w")
 
@@ -1497,21 +1553,28 @@ stats = SubResource("Resource_s4hba")
 
 [node name="RangeEnemy" parent="enemies" unique_id=282997317 instance=ExtResource("7_geku0")]
 position = Vector2(1527, -93)
+stats = SubResource("Resource_gbp4h")
 
 [node name="RangeEnemy2" parent="enemies" unique_id=1174673120 instance=ExtResource("7_geku0")]
 position = Vector2(6216, 909)
+stats = SubResource("Resource_ev6s1")
 
 [node name="RangeEnemy3" parent="enemies" unique_id=295339040 instance=ExtResource("7_geku0")]
 position = Vector2(4568, 882)
+stats = SubResource("Resource_we8ar")
 
 [node name="RangeEnemy4" parent="enemies" unique_id=392689666 instance=ExtResource("7_geku0")]
 position = Vector2(7501, 1084)
+stats = SubResource("Resource_78i05")
 
 [node name="RangeEnemy5" parent="enemies" unique_id=1569782990 instance=ExtResource("7_geku0")]
 position = Vector2(4508, -726)
+stats = SubResource("Resource_j4ihp")
 
 [node name="RangeEnemy7" parent="enemies" unique_id=948245139 instance=ExtResource("7_geku0")]
 position = Vector2(5685, -766)
+stats = SubResource("Resource_yx47j")
 
 [node name="RangeEnemy6" parent="enemies" unique_id=391327078 instance=ExtResource("7_geku0")]
 position = Vector2(7205, -766)
+stats = SubResource("Resource_mgyrt")

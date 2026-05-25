@@ -22,7 +22,6 @@ shader_parameter/transparency = 0.0
 [node name="drain_radius_pickup" type="Area2D" unique_id=1873902903]
 script = ExtResource("1_dix7x")
 ability_scene = ExtResource("2_dix7x")
-ability_text = "1 to activate radius"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=108081795]
 shape = SubResource("CircleShape2D_08a6e")
@@ -31,3 +30,11 @@ shape = SubResource("CircleShape2D_08a6e")
 material = SubResource("ShaderMaterial_n7182")
 scale = Vector2(5, 5)
 texture = ExtResource("4_nwmie")
+
+[node name="Label" type="Label" parent="." unique_id=39018001]
+visible = false
+offset_left = -63.0
+offset_top = -127.0
+offset_right = 58.0
+offset_bottom = -104.0
+text = "space to pickup"
