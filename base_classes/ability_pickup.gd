@@ -3,7 +3,6 @@ class_name AbilityPickup
 
 @export var ability_scene: PackedScene
 
-<<<<<<< HEAD
 @onready var label: Label = $Label
 
 func get_ability() -> Ability:
@@ -14,7 +13,3 @@ func open_label():
 
 func close_label():
 	label.visible = false
-=======
-func get_ability() -> Ability:
-	return ability_scene.instantiate()
->>>>>>> main

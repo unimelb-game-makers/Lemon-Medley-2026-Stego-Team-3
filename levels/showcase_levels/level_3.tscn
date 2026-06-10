@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://c1gagfk36axyn" path="res://base_classes/statsheet.gd" id="6_wk54y"]
 [ext_resource type="PackedScene" uid="uid://0oxwaqqk4b1i" path="res://characters/m_range_enemy/range_enemy.tscn" id="7_geku0"]
 
-[sub_resource type="Resource" id="Resource_ck47k"]
+[sub_resource type="Resource" id="Resource_cx20w"]
 resource_local_to_scene = true
 script = ExtResource("6_wk54y")
 base_health = 1
@@ -17,7 +17,7 @@ base_attack = 5
 base_speed = 200
 metadata/_custom_type_script = "uid://c1gagfk36axyn"
 
-[sub_resource type="Resource" id="Resource_cx20w"]
+[sub_resource type="Resource" id="Resource_ck47k"]
 resource_local_to_scene = true
 script = ExtResource("6_wk54y")
 base_health = 1
@@ -1105,11 +1105,11 @@ size = 8
 
 [node name="ChaserSmall25" parent="enemies" unique_id=622224749 instance=ExtResource("5_b0c8a")]
 position = Vector2(-35, -53)
-stats = SubResource("Resource_ck47k")
+stats = SubResource("Resource_cx20w")
 
 [node name="ChaserSmall24" parent="enemies" unique_id=1995386114 instance=ExtResource("5_b0c8a")]
 position = Vector2(36, 43)
-stats = SubResource("Resource_cx20w")
+stats = SubResource("Resource_ck47k")
 
 [node name="ChaserSmall26" parent="enemies" unique_id=1878560309 instance=ExtResource("5_b0c8a")]
 position = Vector2(66, -39)

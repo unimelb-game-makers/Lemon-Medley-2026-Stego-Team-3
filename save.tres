@@ -5,12 +5,12 @@
 
 [sub_resource type="Resource" id="Resource_6wyh6"]
 script = ExtResource("1_6wyh6")
-base_health = 15
+base_health = 1
 base_defense = 2
 base_attack = 10
 base_speed = 300
 knockback_speed = 600.0
-health = 15
+health = 1
 defense = 2
 attack = 10
 speed = 300
@@ -18,7 +18,7 @@ metadata/_custom_type_script = "uid://c1gagfk36axyn"
 
 [resource]
 script = ExtResource("2_uj2n3")
-level_path = "uid://b8k2fbi78btib"
+level_path = "uid://hag1g2xerxiv"
 target_transition = "LevelTransition"
-position_offset = Vector2(-64, 0.4645996)
+position_offset = Vector2(64, 12.276245)
 player_stats = SubResource("Resource_6wyh6")
