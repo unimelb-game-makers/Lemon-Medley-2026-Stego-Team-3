@@ -20,5 +20,5 @@ metadata/_custom_type_script = "uid://c1gagfk36axyn"
 script = ExtResource("2_uj2n3")
 level_path = "uid://hag1g2xerxiv"
 target_transition = "LevelTransition"
-position_offset = Vector2(64, 10.30481)
+position_offset = Vector2(64, -55.84558)
 player_stats = SubResource("Resource_6wyh6")
