@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://cgm7oaei5bg0c"]
 
 [ext_resource type="Script" uid="uid://mdqdv4s3cq5f" path="res://characters/player/abilities/dash.gd" id="1_lxwem"]
+[ext_resource type="PackedScene" uid="uid://dx56430ptq5d3" path="res://characters/player/player_ghost_sprite.tscn" id="2_vwjs3"]
 
 [node name="dash" type="Node2D" unique_id=238176876]
 script = ExtResource("1_lxwem")
+ghost_sprite = ExtResource("2_vwjs3")
 input = "Dash"
 cooldown = 1.5
 
@@ -14,3 +16,9 @@ one_shot = true
 [node name="dash_timer" type="Timer" parent="." unique_id=1581917890]
 wait_time = 0.5
 one_shot = true
+
+[node name="ghost_spawn_timer" type="Timer" parent="." unique_id=14189677]
+wait_time = 0.02
+one_shot = true
+
+[connection signal="timeout" from="ghost_spawn_timer" to="." method="_on_ghost_spawn_timer_timeout"]

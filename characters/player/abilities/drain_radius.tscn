@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://rdirb0n8rbyv" path="res://characters/player/abilities/drain_radius.gd" id="1_wus6i"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wus6i"]
-radius = 750.0
+radius = 800.0
 
 [node name="drain_radius" type="Node2D" unique_id=55580869]
 script = ExtResource("1_wus6i")
@@ -11,12 +11,14 @@ key = 49
 cooldown = 10.0
 
 [node name="cooldown_timer" type="Timer" parent="." unique_id=68663907]
+wait_time = 10.0
 one_shot = true
 
 [node name="damage_ticker" type="Timer" parent="." unique_id=1288375238]
 one_shot = true
 
 [node name="runtime_timer" type="Timer" parent="." unique_id=1247317108]
+wait_time = 10.0
 one_shot = true
 
 [node name="Area2D" type="Area2D" parent="." unique_id=308060197]
@@ -25,6 +27,9 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=731782016]
 shape = SubResource("CircleShape2D_wus6i")
+
+[node name="DrainEmitter" type="FmodEventEmitter2D" parent="." unique_id=1022590158]
+event_guid = "{0000005f-006e-0000-6f00-000064000000}"
 
 [connection signal="timeout" from="damage_ticker" to="." method="tick_damage"]
 [connection signal="timeout" from="runtime_timer" to="." method="runtime_finished"]

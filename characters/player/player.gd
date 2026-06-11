@@ -7,11 +7,15 @@ class_name Player extends Character
 @onready var audio_manager: PlayerAudioManager = $player_audio_manager
 @onready var dash_ability = $ability_manager/dash
 @onready var ability_detector: AbilityDetector = $ability_detector
+@onready var sprite: Sprite2D = $icon
+
+var damage_area_disabled : bool = false
 
 func _ready() -> void:
 	PlayerManager.player = self
 	hurt_box.damage_taken.connect(take_damage)
 	stats.reset()
+	stats.death.connect(HUD.on_death)
 	ability_manager.set_controller(self)
 	audio_manager.set_controller(self)
 
@@ -19,7 +23,6 @@ func _process(delta: float) -> void:
 	#debug_state_label.text = state_machine.active_state.state_name
 	#debug_dash_label.text = "Can Dash" if can_dash else "Cannot Dash"
 	update_direction()
-	
 	state_machine.process_state(delta)
 
 func _physics_process(delta: float) -> void:

@@ -14,11 +14,14 @@ func on_enter() -> void:
 	is_chasing = true
 	controlled_character.chase_radius.player_exited.connect(start_forget_timer)
 	forget_timer.timeout.connect(stop_chase)
+	controlled_character.anim.play("waddle")
+	controlled_character.start_chase_sound()
 
 func on_exit() -> void:
 	is_chasing = false
 	controlled_character.chase_radius.player_exited.disconnect(start_forget_timer)
 	forget_timer.timeout.disconnect(stop_chase)
+	controlled_character.stop_chase_sound()
 
 ## When the player is out of radius from the enemy, 
 ## The enemy will continue to chase, but after some time will return to idle

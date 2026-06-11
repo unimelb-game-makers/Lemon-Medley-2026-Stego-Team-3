@@ -7,8 +7,11 @@ var controlled_character : Character
 var state_name : String
 var state_machine : StateMachine
 
+signal play_anim(anim: String)
+
 func initialize(character : Character):
 	controlled_character = character
+	play_anim.connect(controlled_character.play_animation)
 
 ## For the state to handle its setup of signals and other things if needed
 func setup() -> void:

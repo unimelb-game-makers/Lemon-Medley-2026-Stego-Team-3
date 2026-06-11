@@ -9,6 +9,9 @@ var last_direction: Vector2 = Vector2.RIGHT
 @export var stats : StatSheet
 @export var state_machine : StateMachine
 
+## Animated sprite to play animation
+@export var anim: AnimatedSprite2D
+
 ## The hitbox for this character to take damage
 @export var hurt_box : DamageArea
 
@@ -23,8 +26,8 @@ var last_hit : Damage
 var last_hit_direction : Vector2
 
 func _ready() -> void:
-	_initialize_hitboxes()
 	stats.reset()
+	_initialize_hitboxes()
 
 ## Seperate responsibility of hitbox setup from ready().
 ## I noticed we like to ovverride a lot, keeping it seperate makes rewriting code easier.
@@ -44,3 +47,6 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	state_machine.physics_process_state(delta)
 	move_and_slide()
+
+func play_animation(animation: String):
+	anim.play(animation)

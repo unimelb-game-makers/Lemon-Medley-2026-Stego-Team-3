@@ -16,7 +16,7 @@ func _ready():
 	banks.append(FmodServer.load_bank("res://assets/banks/Master.bank", FmodServer.FMOD_STUDIO_LOAD_BANK_NORMAL))
 	banks.append(FmodServer.load_bank("res://assets/banks/Music.bank", FmodServer.FMOD_STUDIO_LOAD_BANK_NORMAL))
 	banks.append(FmodServer.load_bank("res://assets/banks/SFX.bank", FmodServer.FMOD_STUDIO_LOAD_BANK_NORMAL))
-	banks_loaded = true
+
 	
 func _exit_tree() -> void:
 	remove_child(performance_display)
@@ -24,6 +24,10 @@ func _exit_tree() -> void:
 
 func _process(delta):
 	FmodServer.update()
-	
+	if not banks_loaded:
+		banks_loaded = banks.all(func(b): return b.get_loading_state() == FmodServer.FMOD_STUDIO_LOADING_STATE_LOADED)
+		#print("Banks loaded!")
+
+
 func _notification(what):
 	FmodServer.notification(what)

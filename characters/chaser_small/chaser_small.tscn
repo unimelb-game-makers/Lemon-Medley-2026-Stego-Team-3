@@ -8,9 +8,19 @@
 [ext_resource type="Script" uid="uid://ct1exflkqfmee" path="res://characters/chaser_small/chaser_small_states/chaser_small_chase.gd.gd" id="3_ifclk"]
 [ext_resource type="Script" uid="uid://c3atp4e4h86rb" path="res://base_physics_components/attack_area.gd" id="3_t4m6g"]
 [ext_resource type="Script" uid="uid://bd1qrnr8tcmdc" path="res://base_classes/state_machine.gd" id="3_wslbi"]
+[ext_resource type="Texture2D" uid="uid://crnl16e87t11u" path="res://assets/enemies/rock_waddler/pebblit_frame0000.png" id="4_fr32h"]
+[ext_resource type="Texture2D" uid="uid://cm2ncl5j1thh" path="res://assets/enemies/rock_waddler/pebblit_frame0001.png" id="5_80ppd"]
+[ext_resource type="Texture2D" uid="uid://kudddn4y2sl" path="res://assets/enemies/rock_waddler/pebblit_frame0002.png" id="6_rhwyt"]
+[ext_resource type="Texture2D" uid="uid://br30l3grh5kd1" path="res://assets/enemies/rock_waddler/pebblit_frame0003.png" id="7_5ffnl"]
+[ext_resource type="Texture2D" uid="uid://conpj700xskem" path="res://assets/enemies/rock_waddler/pebblit_frame0004.png" id="8_4b6lm"]
 [ext_resource type="Script" uid="uid://cmo6cy44r25gt" path="res://base_physics_components/enrage_area.gd" id="9_djrq5"]
+[ext_resource type="Texture2D" uid="uid://dw8hce8qgquro" path="res://assets/enemies/rock_waddler/pebblit_frame0005.png" id="9_mutdd"]
+[ext_resource type="Texture2D" uid="uid://lgde6mjw1o6h" path="res://assets/enemies/rock_waddler/pebblit_frame0006.png" id="10_qc53o"]
+[ext_resource type="Texture2D" uid="uid://c6icegfj6kvil" path="res://assets/enemies/rock_waddler/pebblit_frame0007.png" id="11_kurif"]
+[ext_resource type="Texture2D" uid="uid://b8i5088go7wgh" path="res://assets/enemies/rock_waddler/pebblit_frame0008.png" id="12_oa7l7"]
 
 [sub_resource type="Resource" id="Resource_djrq5"]
+resource_local_to_scene = true
 script = ExtResource("2_wslbi")
 base_health = 1
 base_defense = 2
@@ -18,16 +28,59 @@ base_attack = 5
 base_speed = 200
 metadata/_custom_type_script = "uid://c1gagfk36axyn"
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_djrq5"]
-size = Vector2(120, 120)
+[sub_resource type="SpriteFrames" id="SpriteFrames_8bwqk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_fr32h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_80ppd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_rhwyt")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_80ppd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_rhwyt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_5ffnl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_4b6lm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_mutdd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_qc53o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_kurif")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_oa7l7")
+}],
+"loop": true,
+"name": &"waddle",
+"speed": 18.0
+}]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ifclk"]
-size = Vector2(120, 120)
+[sub_resource type="CircleShape2D" id="CircleShape2D_fr32h"]
+radius = 58.30952
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wslbi"]
-radius = 201.10196
+radius = 386.39
 
-[node name="ChaserSmall" type="CharacterBody2D" unique_id=1878560309 node_paths=PackedStringArray("chase_radius", "debug_state_label", "state_machine", "hurt_box", "touch_damage_box")]
+[node name="ChaserSmall" type="CharacterBody2D" unique_id=1878560309 node_paths=PackedStringArray("chase_radius", "debug_state_label", "state_machine", "anim", "hurt_box", "touch_damage_box")]
 collision_layer = 2
 collision_mask = 18
 script = ExtResource("1_7n7dc")
@@ -35,16 +88,27 @@ chase_radius = NodePath("chase_radius")
 debug_state_label = NodePath("debug_state_label")
 stats = SubResource("Resource_djrq5")
 state_machine = NodePath("state_machine")
+anim = NodePath("AnimatedSprite2D")
 hurt_box = NodePath("damage_area")
 touch_damage_box = NodePath("attack_area")
 
 [node name="icon" type="Sprite2D" parent="." unique_id=1168362971]
+visible = false
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_5anwu")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1155168431]
+texture_filter = 1
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_8bwqk")
+animation = &"waddle"
+autoplay = "idle"
+frame = 2
+frame_progress = 0.021752592
+
 [node name="shape" type="CollisionShape2D" parent="." unique_id=251099949]
 scale = Vector2(0.5, 0.5)
-shape = SubResource("RectangleShape2D_djrq5")
+shape = SubResource("CircleShape2D_fr32h")
 
 [node name="state_machine" type="Node" parent="." unique_id=228717900]
 script = ExtResource("3_wslbi")
@@ -62,19 +126,20 @@ collision_layer = 2
 collision_mask = 2
 script = ExtResource("2_mmexc")
 
-[node name="shape" type="CollisionShape2D" parent="damage_area" unique_id=1130276582]
+[node name="shape2" type="CollisionShape2D" parent="damage_area" unique_id=953184731]
 scale = Vector2(0.5, 0.5)
-shape = SubResource("RectangleShape2D_ifclk")
+shape = SubResource("CircleShape2D_fr32h")
 
 [node name="attack_area" type="Area2D" parent="." unique_id=1334911790]
 script = ExtResource("3_t4m6g")
 metadata/_custom_type_script = "uid://c3atp4e4h86rb"
 
-[node name="shape" type="CollisionShape2D" parent="attack_area" unique_id=1917968483]
+[node name="shape2" type="CollisionShape2D" parent="attack_area" unique_id=2014437260]
 scale = Vector2(0.5, 0.5)
-shape = SubResource("RectangleShape2D_ifclk")
+shape = SubResource("CircleShape2D_fr32h")
 
 [node name="debug_state_label" type="Label" parent="." unique_id=1921449811]
+visible = false
 offset_left = -55.0
 offset_top = -58.0
 offset_right = 55.0

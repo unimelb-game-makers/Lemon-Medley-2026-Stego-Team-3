@@ -2,9 +2,10 @@
 
 [ext_resource type="Script" uid="uid://bvan8anr6wkia" path="res://characters/player/abilities/melee.gd" id="1_ufj4h"]
 [ext_resource type="Script" uid="uid://c3atp4e4h86rb" path="res://base_physics_components/attack_area.gd" id="2_wi7i5"]
+[ext_resource type="Texture2D" uid="uid://bsvjv68vrylaq" path="res://assets/pixel claymore final ver.0.2.png" id="3_wi7i5"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_lvh8y"]
-radius = 150.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i2q6g"]
+size = Vector2(393, 89)
 
 [node name="melee" type="Node2D" unique_id=1855612360 node_paths=PackedStringArray("attack_area")]
 script = ExtResource("1_ufj4h")
@@ -17,5 +18,11 @@ collision_mask = 4278190082
 script = ExtResource("2_wi7i5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="claymore_attack_area" unique_id=463584290]
-position = Vector2(152, 0)
-shape = SubResource("CircleShape2D_lvh8y")
+position = Vector2(281.5, 0.5)
+shape = SubResource("RectangleShape2D_i2q6g")
+
+[node name="Sprite2D" type="Sprite2D" parent="claymore_attack_area/CollisionShape2D" unique_id=962183564]
+position = Vector2(-44.166656, -0.5)
+rotation = 0.7853982
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_wi7i5")

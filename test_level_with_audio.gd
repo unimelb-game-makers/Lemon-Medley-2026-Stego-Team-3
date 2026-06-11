@@ -19,6 +19,7 @@ func _ready() -> void:
 	player = PlayerManager.player
 	update_player_health()
 	level_music_emitter.play()
+	#level_music_emitter.set_volume(0.2);
 
 func _process(delta: float) -> void:
 	update_combat_intensity(delta)

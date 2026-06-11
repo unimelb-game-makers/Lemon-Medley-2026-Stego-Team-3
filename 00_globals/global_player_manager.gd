@@ -8,11 +8,11 @@ signal camera_shook( trauma : float )
 signal interact_pressed
 
 func _ready() -> void:
+	# I'll leave this here in case it doesn't load in time for other devices
+	# but the fmod banks need to load first before everything
+	#while not FmodManager.banks_loaded:
+		#await get_tree().process_frame
 	add_player_instance()
-	
-	while not FmodManager.banks_loaded:
-		await get_tree().process_frame
-	
 	await get_tree().create_timer(0.2).timeout
 	player_spawned = true
 

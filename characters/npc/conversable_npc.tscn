@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://yek2dtlgvysa"]
 
 [ext_resource type="Script" uid="uid://bi4yune75sxmh" path="res://characters/npc/npc.gd" id="1_00gnk"]
-[ext_resource type="Texture2D" uid="uid://b58a50e60p4fd" path="res://icon.svg" id="1_uwkpc"]
 [ext_resource type="Script" uid="uid://bnlx50ogpic1q" path="res://dialogue/dialogue_area.gd" id="2_0mxmm"]
 [ext_resource type="Script" uid="uid://cj3bvpp17mpio" path="res://dialogue/dialogue.gd" id="2_85pjc"]
+[ext_resource type="Texture2D" uid="uid://cljielifd743p" path="res://assets/wise-old-man-c353.png" id="3_664xb"]
 [ext_resource type="Script" uid="uid://hry1ksbwy67v" path="res://characters/character_resource.gd" id="3_quc4s"]
 [ext_resource type="Script" uid="uid://ci8dj0oxrrj0v" path="res://dialogue/dialogue_choice.gd" id="6_quc4s"]
 
@@ -20,13 +20,15 @@ script = ExtResource("1_00gnk")
 character_resource = SubResource("Resource_quc4s")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=454441481]
-rotation = -3.1415925
-texture = ExtResource("1_uwkpc")
+texture_filter = 1
+scale = Vector2(10, 10)
+texture = ExtResource("3_664xb")
 
 [node name="shape" type="CollisionShape2D" parent="." unique_id=284909314]
 shape = SubResource("RectangleShape2D_85pjc")
 
 [node name="debug_label" type="Label" parent="." unique_id=1992159243]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -52,6 +54,7 @@ shape = SubResource("RectangleShape2D_85pjc")
 script = ExtResource("2_85pjc")
 next_dialogue = NodePath("dialogue_branch")
 dialogue_text = "Welcome to the prototype!"
+character_resource = SubResource("Resource_quc4s")
 metadata/_custom_type_script = "uid://cj3bvpp17mpio"
 
 [node name="dialogue_branch" type="Node" parent="dialogue_area/starting_dialogue" unique_id=1541607590 node_paths=PackedStringArray("possible_next_dialogues")]
@@ -66,16 +69,19 @@ metadata/_custom_type_script = "uid://ci8dj0oxrrj0v"
 script = ExtResource("2_85pjc")
 next_dialogue = NodePath("../../term_dialogue")
 dialogue_text = "Move around with WASD and use L-Shift to Dash in a direction. This has a cooldown."
+character_resource = SubResource("Resource_quc4s")
 metadata/_custom_type_script = "uid://cj3bvpp17mpio"
 
 [node name="branch_b" type="Node" parent="dialogue_area/starting_dialogue/dialogue_branch" unique_id=1984850060 node_paths=PackedStringArray("next_dialogue")]
 script = ExtResource("2_85pjc")
 next_dialogue = NodePath("../../term_dialogue")
 dialogue_text = "Aim using your mouse to direct where to attack and then press Left Mouse Button (Or Enter) to attack in that direction."
+character_resource = SubResource("Resource_quc4s")
 metadata/_custom_type_script = "uid://cj3bvpp17mpio"
 
 [node name="term_dialogue" type="Node" parent="dialogue_area/starting_dialogue" unique_id=72396807]
 script = ExtResource("2_85pjc")
 terminate = true
 dialogue_text = "The next room has a Scuttler enemy. It will chase you if you get too close to it. "
+character_resource = SubResource("Resource_quc4s")
 metadata/_custom_type_script = "uid://cj3bvpp17mpio"

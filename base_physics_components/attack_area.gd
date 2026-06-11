@@ -6,6 +6,7 @@ can be on different layers
 """
 
 signal finished_attack
+signal hit_enemy
 
 @export var damage : Damage
 var semaphore : int = 0
@@ -20,7 +21,9 @@ func _ready() -> void:
 func _on_body_entered(body: Node2D) -> void:
 	#print("[AttackArea] Entered body")
 	if body is DamageArea:
+		print(damage.damage)
 		body.take_damage(damage, global_position)
+		hit_enemy.emit()
 
 func activate(duration: float = 0.1) -> void:
 	# Uses semaphore to detect if interrupted and another process begins before
