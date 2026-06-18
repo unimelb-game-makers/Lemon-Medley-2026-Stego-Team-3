@@ -25,6 +25,8 @@ var last_hit : Damage
 ## Direction vector of the last attack that hit us to calculate knockback
 var last_hit_direction : Vector2
 
+signal killed
+
 func _ready() -> void:
 	stats.reset()
 	_initialize_hitboxes()

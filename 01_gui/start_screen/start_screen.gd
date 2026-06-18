@@ -24,6 +24,7 @@ func _ready() -> void:
 	
 	start_button.pressed.connect(new_game)
 	get_tree().paused = false
+	#AudioServer.set_bus_mute(0, true)
 
 func new_game():
 	play_button_sfx()

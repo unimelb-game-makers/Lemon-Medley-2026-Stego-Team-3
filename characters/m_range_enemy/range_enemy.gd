@@ -78,6 +78,7 @@ func take_damage(damage: Damage, attack_position: Vector2) -> void:
 	print("Life: ",stats.health)
 
 func _on_death() -> void:
+	killed.emit()
 	queue_free()
 	print("range enemy dead")
 

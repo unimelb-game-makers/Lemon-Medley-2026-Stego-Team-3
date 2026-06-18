@@ -5,8 +5,10 @@
 [ext_resource type="Script" uid="uid://dsjxqtwkdb1d1" path="res://02_tiles/level_tile_map_layer.gd" id="3_h5x28"]
 [ext_resource type="PackedScene" uid="uid://vlpiuopcomwi" path="res://levels/level_transition.tscn" id="4_t1unk"]
 [ext_resource type="PackedScene" uid="uid://cnkg66hk5nciw" path="res://characters/chaser_small/chaser_small.tscn" id="5_b0c8a"]
+[ext_resource type="Script" uid="uid://biqs0ygsc2bjm" path="res://base_classes/enemies_component.gd" id="5_ck47k"]
 [ext_resource type="Script" uid="uid://c1gagfk36axyn" path="res://base_classes/statsheet.gd" id="6_wk54y"]
 [ext_resource type="PackedScene" uid="uid://0oxwaqqk4b1i" path="res://characters/m_range_enemy/range_enemy.tscn" id="7_geku0"]
+[ext_resource type="Script" uid="uid://1ys7w16ebpbd" path="res://base_classes/win_component.gd" id="9_h5x28"]
 
 [sub_resource type="Resource" id="Resource_cx20w"]
 resource_local_to_scene = true
@@ -1072,8 +1074,9 @@ base_attack = 5
 base_speed = 100
 metadata/_custom_type_script = "uid://c1gagfk36axyn"
 
-[node name="level_1" type="Node2D" unique_id=424394711]
+[node name="level_3" type="Node2D" unique_id=424394711 node_paths=PackedStringArray("enemies")]
 script = ExtResource("1_cx20w")
+enemies = NodePath("enemies")
 
 [node name="LevelTileMapLayer" type="TileMapLayer" parent="." unique_id=690163884 node_paths=PackedStringArray("walls")]
 z_index = -2
@@ -1102,6 +1105,7 @@ one_way = false
 size = 8
 
 [node name="enemies" type="Node" parent="." unique_id=1854792098]
+script = ExtResource("5_ck47k")
 
 [node name="ChaserSmall25" parent="enemies" unique_id=622224749 instance=ExtResource("5_b0c8a")]
 position = Vector2(-35, -53)
@@ -1578,3 +1582,8 @@ stats = SubResource("Resource_yx47j")
 [node name="RangeEnemy6" parent="enemies" unique_id=391327078 instance=ExtResource("7_geku0")]
 position = Vector2(7205, -766)
 stats = SubResource("Resource_mgyrt")
+
+[node name="win_component" type="Node" parent="." unique_id=2047998768]
+script = ExtResource("9_h5x28")
+
+[connection signal="enemies_cleared" from="enemies" to="win_component" method="win_screen"]
