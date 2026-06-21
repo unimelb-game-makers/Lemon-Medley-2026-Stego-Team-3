@@ -1,20 +1,23 @@
 [gd_scene format=3 uid="uid://cuct4l3xjpps7"]
 
+[ext_resource type="Script" uid="uid://ctbsuhfj3jm3n" path="res://01_gui/win_screen.gd" id="1_m8k2d"]
+
 [node name="CanvasLayer" type="CanvasLayer" unique_id=97278475]
 
-[node name="StartScreen" type="PanelContainer" parent="." unique_id=392540819]
+[node name="WinScreen" type="PanelContainer" parent="." unique_id=392540819]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_m8k2d")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="StartScreen" unique_id=1423694954]
+[node name="VBoxContainer" type="VBoxContainer" parent="WinScreen" unique_id=1423694954]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Title" type="Label" parent="StartScreen/VBoxContainer" unique_id=434464228]
+[node name="Title" type="Label" parent="WinScreen/VBoxContainer" unique_id=434464228]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 48
@@ -22,9 +25,11 @@ text = "Thanks for playing!!!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="StartButton" type="Button" parent="StartScreen/VBoxContainer" unique_id=1404413969]
+[node name="StartButton" type="Button" parent="WinScreen/VBoxContainer" unique_id=1404413969]
 custom_minimum_size = Vector2(300, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 24
 text = "Return to Start Menu"
+
+[connection signal="pressed" from="WinScreen/VBoxContainer/StartButton" to="WinScreen" method="_on_start_button_pressed"]

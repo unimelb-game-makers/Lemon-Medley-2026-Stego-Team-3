@@ -2,6 +2,7 @@ class_name Player extends Character
 
 @export var debug_state_label : Label
 @export var debug_dash_label : Label
+@export var debug: bool = false
 
 @onready var ability_manager: AbilityManager = $ability_manager
 @onready var audio_manager: PlayerAudioManager = $player_audio_manager
@@ -40,6 +41,8 @@ func update_direction() -> void:
 		last_direction = direction
 
 func take_damage(damage : Damage, attack_position : Vector2):
+	if debug:
+		return
 	last_hit = damage
 	last_hit_direction = attack_position.direction_to(global_position)
 	stats.take_damage(damage.get_damage_value())

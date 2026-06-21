@@ -27,6 +27,8 @@ func _ready() -> void:
 	#AudioServer.set_bus_mute(0, true)
 
 func new_game():
+	if not PlayerManager.player:
+		PlayerManager.add_player_instance()
 	play_button_sfx()
 	menu_music.stop(FmodServer.FMOD_STUDIO_STOP_ALLOWFADEOUT) 
 	save_state = SaveState.new()
@@ -38,7 +40,7 @@ func new_game():
 
 func continue_game():
 	play_button_sfx()
-	menu_music.stop(FmodServer.FMOD_STUDIO_STOP_ALLOWFADEOUT) 
+	menu_music.stop(FmodServer.FMOD_STUDIO_STOP_ALLOWFADEOUT)
 	PlayerManager.player.stats.load(save_state.player_stats)
 	LevelManager.save_state = save_state
 	HUD.get_node("HealthBar").initialise()
