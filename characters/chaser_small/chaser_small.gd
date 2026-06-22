@@ -39,6 +39,7 @@ func update_direction() -> void:
 
 func die() -> void:
 	print("DYING")
+	killed.emit()
 	queue_free()
 
 func take_damage(damage : Damage, attack_position : Vector2):

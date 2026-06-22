@@ -36,6 +36,8 @@ func unparent_player( _p : Node2D ) -> void:
 	_p.remove_child( player )
 
 func hide_player() -> void:
+	if not PlayerManager.player:
+		return
 	PlayerManager.player.visible = false
 	PlayerManager.player.set_process_unhandled_input(false)
 	PlayerManager.player.set_process(false)

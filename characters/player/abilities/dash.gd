@@ -39,7 +39,7 @@ func stop_dash():
 	var tw1: Tween = get_tree().create_tween()
 	tw1.tween_property(controller.sprite, "scale:y", 0.1, 0.1)
 	dash_ended.emit()
-	cooldown_timer.start()
+	cooldown_timer.start(cooldown)
 
 func is_dashing() -> bool:
 	return activated

@@ -6,12 +6,17 @@ var use_threshold : bool = false
 @onready var progress_bar : TextureProgressBar = $Regular
 @onready var burst_bar : TextureProgressBar = $Burst
 
+var active = true
+
 func initialise():
 	progress_bar.max_value = PlayerManager.player.stats.base_health
 	burst_bar.max_value = PlayerManager.player.stats.base_health
 	PlayerManager.player.stats.damage_taken.connect(change_health)
+	active = true
 
 func _process(delta: float) -> void:
+	if not active:
+		return
 	progress_bar.value = PlayerManager.player.stats.health
 	
 	if use_threshold:

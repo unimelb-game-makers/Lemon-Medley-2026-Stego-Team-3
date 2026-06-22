@@ -11,7 +11,7 @@ var is_dead : bool = false
 func toggle_pause():
 	if !can_pause:
 		return
-		
+	
 	if is_paused:
 		pause_screen.visible = false
 		get_tree().paused = false
@@ -34,7 +34,7 @@ func retry():
 	PlayerManager.player.velocity = Vector2.ZERO
 	get_tree().paused = false
 	
-	can_pause = true	
+	can_pause = true
 	PlayerManager.player.hurt_box.make_invulnerable(2.0)
 	PlayerManager.player.hurt_box.monitorable = true
 

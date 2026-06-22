@@ -5,26 +5,10 @@
 [ext_resource type="Script" uid="uid://dsjxqtwkdb1d1" path="res://02_tiles/level_tile_map_layer.gd" id="3_h5x28"]
 [ext_resource type="PackedScene" uid="uid://vlpiuopcomwi" path="res://levels/level_transition.tscn" id="4_t1unk"]
 [ext_resource type="PackedScene" uid="uid://cnkg66hk5nciw" path="res://characters/chaser_small/chaser_small.tscn" id="5_b0c8a"]
+[ext_resource type="Script" uid="uid://biqs0ygsc2bjm" path="res://base_classes/enemies_component.gd" id="5_ck47k"]
 [ext_resource type="Script" uid="uid://c1gagfk36axyn" path="res://base_classes/statsheet.gd" id="6_wk54y"]
 [ext_resource type="PackedScene" uid="uid://0oxwaqqk4b1i" path="res://characters/m_range_enemy/range_enemy.tscn" id="7_geku0"]
-
-[sub_resource type="Resource" id="Resource_cx20w"]
-resource_local_to_scene = true
-script = ExtResource("6_wk54y")
-base_health = 1
-base_defense = 2
-base_attack = 5
-base_speed = 200
-metadata/_custom_type_script = "uid://c1gagfk36axyn"
-
-[sub_resource type="Resource" id="Resource_ck47k"]
-resource_local_to_scene = true
-script = ExtResource("6_wk54y")
-base_health = 1
-base_defense = 2
-base_attack = 5
-base_speed = 200
-metadata/_custom_type_script = "uid://c1gagfk36axyn"
+[ext_resource type="Script" uid="uid://1ys7w16ebpbd" path="res://base_classes/win_component.gd" id="9_h5x28"]
 
 [sub_resource type="Resource" id="Resource_h5x28"]
 resource_local_to_scene = true
@@ -1016,6 +1000,24 @@ base_attack = 5
 base_speed = 200
 metadata/_custom_type_script = "uid://c1gagfk36axyn"
 
+[sub_resource type="Resource" id="Resource_mqq41"]
+resource_local_to_scene = true
+script = ExtResource("6_wk54y")
+base_health = 1
+base_defense = 2
+base_attack = 5
+base_speed = 200
+metadata/_custom_type_script = "uid://c1gagfk36axyn"
+
+[sub_resource type="Resource" id="Resource_i5c6k"]
+resource_local_to_scene = true
+script = ExtResource("6_wk54y")
+base_health = 1
+base_defense = 2
+base_attack = 5
+base_speed = 200
+metadata/_custom_type_script = "uid://c1gagfk36axyn"
+
 [sub_resource type="Resource" id="Resource_gbp4h"]
 script = ExtResource("6_wk54y")
 base_health = 20
@@ -1072,8 +1074,9 @@ base_attack = 5
 base_speed = 100
 metadata/_custom_type_script = "uid://c1gagfk36axyn"
 
-[node name="level_1" type="Node2D" unique_id=424394711]
+[node name="level_3" type="Node2D" unique_id=424394711 node_paths=PackedStringArray("enemies")]
 script = ExtResource("1_cx20w")
+enemies = NodePath("enemies")
 
 [node name="LevelTileMapLayer" type="TileMapLayer" parent="." unique_id=690163884 node_paths=PackedStringArray("walls")]
 z_index = -2
@@ -1102,454 +1105,455 @@ one_way = false
 size = 8
 
 [node name="enemies" type="Node" parent="." unique_id=1854792098]
+script = ExtResource("5_ck47k")
 
 [node name="ChaserSmall25" parent="enemies" unique_id=622224749 instance=ExtResource("5_b0c8a")]
 position = Vector2(-35, -53)
-stats = SubResource("Resource_cx20w")
+stats = SubResource("Resource_h5x28")
 
 [node name="ChaserSmall24" parent="enemies" unique_id=1995386114 instance=ExtResource("5_b0c8a")]
 position = Vector2(36, 43)
-stats = SubResource("Resource_ck47k")
+stats = SubResource("Resource_t1unk")
 
 [node name="ChaserSmall26" parent="enemies" unique_id=1878560309 instance=ExtResource("5_b0c8a")]
 position = Vector2(66, -39)
-stats = SubResource("Resource_h5x28")
+stats = SubResource("Resource_b0c8a")
 
 [node name="ChaserSmall27" parent="enemies" unique_id=720905778 instance=ExtResource("5_b0c8a")]
 position = Vector2(137, 57)
-stats = SubResource("Resource_t1unk")
+stats = SubResource("Resource_wk54y")
 
 [node name="ChaserSmall28" parent="enemies" unique_id=1305685296 instance=ExtResource("5_b0c8a")]
 position = Vector2(869, -74)
-stats = SubResource("Resource_b0c8a")
+stats = SubResource("Resource_geku0")
 
 [node name="ChaserSmall29" parent="enemies" unique_id=89868211 instance=ExtResource("5_b0c8a")]
 position = Vector2(940, 22)
-stats = SubResource("Resource_wk54y")
+stats = SubResource("Resource_pmnwy")
 
 [node name="ChaserSmall30" parent="enemies" unique_id=1260310772 instance=ExtResource("5_b0c8a")]
 position = Vector2(991, -63)
-stats = SubResource("Resource_geku0")
+stats = SubResource("Resource_wohvk")
 
 [node name="ChaserSmall31" parent="enemies" unique_id=454819476 instance=ExtResource("5_b0c8a")]
 position = Vector2(1062, 33)
-stats = SubResource("Resource_pmnwy")
+stats = SubResource("Resource_4si54")
 
 [node name="ChaserSmall32" parent="enemies" unique_id=1681534340 instance=ExtResource("5_b0c8a")]
 position = Vector2(800, -4)
-stats = SubResource("Resource_wohvk")
+stats = SubResource("Resource_il8i7")
 
 [node name="ChaserSmall33" parent="enemies" unique_id=1222572698 instance=ExtResource("5_b0c8a")]
 position = Vector2(871, 92)
-stats = SubResource("Resource_4si54")
+stats = SubResource("Resource_mkmwo")
 
 [node name="ChaserSmall34" parent="enemies" unique_id=790263041 instance=ExtResource("5_b0c8a")]
 position = Vector2(2824, -98)
-stats = SubResource("Resource_il8i7")
+stats = SubResource("Resource_hryn7")
 
 [node name="ChaserSmall35" parent="enemies" unique_id=1215751182 instance=ExtResource("5_b0c8a")]
 position = Vector2(2895, -2)
-stats = SubResource("Resource_mkmwo")
+stats = SubResource("Resource_yjaqo")
 
 [node name="ChaserSmall36" parent="enemies" unique_id=1573429642 instance=ExtResource("5_b0c8a")]
 position = Vector2(2633, -39)
-stats = SubResource("Resource_hryn7")
+stats = SubResource("Resource_vvbnr")
 
 [node name="ChaserSmall37" parent="enemies" unique_id=1158871526 instance=ExtResource("5_b0c8a")]
 position = Vector2(2704, 57)
-stats = SubResource("Resource_yjaqo")
+stats = SubResource("Resource_fjag4")
 
 [node name="ChaserSmall38" parent="enemies" unique_id=454623067 instance=ExtResource("5_b0c8a")]
 position = Vector2(2686, -108)
-stats = SubResource("Resource_vvbnr")
+stats = SubResource("Resource_2c51j")
 
 [node name="ChaserSmall39" parent="enemies" unique_id=1476390369 instance=ExtResource("5_b0c8a")]
 position = Vector2(2757, -12)
-stats = SubResource("Resource_fjag4")
+stats = SubResource("Resource_1bp2s")
 
 [node name="ChaserSmall40" parent="enemies" unique_id=971150534 instance=ExtResource("5_b0c8a")]
 position = Vector2(2495, -49)
-stats = SubResource("Resource_2c51j")
+stats = SubResource("Resource_8bxt0")
 
 [node name="ChaserSmall41" parent="enemies" unique_id=574468149 instance=ExtResource("5_b0c8a")]
 position = Vector2(2566, 47)
-stats = SubResource("Resource_1bp2s")
+stats = SubResource("Resource_eyc5p")
 
 [node name="ChaserSmall42" parent="enemies" unique_id=1083643328 instance=ExtResource("5_b0c8a")]
 position = Vector2(4032, -630)
-stats = SubResource("Resource_8bxt0")
+stats = SubResource("Resource_762n0")
 
 [node name="ChaserSmall43" parent="enemies" unique_id=2041316541 instance=ExtResource("5_b0c8a")]
 position = Vector2(4112, -550)
-stats = SubResource("Resource_eyc5p")
+stats = SubResource("Resource_bki4c")
 
 [node name="ChaserSmall44" parent="enemies" unique_id=1593288089 instance=ExtResource("5_b0c8a")]
 position = Vector2(3947, -507)
-stats = SubResource("Resource_762n0")
+stats = SubResource("Resource_mjx53")
 
 [node name="ChaserSmall45" parent="enemies" unique_id=1543418627 instance=ExtResource("5_b0c8a")]
 position = Vector2(4082, -452)
-stats = SubResource("Resource_bki4c")
+stats = SubResource("Resource_y7qqs")
 
 [node name="ChaserSmall46" parent="enemies" unique_id=748950588 instance=ExtResource("5_b0c8a")]
 position = Vector2(4021, -562)
-stats = SubResource("Resource_mjx53")
+stats = SubResource("Resource_oj0rt")
 
 [node name="ChaserSmall47" parent="enemies" unique_id=1780024480 instance=ExtResource("5_b0c8a")]
 position = Vector2(3929, 426)
-stats = SubResource("Resource_y7qqs")
+stats = SubResource("Resource_2dn7t")
 
 [node name="ChaserSmall48" parent="enemies" unique_id=80066093 instance=ExtResource("5_b0c8a")]
 position = Vector2(4009, 506)
-stats = SubResource("Resource_oj0rt")
+stats = SubResource("Resource_h7bgb")
 
 [node name="ChaserSmall49" parent="enemies" unique_id=2037201885 instance=ExtResource("5_b0c8a")]
 position = Vector2(3844, 549)
-stats = SubResource("Resource_2dn7t")
+stats = SubResource("Resource_me88t")
 
 [node name="ChaserSmall50" parent="enemies" unique_id=1539795609 instance=ExtResource("5_b0c8a")]
 position = Vector2(3979, 604)
-stats = SubResource("Resource_h7bgb")
+stats = SubResource("Resource_si5b6")
 
 [node name="ChaserSmall51" parent="enemies" unique_id=238472521 instance=ExtResource("5_b0c8a")]
 position = Vector2(3918, 494)
-stats = SubResource("Resource_me88t")
+stats = SubResource("Resource_62drc")
 
 [node name="ChaserSmall52" parent="enemies" unique_id=1844311140 instance=ExtResource("5_b0c8a")]
 position = Vector2(4282, -596)
-stats = SubResource("Resource_si5b6")
+stats = SubResource("Resource_nil74")
 
 [node name="ChaserSmall53" parent="enemies" unique_id=929264273 instance=ExtResource("5_b0c8a")]
 position = Vector2(4362, -516)
-stats = SubResource("Resource_62drc")
+stats = SubResource("Resource_5lys8")
 
 [node name="ChaserSmall54" parent="enemies" unique_id=1316980454 instance=ExtResource("5_b0c8a")]
 position = Vector2(4197, -473)
-stats = SubResource("Resource_nil74")
+stats = SubResource("Resource_5db30")
 
 [node name="ChaserSmall55" parent="enemies" unique_id=152586508 instance=ExtResource("5_b0c8a")]
 position = Vector2(4332, -418)
-stats = SubResource("Resource_5lys8")
+stats = SubResource("Resource_no1os")
 
 [node name="ChaserSmall56" parent="enemies" unique_id=2027171669 instance=ExtResource("5_b0c8a")]
 position = Vector2(4271, -528)
-stats = SubResource("Resource_5db30")
+stats = SubResource("Resource_awcoc")
 
 [node name="ChaserSmall57" parent="enemies" unique_id=212743778 instance=ExtResource("5_b0c8a")]
 position = Vector2(4229, 441)
-stats = SubResource("Resource_no1os")
+stats = SubResource("Resource_t76s2")
 
 [node name="ChaserSmall58" parent="enemies" unique_id=1853081841 instance=ExtResource("5_b0c8a")]
 position = Vector2(4309, 521)
-stats = SubResource("Resource_awcoc")
+stats = SubResource("Resource_ppqoh")
 
 [node name="ChaserSmall59" parent="enemies" unique_id=1561118052 instance=ExtResource("5_b0c8a")]
 position = Vector2(4144, 564)
-stats = SubResource("Resource_t76s2")
+stats = SubResource("Resource_unxsc")
 
 [node name="ChaserSmall60" parent="enemies" unique_id=2034901718 instance=ExtResource("5_b0c8a")]
 position = Vector2(4279, 619)
-stats = SubResource("Resource_ppqoh")
+stats = SubResource("Resource_pnxtc")
 
 [node name="ChaserSmall61" parent="enemies" unique_id=1293125677 instance=ExtResource("5_b0c8a")]
 position = Vector2(4218, 509)
-stats = SubResource("Resource_unxsc")
+stats = SubResource("Resource_mbsuv")
 
 [node name="ChaserSmall62" parent="enemies" unique_id=1243010630 instance=ExtResource("5_b0c8a")]
 position = Vector2(4521, 487)
-stats = SubResource("Resource_pnxtc")
+stats = SubResource("Resource_2i00d")
 
 [node name="ChaserSmall63" parent="enemies" unique_id=1088126894 instance=ExtResource("5_b0c8a")]
 position = Vector2(4601, 567)
-stats = SubResource("Resource_mbsuv")
+stats = SubResource("Resource_gvj2a")
 
 [node name="ChaserSmall64" parent="enemies" unique_id=855384438 instance=ExtResource("5_b0c8a")]
 position = Vector2(4436, 610)
-stats = SubResource("Resource_2i00d")
+stats = SubResource("Resource_q0q7c")
 
 [node name="ChaserSmall65" parent="enemies" unique_id=248227208 instance=ExtResource("5_b0c8a")]
 position = Vector2(4571, 665)
-stats = SubResource("Resource_gvj2a")
+stats = SubResource("Resource_n6m1w")
 
 [node name="ChaserSmall66" parent="enemies" unique_id=1275226388 instance=ExtResource("5_b0c8a")]
 position = Vector2(4510, 555)
-stats = SubResource("Resource_q0q7c")
+stats = SubResource("Resource_10ma7")
 
 [node name="ChaserSmall67" parent="enemies" unique_id=1107980241 instance=ExtResource("5_b0c8a")]
 position = Vector2(5269, 498)
-stats = SubResource("Resource_n6m1w")
+stats = SubResource("Resource_sdesw")
 
 [node name="ChaserSmall68" parent="enemies" unique_id=800782026 instance=ExtResource("5_b0c8a")]
 position = Vector2(5349, 578)
-stats = SubResource("Resource_10ma7")
+stats = SubResource("Resource_pv2w6")
 
 [node name="ChaserSmall69" parent="enemies" unique_id=1053997076 instance=ExtResource("5_b0c8a")]
 position = Vector2(5184, 621)
-stats = SubResource("Resource_sdesw")
+stats = SubResource("Resource_qmwt0")
 
 [node name="ChaserSmall70" parent="enemies" unique_id=1807060484 instance=ExtResource("5_b0c8a")]
 position = Vector2(5319, 676)
-stats = SubResource("Resource_pv2w6")
+stats = SubResource("Resource_p7iww")
 
 [node name="ChaserSmall71" parent="enemies" unique_id=465208654 instance=ExtResource("5_b0c8a")]
 position = Vector2(5258, 566)
-stats = SubResource("Resource_qmwt0")
+stats = SubResource("Resource_fcrng")
 
 [node name="ChaserSmall72" parent="enemies" unique_id=334660056 instance=ExtResource("5_b0c8a")]
 position = Vector2(5998, 509)
-stats = SubResource("Resource_p7iww")
+stats = SubResource("Resource_5jmtr")
 
 [node name="ChaserSmall73" parent="enemies" unique_id=251736866 instance=ExtResource("5_b0c8a")]
 position = Vector2(6078, 589)
-stats = SubResource("Resource_fcrng")
+stats = SubResource("Resource_txh5y")
 
 [node name="ChaserSmall74" parent="enemies" unique_id=1644591790 instance=ExtResource("5_b0c8a")]
 position = Vector2(5913, 632)
-stats = SubResource("Resource_5jmtr")
+stats = SubResource("Resource_l0oib")
 
 [node name="ChaserSmall75" parent="enemies" unique_id=1162002974 instance=ExtResource("5_b0c8a")]
 position = Vector2(6048, 687)
-stats = SubResource("Resource_txh5y")
+stats = SubResource("Resource_fqdbh")
 
 [node name="ChaserSmall76" parent="enemies" unique_id=1008361868 instance=ExtResource("5_b0c8a")]
 position = Vector2(5987, 577)
-stats = SubResource("Resource_l0oib")
+stats = SubResource("Resource_o5wvf")
 
 [node name="ChaserSmall77" parent="enemies" unique_id=2093002318 instance=ExtResource("5_b0c8a")]
 position = Vector2(5364, -611)
-stats = SubResource("Resource_fqdbh")
+stats = SubResource("Resource_xdg8q")
 
 [node name="ChaserSmall78" parent="enemies" unique_id=1103511280 instance=ExtResource("5_b0c8a")]
 position = Vector2(5444, -531)
-stats = SubResource("Resource_o5wvf")
+stats = SubResource("Resource_qs5e3")
 
 [node name="ChaserSmall79" parent="enemies" unique_id=1956181726 instance=ExtResource("5_b0c8a")]
 position = Vector2(5279, -488)
-stats = SubResource("Resource_xdg8q")
+stats = SubResource("Resource_71d1o")
 
 [node name="ChaserSmall80" parent="enemies" unique_id=1717294872 instance=ExtResource("5_b0c8a")]
 position = Vector2(5414, -433)
-stats = SubResource("Resource_qs5e3")
+stats = SubResource("Resource_e277j")
 
 [node name="ChaserSmall81" parent="enemies" unique_id=1977944738 instance=ExtResource("5_b0c8a")]
 position = Vector2(5353, -543)
-stats = SubResource("Resource_71d1o")
+stats = SubResource("Resource_7upsh")
 
 [node name="ChaserSmall82" parent="enemies" unique_id=1007849551 instance=ExtResource("5_b0c8a")]
 position = Vector2(4813, -619)
-stats = SubResource("Resource_e277j")
+stats = SubResource("Resource_rjvdi")
 
 [node name="ChaserSmall83" parent="enemies" unique_id=1903801634 instance=ExtResource("5_b0c8a")]
 position = Vector2(4893, -539)
-stats = SubResource("Resource_7upsh")
+stats = SubResource("Resource_hvp8h")
 
 [node name="ChaserSmall84" parent="enemies" unique_id=876335836 instance=ExtResource("5_b0c8a")]
 position = Vector2(4775, -503)
-stats = SubResource("Resource_rjvdi")
+stats = SubResource("Resource_p18cj")
 
 [node name="ChaserSmall85" parent="enemies" unique_id=926378905 instance=ExtResource("5_b0c8a")]
 position = Vector2(4863, -441)
-stats = SubResource("Resource_hvp8h")
+stats = SubResource("Resource_3m81c")
 
 [node name="ChaserSmall86" parent="enemies" unique_id=87045919 instance=ExtResource("5_b0c8a")]
 position = Vector2(5771, -564)
-stats = SubResource("Resource_p18cj")
+stats = SubResource("Resource_6skc8")
 
 [node name="ChaserSmall87" parent="enemies" unique_id=2129205445 instance=ExtResource("5_b0c8a")]
 position = Vector2(6245, -615)
-stats = SubResource("Resource_3m81c")
+stats = SubResource("Resource_6jc7o")
 
 [node name="ChaserSmall88" parent="enemies" unique_id=1695755047 instance=ExtResource("5_b0c8a")]
 position = Vector2(6325, -535)
-stats = SubResource("Resource_6skc8")
+stats = SubResource("Resource_evcr6")
 
 [node name="ChaserSmall89" parent="enemies" unique_id=235068829 instance=ExtResource("5_b0c8a")]
 position = Vector2(6160, -492)
-stats = SubResource("Resource_6jc7o")
+stats = SubResource("Resource_act4f")
 
 [node name="ChaserSmall90" parent="enemies" unique_id=2141334435 instance=ExtResource("5_b0c8a")]
 position = Vector2(6295, -437)
-stats = SubResource("Resource_evcr6")
+stats = SubResource("Resource_jvg1q")
 
 [node name="ChaserSmall91" parent="enemies" unique_id=942277992 instance=ExtResource("5_b0c8a")]
 position = Vector2(6234, -547)
-stats = SubResource("Resource_act4f")
+stats = SubResource("Resource_yn5ii")
 
 [node name="ChaserSmall92" parent="enemies" unique_id=2092275610 instance=ExtResource("5_b0c8a")]
 position = Vector2(6477, 566)
-stats = SubResource("Resource_jvg1q")
+stats = SubResource("Resource_sxxg4")
 
 [node name="ChaserSmall93" parent="enemies" unique_id=1516545979 instance=ExtResource("5_b0c8a")]
 position = Vector2(6557, 646)
-stats = SubResource("Resource_yn5ii")
+stats = SubResource("Resource_7021d")
 
 [node name="ChaserSmall94" parent="enemies" unique_id=95027393 instance=ExtResource("5_b0c8a")]
 position = Vector2(6392, 689)
-stats = SubResource("Resource_sxxg4")
+stats = SubResource("Resource_uxl2c")
 
 [node name="ChaserSmall95" parent="enemies" unique_id=1407425391 instance=ExtResource("5_b0c8a")]
 position = Vector2(6527, 744)
-stats = SubResource("Resource_7021d")
+stats = SubResource("Resource_tofep")
 
 [node name="ChaserSmall96" parent="enemies" unique_id=1152060354 instance=ExtResource("5_b0c8a")]
 position = Vector2(6466, 634)
-stats = SubResource("Resource_uxl2c")
+stats = SubResource("Resource_rm848")
 
 [node name="ChaserSmall97" parent="enemies" unique_id=1761364750 instance=ExtResource("5_b0c8a")]
 position = Vector2(5797, -630)
-stats = SubResource("Resource_tofep")
+stats = SubResource("Resource_bn2mx")
 
 [node name="ChaserSmall98" parent="enemies" unique_id=1678035436 instance=ExtResource("5_b0c8a")]
 position = Vector2(5877, -550)
-stats = SubResource("Resource_rm848")
+stats = SubResource("Resource_grwu7")
 
 [node name="ChaserSmall99" parent="enemies" unique_id=136237406 instance=ExtResource("5_b0c8a")]
 position = Vector2(5712, -507)
-stats = SubResource("Resource_bn2mx")
+stats = SubResource("Resource_jqqsr")
 
 [node name="ChaserSmall100" parent="enemies" unique_id=1140170888 instance=ExtResource("5_b0c8a")]
 position = Vector2(5847, -452)
-stats = SubResource("Resource_grwu7")
+stats = SubResource("Resource_yatxh")
 
 [node name="ChaserSmall101" parent="enemies" unique_id=1300716858 instance=ExtResource("5_b0c8a")]
 position = Vector2(5786, -562)
-stats = SubResource("Resource_jqqsr")
+stats = SubResource("Resource_salh3")
 
 [node name="ChaserSmall102" parent="enemies" unique_id=289779376 instance=ExtResource("5_b0c8a")]
 position = Vector2(6765, -607)
-stats = SubResource("Resource_yatxh")
+stats = SubResource("Resource_6dm1q")
 
 [node name="ChaserSmall103" parent="enemies" unique_id=1460391506 instance=ExtResource("5_b0c8a")]
 position = Vector2(6845, -527)
-stats = SubResource("Resource_salh3")
+stats = SubResource("Resource_byurt")
 
 [node name="ChaserSmall104" parent="enemies" unique_id=589423653 instance=ExtResource("5_b0c8a")]
 position = Vector2(6680, -484)
-stats = SubResource("Resource_6dm1q")
+stats = SubResource("Resource_1840y")
 
 [node name="ChaserSmall105" parent="enemies" unique_id=1811683562 instance=ExtResource("5_b0c8a")]
 position = Vector2(6815, -429)
-stats = SubResource("Resource_byurt")
+stats = SubResource("Resource_gfe2w")
 
 [node name="ChaserSmall106" parent="enemies" unique_id=479268257 instance=ExtResource("5_b0c8a")]
 position = Vector2(6754, -539)
-stats = SubResource("Resource_1840y")
+stats = SubResource("Resource_el7mi")
 
 [node name="ChaserSmall107" parent="enemies" unique_id=1151100412 instance=ExtResource("5_b0c8a")]
 position = Vector2(6936, 601)
-stats = SubResource("Resource_gfe2w")
+stats = SubResource("Resource_s17h8")
 
 [node name="ChaserSmall108" parent="enemies" unique_id=1642668203 instance=ExtResource("5_b0c8a")]
 position = Vector2(7016, 681)
-stats = SubResource("Resource_el7mi")
+stats = SubResource("Resource_a4lxq")
 
 [node name="ChaserSmall109" parent="enemies" unique_id=1174703586 instance=ExtResource("5_b0c8a")]
 position = Vector2(6851, 724)
-stats = SubResource("Resource_s17h8")
+stats = SubResource("Resource_qclcn")
 
 [node name="ChaserSmall110" parent="enemies" unique_id=1217910781 instance=ExtResource("5_b0c8a")]
 position = Vector2(6986, 779)
-stats = SubResource("Resource_a4lxq")
+stats = SubResource("Resource_pitqw")
 
 [node name="ChaserSmall111" parent="enemies" unique_id=1651720441 instance=ExtResource("5_b0c8a")]
 position = Vector2(6925, 669)
-stats = SubResource("Resource_qclcn")
+stats = SubResource("Resource_l7m8j")
 
 [node name="ChaserSmall112" parent="enemies" unique_id=883309939 instance=ExtResource("5_b0c8a")]
 position = Vector2(7331, -618)
-stats = SubResource("Resource_pitqw")
+stats = SubResource("Resource_7prb0")
 
 [node name="ChaserSmall113" parent="enemies" unique_id=175340595 instance=ExtResource("5_b0c8a")]
 position = Vector2(7411, -538)
-stats = SubResource("Resource_l7m8j")
+stats = SubResource("Resource_0v3wo")
 
 [node name="ChaserSmall114" parent="enemies" unique_id=144962515 instance=ExtResource("5_b0c8a")]
 position = Vector2(7246, -495)
-stats = SubResource("Resource_7prb0")
+stats = SubResource("Resource_jwug5")
 
 [node name="ChaserSmall115" parent="enemies" unique_id=2001602788 instance=ExtResource("5_b0c8a")]
 position = Vector2(7381, -440)
-stats = SubResource("Resource_0v3wo")
+stats = SubResource("Resource_cgwu2")
 
 [node name="ChaserSmall116" parent="enemies" unique_id=954034616 instance=ExtResource("5_b0c8a")]
 position = Vector2(7320, -550)
-stats = SubResource("Resource_jwug5")
+stats = SubResource("Resource_cgdqv")
 
 [node name="ChaserSmall117" parent="enemies" unique_id=1023232574 instance=ExtResource("5_b0c8a")]
 position = Vector2(7453, 628)
-stats = SubResource("Resource_cgwu2")
+stats = SubResource("Resource_u7oa1")
 
 [node name="ChaserSmall118" parent="enemies" unique_id=511334770 instance=ExtResource("5_b0c8a")]
 position = Vector2(7533, 708)
-stats = SubResource("Resource_cgdqv")
+stats = SubResource("Resource_0cw1t")
 
 [node name="ChaserSmall119" parent="enemies" unique_id=417100040 instance=ExtResource("5_b0c8a")]
 position = Vector2(7368, 751)
-stats = SubResource("Resource_u7oa1")
+stats = SubResource("Resource_66mxu")
 
 [node name="ChaserSmall120" parent="enemies" unique_id=600721490 instance=ExtResource("5_b0c8a")]
 position = Vector2(7503, 806)
-stats = SubResource("Resource_0cw1t")
+stats = SubResource("Resource_rulr1")
 
 [node name="ChaserSmall121" parent="enemies" unique_id=664224961 instance=ExtResource("5_b0c8a")]
 position = Vector2(7442, 696)
-stats = SubResource("Resource_66mxu")
+stats = SubResource("Resource_b1hip")
 
 [node name="ChaserSmall122" parent="enemies" unique_id=808600619 instance=ExtResource("5_b0c8a")]
 position = Vector2(7825, -610)
-stats = SubResource("Resource_rulr1")
+stats = SubResource("Resource_3c2lq")
 
 [node name="ChaserSmall123" parent="enemies" unique_id=899842674 instance=ExtResource("5_b0c8a")]
 position = Vector2(7905, -530)
-stats = SubResource("Resource_b1hip")
+stats = SubResource("Resource_bc55h")
 
 [node name="ChaserSmall124" parent="enemies" unique_id=1883237418 instance=ExtResource("5_b0c8a")]
 position = Vector2(7740, -487)
-stats = SubResource("Resource_3c2lq")
+stats = SubResource("Resource_le6w0")
 
 [node name="ChaserSmall125" parent="enemies" unique_id=847415498 instance=ExtResource("5_b0c8a")]
 position = Vector2(7875, -432)
-stats = SubResource("Resource_bc55h")
+stats = SubResource("Resource_jykwp")
 
 [node name="ChaserSmall126" parent="enemies" unique_id=1410676601 instance=ExtResource("5_b0c8a")]
 position = Vector2(7814, -542)
-stats = SubResource("Resource_le6w0")
+stats = SubResource("Resource_0w70e")
 
 [node name="ChaserSmall127" parent="enemies" unique_id=2067940159 instance=ExtResource("5_b0c8a")]
 position = Vector2(7871, 624)
-stats = SubResource("Resource_jykwp")
+stats = SubResource("Resource_g4sex")
 
 [node name="ChaserSmall128" parent="enemies" unique_id=1160442868 instance=ExtResource("5_b0c8a")]
 position = Vector2(7951, 704)
-stats = SubResource("Resource_0w70e")
+stats = SubResource("Resource_vtibs")
 
 [node name="ChaserSmall129" parent="enemies" unique_id=772256527 instance=ExtResource("5_b0c8a")]
 position = Vector2(7786, 747)
-stats = SubResource("Resource_g4sex")
+stats = SubResource("Resource_vebgh")
 
 [node name="ChaserSmall130" parent="enemies" unique_id=1253079479 instance=ExtResource("5_b0c8a")]
 position = Vector2(7921, 802)
-stats = SubResource("Resource_vtibs")
+stats = SubResource("Resource_8cykh")
 
 [node name="ChaserSmall131" parent="enemies" unique_id=650537584 instance=ExtResource("5_b0c8a")]
 position = Vector2(7860, 692)
-stats = SubResource("Resource_vebgh")
+stats = SubResource("Resource_eoclm")
 
 [node name="ChaserSmall132" parent="enemies" unique_id=101123544 instance=ExtResource("5_b0c8a")]
 position = Vector2(4910, 576)
-stats = SubResource("Resource_8cykh")
+stats = SubResource("Resource_64hsx")
 
 [node name="ChaserSmall133" parent="enemies" unique_id=1588754093 instance=ExtResource("5_b0c8a")]
 position = Vector2(4745, 619)
-stats = SubResource("Resource_eoclm")
+stats = SubResource("Resource_s4hba")
 
 [node name="ChaserSmall134" parent="enemies" unique_id=1493454069 instance=ExtResource("5_b0c8a")]
 position = Vector2(4880, 674)
-stats = SubResource("Resource_64hsx")
+stats = SubResource("Resource_mqq41")
 
 [node name="ChaserSmall135" parent="enemies" unique_id=1418112539 instance=ExtResource("5_b0c8a")]
 position = Vector2(4819, 564)
-stats = SubResource("Resource_s4hba")
+stats = SubResource("Resource_i5c6k")
 
 [node name="RangeEnemy" parent="enemies" unique_id=282997317 instance=ExtResource("7_geku0")]
 position = Vector2(1527, -93)
@@ -1578,3 +1582,8 @@ stats = SubResource("Resource_yx47j")
 [node name="RangeEnemy6" parent="enemies" unique_id=391327078 instance=ExtResource("7_geku0")]
 position = Vector2(7205, -766)
 stats = SubResource("Resource_mgyrt")
+
+[node name="win_component" type="Node" parent="." unique_id=2047998768]
+script = ExtResource("9_h5x28")
+
+[connection signal="enemies_cleared" from="enemies" to="win_component" method="win_screen"]

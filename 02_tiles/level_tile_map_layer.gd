@@ -4,6 +4,7 @@ class_name LevelTileMapLayer extends TileMapLayer
 @export var update_bounds : bool = true
 
 @export var walls: TileMapLayer
+@export var blocking_door: TileMapLayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -11,6 +12,8 @@ func _ready():
 		LevelManager.change_tilemap_bounds( _get_tilemap_bounds() )
 	pass # Replace with function body.
 
+func open_doors():
+	blocking_door.enabled = false
 
 func _get_tilemap_bounds() -> Array[ Vector2 ]:
 	var bounds : Array[ Vector2 ] = []
